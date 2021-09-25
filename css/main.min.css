@@ -2029,3 +2029,7 @@ a.publication-icon svg {
 		padding-bottom: 5rem
 	}
 }
+
+.label-success {
+  background-color: #5cb85c;
+}
