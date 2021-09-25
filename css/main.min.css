@@ -238,7 +238,7 @@ video {
 
 a {
 	--text-opacity: 1;
-	color: #555;
+	color: green;
 	color: rgba(85, 85, 85, var(--text-opacity))
 }
 
