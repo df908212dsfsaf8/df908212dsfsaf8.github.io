@@ -238,7 +238,7 @@ video {
 
 a {
 	--text-opacity: 1;
-	color: green;
+	color: #555;
 	color: rgba(85, 85, 85, var(--text-opacity))
 }
 
@@ -1693,7 +1693,7 @@ a.publication-icon svg {
 .hover\:text-primary:hover {
 	--text-opacity: 1;
 	color: #494949;
-	color: rgba(73, 73, 73, var(--text-opacity))
+	color: rgba(0, 128, 0, var(--text-opacity))
 }
 
 .hover\:text-white:hover {
@@ -1723,7 +1723,7 @@ a.publication-icon svg {
 .active\:text-primary:active {
 	--text-opacity: 1;
 	color: #494949;
-	color: rgba(73, 73, 73, var(--text-opacity))
+	color: rgba(0, 128, 0, var(--text-opacity))
 }
 
 .italic {
