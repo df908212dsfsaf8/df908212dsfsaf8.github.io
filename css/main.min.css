@@ -1615,7 +1615,7 @@ a.publication-icon svg {
 .text-primary {
 	--text-opacity: 1;
 	color: #494949;
-	color: rgba(73, 73, 73, var(--text-opacity))
+	color: rgba(0, 128, 0, var(--text-opacity))
 }
 
 .text-textGray {
