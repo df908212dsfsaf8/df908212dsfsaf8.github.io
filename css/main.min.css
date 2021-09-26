@@ -2031,3 +2031,6 @@ a.publication-icon svg {
 }
 
 a:hover,
+a:focus {
+  text-decoration: underline;
+}
