@@ -2056,7 +2056,16 @@ a:focus {
   vertical-align: baseline;
   border-radius: .25em;
 }
-
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.label {
+border: 1px solid #000;
+}
+  
 .label-success {
   background-color: #5cb85c;
 }
