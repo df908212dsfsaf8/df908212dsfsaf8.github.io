@@ -2047,7 +2047,7 @@ a:focus {
 .label {
   display: inline;
   padding: .1em .6em .1em;
-  font-size: 75%;
+  font-size: 100%;
   line-height: 1;
   color: #fff;
   text-align: center;
