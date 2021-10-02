@@ -2033,7 +2033,10 @@ a.publication-icon svg {
 a {
   text-decoration: none;
 }
-a:hover,
+a:hover{
+    text-decoration: none;
+    color: inherit;
+}
 a:focus {
   text-decoration: underline;
 }
