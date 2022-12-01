@@ -1053,6 +1053,12 @@ a.publication-icon svg {
 	background-color: rgba(236, 236, 239, var(--bg-opacity))
 }
 
+.bg-white-242 {
+	--bg-opacity: 1;
+	background-color: #fafafa;
+	background-color: rgba(242, 242, 247, var(--bg-opacity))
+}
+
 .bg-gray-200 {
 	--bg-opacity: 1;
 	background-color: #f2f2f2;
