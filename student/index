@@ -1,1 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" class="min-h-full antialiased">
+ <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Minghong Fang</title>
+  <link rel="shortcut icon" type="image/png" href="/images/icon_MF_8.png">
+  <meta name="robots" content="index,follow" />
+  <link rel="preload" href="fonts/gillsans/Gill_Sans_Medium.otf" />
+  <link rel="stylesheet" href="/css/main.min.css" />
+  <script src="/js/main.min.js" defer="defer"></script>
+  <meta name="twitter:site" content="" />
+  <meta name="twitter:creator" content="" />
+  <meta name="og:locale" content="en_GB" />
+  <meta name="og:type" content="website" />
+  <link rel="icon" type="image/png" href="" />
 
+ </head>
+ <body id="publications" class="leading-normal bg-white-255 dark:bg-black">
+  <a class="sr-only" href="#main">Skip to content</a>
+  <div id="wrapper" class="wrapper pb-16 md:pb-0 flex flex-col relative min-h-screen">
+   <div class="">
+    <header id="header" class="inner header flex flex-col md:flex-row md:justify-start items-center p-2 md:p-4">
+     <nav id="nav" class="nav hidden md:flex flex-grow">
+      <ul class="menu list-reset text-base flex flex-row justify-between flex-grow">
+       <div class="flex flex-col md:flex-row items-center">
+        <li class="level-1 mb-4 md:mr-8 md:mb-0"><a href="/" class="link hover:text-primary active:text-primary text-black" style="text-decoration: none">Home</a></li>
+        <li class="level-1 mb-4 md:mr-8 md:mb-0"><a href="/publications/" class="link hover:text-primary active:text-primary active text-primary" aria-current="page" style="text-decoration: none">Publications</a></li>
+		
+		<li class="level-1 mb-4 md:mr-8 md:mb-0"><a href="/student/" class="link hover:text-primary active:text-primary active text-primary" aria-current="page" style="text-decoration: none">Students</a></li>
+		
+       </div>
+      </ul>
+     </nav>
+    </header>
+   </div>
+
+
+
+
+
+
+
+
+
+
+
+  <nav id="mobile-nav" class="mobile-nav fixed left-0 top-0 h-screen w-full overflow-y-auto pt-12 bg-gray-200 z-50 md:hidden">
+   <ul>
+    <li class="item relative opacity-0"><a href="/" class="link block py-2 px-5 text-dark text-3xl hover:text-primary" style="text-decoration: none">Home</a></li>
+    <li class="item relative opacity-0"><a href="/publications/" class="link block py-2 px-5 text-dark text-3xl hover:text-primary active text-primary" aria-current="page" style="text-decoration: none">Publications</a></li>
+	
+    <li class="item relative opacity-0"><a href="/student/" class="link block py-2 px-5 text-dark text-3xl hover:text-primary active text-primary" aria-current="page" style="text-decoration: none">Students</a></li>
+	
+   </ul>
+  </nav>
+  <button id="mobile-nav-toggle" class="mobile-nav-toggle block fixed h-16 w-full bottom-0 flex items-center justify-center font-bold border-none bg-gray-200 text-dark z-50 focus:outline-none md:hidden" aria-label="Mobile menu toggle" aria-expanded="false" aria-controls="mobile-nav"><span class="mobile-nav-label mr-2 font-medium">Menu</span> <span class="mobile-nav-icon" aria-hidden="true"><span class="mobile-nav-icon-line bg-black w-6 block transition-all duration-200 ease-out mb-1"></span> <span class="mobile-nav-icon-line bg-black w-6 block transition-all duration-200 ease-out mb-1"></span> <span class="mobile-nav-icon-line bg-black w-6 block transition-all duration-200 ease-out"></span></span></button>
