@@ -19,13 +19,39 @@
  
 
 <style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-2yfi{background-color:#f5f5f5;border-color:inherit;color:#000000;text-align:left;vertical-align:top}
-.tg .tg-ml2k{border-color:inherit;color:#000000;text-align:left;vertical-align:top}
+.tg {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+.tg td, .tg th {
+  border: 1px solid black;
+  padding: 10px 5px;
+  vertical-align: middle; /* Ensures text aligns properly when other cells span multiple lines */
+}
+.tg th {
+  font-weight: bold;
+  text-align: center;
+  background-color: #f5f5f5;
+}
+.tg .no-wrap {
+  white-space: nowrap; /* Prevents text wrapping in the Student column */
+  text-align: center; /* Center align for better appearance */
+}
+.tg .no-wrap-publications ul {
+  margin: 0;
+  padding-left: 20px; /* Keeps bullet list structure */
+}
+.tg .no-wrap-publications li {
+  white-space: nowrap; /* Prevents wrapping within list items */
+}
+.tg td {
+  text-align: left; /* Ensures left alignment for all other cells */
+}
+.tg .center-left {
+  text-align: left;
+  vertical-align: middle; /* Ensures vertical centering */
+}
 </style>
 
 
@@ -54,55 +80,92 @@
    <div class="w-full md:px-8 leading-relaxed md-content text-justify">
      <h1 class="font-small mt-0 hidden md:block" style="margin-top:-15px;">Interns</h1>
 	 
-		<table class="tg"><thead>
-		  <tr>
-			<th class="tg-2yfi">Student</th>
-			<th class="tg-2yfi">Publications</th>
-			<th class="tg-2yfi">University</th>
-		  </tr></thead>
-		<tbody>
-		  <tr>
-			<td class="tg-ml2k">Ming Yin</td>
-			<td class="tg-ml2k"><ul><li>The Web Conference 2024 (co-primary author)</li>  <li>The Web Conference 2024 (co-primary author)</li></ul></td>
-			<td class="tg-ml2k">University of Science and Technology of China → Duke University</td>
-		  </tr>
-		  <tr>
-			<td class="tg-ml2k">Yichang Xu</td>
-			<td class="tg-ml2k"><ul><li>The Web Conference 2024 (co-primary author)</li>  <li>The Web Conference 2024 (co-primary author)</li></ul></td>
-			<td class="tg-ml2k">University of Science and Technology of China → Georgia Institute of Technology</td>
-		  </tr>
-		   <tr>
-			<td class="tg-ml2k">Zhihao Dou</td>
-			<td class="tg-ml2k"><ul><li>ACM LAMPS 2024 (co-primary author)</li></ul></td>
-			<td class="tg-ml2k">Duke University</td>
-		  </tr>
-		  <tr>
-			<td class="tg-ml2k">Xin Hu</td>
-			<td class="tg-ml2k"><ul><li>ACM LAMPS 2024 (co-primary author)</li></ul></td>
-			<td class="tg-ml2k">The University of Tokyo</td>
-		  </tr>
-		  <tr>
-			<td class="tg-ml2k">Xilong Wang</td>
-			<td class="tg-ml2k"><ul><li>The Web Conference 2025 (co-primary author)</li></ul></td>
-			<td class="tg-ml2k">University of Science and Technology of China → Duke University</td>
-		  </tr>
-		  <tr>
-			<td class="tg-ml2k">Wenbin Wang</td>
-			<td class="tg-ml2k"><ul><li>The Web Conference 2025 (co-primary author)</li></ul></td>
-			<td class="tg-ml2k">ShanghaiTech University</td>
-		  </tr>
-		   <tr>
-			<td class="tg-ml2k">Qiwen Ma</td>
-			<td class="tg-ml2k"><ul><li>The Web Conference 2025 (co-primary author)</li></ul></td>
-			<td class="tg-ml2k">Xidian University</td>
-		  </tr>
-		  <tr>
-			<td class="tg-ml2k">Xuecen Zhao</td>
-			<td class="tg-ml2k"><ul><li>The Web Conference 2025 (third author)</li></ul></td>
-			<td class="tg-ml2k">University of Washington</td>
-		  </tr>
-		</tbody>
-		</table>
+		<table class="tg">
+  <thead>
+    <tr>
+      <th class="no-wrap">Student</th>
+      <th>Publications</th>
+      <th>University</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="no-wrap">Ming Yin</td>
+      <td class="no-wrap-publications">
+        <ul>
+          <li>The Web Conference 2024 (co-primary author)</li>
+          <li>The Web Conference 2024 (co-primary author)</li>
+        </ul>
+      </td>
+      <td class="center-left">University of Science and Technology of China → Duke University</td>
+    </tr>
+    <tr>
+      <td class="no-wrap">Yichang Xu</td>
+      <td class="no-wrap-publications">
+        <ul>
+          <li>The Web Conference 2024 (co-primary author)</li>
+          <li>The Web Conference 2024 (co-primary author)</li>
+        </ul>
+      </td>
+      <td class="center-left">University of Science and Technology of China → Georgia Institute of Technology</td>
+    </tr>
+    <tr>
+      <td class="no-wrap">Zhihao Dou</td>
+      <td class="no-wrap-publications">
+        <ul>
+          <li>ACM LAMPS 2024 (co-primary author)</li>
+        </ul>
+      </td>
+      <td class="center-left">Duke University</td>
+    </tr>
+    <tr>
+      <td class="no-wrap">Xin Hu</td>
+      <td class="no-wrap-publications">
+        <ul>
+          <li>ACM LAMPS 2024 (co-primary author)</li>
+        </ul>
+      </td>
+      <td class="center-left">The University of Tokyo</td>
+    </tr>
+    <tr>
+      <td class="no-wrap">Xilong Wang</td>
+      <td class="no-wrap-publications">
+        <ul>
+          <li>The Web Conference 2025 (co-primary author)</li>
+        </ul>
+      </td>
+      <td class="center-left">University of Science and Technology of China → Duke University</td>
+    </tr>
+    <tr>
+      <td class="no-wrap">Wenbin Wang</td>
+      <td class="no-wrap-publications">
+        <ul>
+          <li>The Web Conference 2025 (co-primary author)</li>
+        </ul>
+      </td>
+      <td class="center-left">ShanghaiTech University</td>
+    </tr>
+    <tr>
+      <td class="no-wrap">Qiwen Ma</td>
+      <td class="no-wrap-publications">
+        <ul>
+          <li>The Web Conference 2025 (co-primary author)</li>
+        </ul>
+      </td>
+      <td class="center-left">Xidian University</td>
+    </tr>
+    <tr>
+      <td class="no-wrap">Xuecen Zhao</td>
+      <td class="no-wrap-publications">
+        <ul>
+          <li>The Web Conference 2025 (third author)</li>
+        </ul>
+      </td>
+      <td class="center-left">University of Washington</td>
+    </tr>
+  </tbody>
+</table>
+
 
 	</div>
    </main>
