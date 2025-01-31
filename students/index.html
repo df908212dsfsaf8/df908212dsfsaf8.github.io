@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="min-h-full antialiased">
- <head>
+<head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Minghong Fang</title>
@@ -14,188 +14,146 @@
   <meta name="og:locale" content="en_GB" />
   <meta name="og:type" content="website" />
   <link rel="icon" type="image/png" href="" />
+  
+  <style type="text/css">
+    .table-container {
+      width: 100%;
+      overflow-x: auto; /* Enables horizontal scrolling on smaller screens */
+    }
+    .tg {
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100%;
+      max-width: 100%;
+    }
+    .tg td, .tg th {
+      border: 1px solid black;
+      padding: 10px 5px;
+      vertical-align: middle;
+      text-align: left;
+      word-break: break-word; /* Allows text to wrap within the cell */
+    }
+    .tg th {
+      font-weight: bold;
+      background-color: #f5f5f5;
+    }
+    .no-wrap {
+      white-space: normal; /* Allow text to wrap */
+    }
+    .no-wrap-publications ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .no-wrap-publications li {
+      white-space: normal; /* Allow list items to wrap */
+    }
+    .center-left {
+      text-align: left;
+      vertical-align: middle;
+      word-break: break-word; /* Ensures long text wraps */
+    }
+  </style>
+</head>
 
- </head>
- 
-
-<style type="text/css">
-.tg {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-}
-.tg td, .tg th {
-  border: 1px solid black;
-  padding: 10px 5px;
-  height: 10px !important; /* Force the height to change */
-  vertical-align: middle; /* Ensures text aligns properly when other cells span multiple lines */
-}
-.tg th {
-  font-weight: bold;
-  text-align: left;
-  background-color: #f5f5f5;
-}
-.tg .no-wrap {
-  white-space: nowrap; /* Prevents text wrapping in the Student column */
-  text-align: left; /* Center align for better appearance */
-}
-.tg .no-wrap-publications ul {
-  margin: 0;
-  padding-left: 20px; /* Keeps bullet list structure */
-}
-.tg .no-wrap-publications li {
-  white-space: nowrap; /* Prevents wrapping within list items */
-}
-.tg td {
-  text-align: left; /* Ensures left alignment for all other cells */
-}
-.tg .center-left {
-  text-align: left;
-  vertical-align: middle; /* Ensures vertical centering */
-}
-</style>
-
-
-
- <body id="publications" class="leading-normal bg-white-255 dark:bg-black">
+<body id="publications" class="leading-normal bg-white-255 dark:bg-black">
   <a class="sr-only" href="#main">Skip to content</a>
   <div id="wrapper" class="wrapper pb-16 md:pb-0 flex flex-col relative min-h-screen">
-   <div class="">
     <header id="header" class="inner header flex flex-col md:flex-row md:justify-start items-center p-2 md:p-4">
-     <nav id="nav" class="nav hidden md:flex flex-grow">
-      <ul class="menu list-reset text-base flex flex-row justify-between flex-grow">
-       <div class="flex flex-col md:flex-row items-center">
-        <li class="level-1 mb-4 md:mr-8 md:mb-0"><a href="/" class="link hover:text-primary active:text-primary text-black" style="text-decoration: none">Home</a></li>
-        <li class="level-1 mb-4 md:mr-8 md:mb-0"><a href="/publications/" class="link hover:text-primary active:text-primary active text-primary" aria-current="page" style="text-decoration: none">Publications</a></li>
-		
-		<li class="level-1 mb-4 md:mr-8 md:mb-0"><a href="/students/" class="link hover:text-primary active:text-primary active text-primary" aria-current="page" style="text-decoration: none">Students</a></li>
-		
-       </div>
-      </ul>
-     </nav>
+      <nav id="nav" class="nav hidden md:flex flex-grow">
+        <ul class="menu list-reset text-base flex flex-row justify-between flex-grow">
+          <div class="flex flex-col md:flex-row items-center">
+            <li class="level-1 mb-4 md:mr-8 md:mb-0"><a href="/" class="link hover:text-primary active:text-primary text-black" style="text-decoration: none">Home</a></li>
+            <li class="level-1 mb-4 md:mr-8 md:mb-0"><a href="/publications/" class="link hover:text-primary active:text-primary active text-primary" aria-current="page" style="text-decoration: none">Publications</a></li>
+            <li class="level-1 mb-4 md:mr-8 md:mb-0"><a href="/students/" class="link hover:text-primary active:text-primary active text-primary" aria-current="page" style="text-decoration: none">Students</a></li>
+          </div>
+        </ul>
+      </nav>
     </header>
-   </div>
 
+    <main id="main" class="main inner flex flex-1 flex-col py-5 lg:py-10 focus:outline-none" tabindex="-1">
+      <div class="w-full md:px-8 leading-relaxed md-content text-justify">
+        <h1 class="font-small mt-0 hidden md:block" style="margin-top:-15px;">Research Interns</h1>
+        
+        <!-- Responsive Table Container -->
+        <div class="table-container">
+          <table class="tg">
+            <thead>
+              <tr>
+                <th class="no-wrap"><b>Student</b></th>
+                <th><b>Publications</b></th>
+                <th><b>Institution</b></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="no-wrap">Ming Yin</td>
+                <td class="no-wrap-publications">
+                  <ul>
+                    <li>The Web Conference 2024 (co-primary author)</li>
+                    <li>The Web Conference 2024 (co-primary author)</li>
+                  </ul>
+                </td>
+                <td class="center-left">University of Science and Technology of China → Duke University</td>
+              </tr>
+              <tr>
+                <td class="no-wrap">Yichang Xu</td>
+                <td class="no-wrap-publications">
+                  <ul>
+                    <li>The Web Conference 2024 (co-primary author)</li>
+                    <li>The Web Conference 2024 (co-primary author)</li>
+                  </ul>
+                </td>
+                <td class="center-left">University of Science and Technology of China → Georgia Institute of Technology</td>
+              </tr>
+              <tr>
+                <td class="no-wrap">Zhihao Dou</td>
+                <td class="no-wrap-publications">
+                  <ul>
+                    <li>ACM LAMPS 2024 (co-primary author)</li>
+                  </ul>
+                </td>
+                <td class="center-left">Duke University</td>
+              </tr>
+              <tr>
+                <td class="no-wrap">Xin Hu</td>
+                <td class="no-wrap-publications">
+                  <ul>
+                    <li>ACM LAMPS 2024 (co-primary author)</li>
+                  </ul>
+                </td>
+                <td class="center-left">The University of Tokyo</td>
+              </tr>
+              <tr>
+                <td class="no-wrap">Xilong Wang</td>
+                <td class="no-wrap-publications">
+                  <ul>
+                    <li>The Web Conference 2025 (co-primary author)</li>
+                  </ul>
+                </td>
+                <td class="center-left">University of Science and Technology of China → Duke University</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
 
-   <main id="main" class="main inner flex flex-1 flex-col py-5 lg:py-10 focus:outline-none" tabindex="-1">
-   <div class="w-full md:px-8 leading-relaxed md-content text-justify">
-     <h1 class="font-small mt-0 hidden md:block" style="margin-top:-15px;">Research Interns</h1>
-<p>
-The table below summarizes the publications of students who interned with me; these students are not my formal advisees.
-</p>
-	   
-<table class="tg">
-  <thead>
-    <tr>
-      <th class="no-wrap"><b>Student</b></th>
-      <th><b>Publications</b></th>
-      <th><b>Institution</b></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="no-wrap">Ming Yin</td>
-      <td class="no-wrap-publications">
-        <ul>
-          <li>The Web Conference 2024 (co-primary author)</li>
-          <li>The Web Conference 2024 (co-primary author)</li>
-        </ul>
-      </td>
-      <td class="center-left">University of Science and Technology of China → Duke University</td>
-    </tr>
-    <tr>
-      <td class="no-wrap">Yichang Xu</td>
-      <td class="no-wrap-publications">
-        <ul>
-          <li>The Web Conference 2024 (co-primary author)</li>
-          <li>The Web Conference 2024 (co-primary author)</li>
-        </ul>
-      </td>
-      <td class="center-left">University of Science and Technology of China → Georgia Institute of Technology</td>
-    </tr>
-    <tr>
-      <td class="no-wrap">Zhihao Dou</td>
-      <td class="no-wrap-publications">
-        <ul>
-          <li>ACM LAMPS 2024 (co-primary author)</li>
-        </ul>
-      </td>
-      <td class="center-left">Duke University</td>
-    </tr>
-    <tr>
-      <td class="no-wrap">Xin Hu</td>
-      <td class="no-wrap-publications">
-        <ul>
-          <li>ACM LAMPS 2024 (co-primary author)</li>
-        </ul>
-      </td>
-      <td class="center-left">The University of Tokyo</td>
-    </tr>
-    <tr>
-      <td class="no-wrap">Xilong Wang</td>
-      <td class="no-wrap-publications">
-        <ul>
-          <li>The Web Conference 2025 (co-primary author)</li>
-        </ul>
-      </td>
-      <td class="center-left">University of Science and Technology of China → Duke University</td>
-    </tr>
-	<tr>
-      <td class="no-wrap">Haoran Xin</td>
-      <td class="no-wrap-publications">
-        <ul>
-          <li>The Web Conference 2025 (co-primary author)</li>
-        </ul>
-      </td>
-      <td class="center-left">Nankai University</td>
-    </tr>
-    <tr>
-      <td class="no-wrap">Wenbin Wang</td>
-      <td class="no-wrap-publications">
-        <ul>
-          <li>The Web Conference 2025 (co-primary author)</li>
-        </ul>
-      </td>
-      <td class="center-left">ShanghaiTech University</td>
-    </tr>
-    <tr>
-      <td class="no-wrap">Qiwen Ma</td>
-      <td class="no-wrap-publications">
-        <ul>
-          <li>The Web Conference 2025 (co-primary author)</li>
-        </ul>
-      </td>
-      <td class="center-left">Xidian University</td>
-    </tr>
-    <tr>
-      <td class="no-wrap">Xuecen Zhao</td>
-      <td class="no-wrap-publications">
-        <ul>
-          <li>The Web Conference 2025 (third author)</li>
-        </ul>
-      </td>
-      <td class="center-left">University of Washington</td>
-    </tr>
-  </tbody>
-</table>
+    <nav id="mobile-nav" class="mobile-nav fixed left-0 top-0 h-screen w-full overflow-y-auto pt-12 bg-gray-200 z-50 md:hidden">
+      <ul>
+        <li class="item relative opacity-0"><a href="/" class="link block py-2 px-5 text-dark text-3xl hover:text-primary" style="text-decoration: none">Home</a></li>
+        <li class="item relative opacity-0"><a href="/publications/" class="link block py-2 px-5 text-dark text-3xl hover:text-primary active text-primary" aria-current="page" style="text-decoration: none">Publications</a></li>
+        <li class="item relative opacity-0"><a href="/students/" class="link block py-2 px-5 text-dark text-3xl hover:text-primary active text-primary" aria-current="page" style="text-decoration: none">Students</a></li>
+      </ul>
+    </nav>
 
-
-	</div>
-   </main>
-
-
-  <nav id="mobile-nav" class="mobile-nav fixed left-0 top-0 h-screen w-full overflow-y-auto pt-12 bg-gray-200 z-50 md:hidden">
-   <ul>
-    <li class="item relative opacity-0"><a href="/" class="link block py-2 px-5 text-dark text-3xl hover:text-primary" style="text-decoration: none">Home</a></li>
-    <li class="item relative opacity-0"><a href="/publications/" class="link block py-2 px-5 text-dark text-3xl hover:text-primary active text-primary" aria-current="page" style="text-decoration: none">Publications</a></li>
-	
-    <li class="item relative opacity-0"><a href="/students/" class="link block py-2 px-5 text-dark text-3xl hover:text-primary active text-primary" aria-current="page" style="text-decoration: none">Students</a></li>
-	
-   </ul>
-  </nav>
-  <button id="mobile-nav-toggle" class="mobile-nav-toggle block fixed h-16 w-full bottom-0 flex items-center justify-center font-bold border-none bg-gray-200 text-dark z-50 focus:outline-none md:hidden" aria-label="Mobile menu toggle" aria-expanded="false" aria-controls="mobile-nav"><span class="mobile-nav-label mr-2 font-medium">Menu</span> <span class="mobile-nav-icon" aria-hidden="true"><span class="mobile-nav-icon-line bg-black w-6 block transition-all duration-200 ease-out mb-1"></span> <span class="mobile-nav-icon-line bg-black w-6 block transition-all duration-200 ease-out mb-1"></span> <span class="mobile-nav-icon-line bg-black w-6 block transition-all duration-200 ease-out"></span></span></button>
-  
-  </body>
-</html> 
-  
- 
+    <button id="mobile-nav-toggle" class="mobile-nav-toggle block fixed h-16 w-full bottom-0 flex items-center justify-center font-bold border-none bg-gray-200 text-dark z-50 focus:outline-none md:hidden" aria-label="Mobile menu toggle" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="mobile-nav-label mr-2 font-medium">Menu</span>
+      <span class="mobile-nav-icon" aria-hidden="true">
+        <span class="mobile-nav-icon-line bg-black w-6 block transition-all duration-200 ease-out mb-1"></span>
+        <span class="mobile-nav-icon-line bg-black w-6 block transition-all duration-200 ease-out mb-1"></span>
+        <span class="mobile-nav-icon-line bg-black w-6 block transition-all duration-200 ease-out"></span>
+      </span>
+    </button>
+  </div>
+</body>
+</html>
