@@ -19,25 +19,40 @@
  
 
 <style type="text/css">
-
+.tg {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
 .tg td, .tg th {
   border: 1px solid black;
-  padding: 2px 5px; /* smaller padding vertically */
-  vertical-align: middle;
-  height: auto !important; 
+  padding: 10px 5px;
+  height: 10px !important; /* Force the height to change */
+  vertical-align: middle; /* Ensures text aligns properly when other cells span multiple lines */
 }
-
+.tg th {
+  font-weight: bold;
+  text-align: left;
+  background-color: #f5f5f5;
+}
+.tg .no-wrap {
+  white-space: nowrap; /* Prevents text wrapping in the Student column */
+  text-align: left; /* Center align for better appearance */
+}
 .tg .no-wrap-publications ul {
   margin: 0;
-  padding-left: 18px; /* small left padding to maintain bullets */
+  padding-left: 20px; /* Keeps bullet list structure */
 }
-
 .tg .no-wrap-publications li {
-  margin: 0;
-  padding: 0; /* crucial: removes extra vertical padding */
-  line-height: 1.1; /* reduces the spacing between lines */
+  white-space: nowrap; /* Prevents wrapping within list items */
 }
-	
+.tg td {
+  text-align: left; /* Ensures left alignment for all other cells */
+}
+.tg .center-left {
+  text-align: left;
+  vertical-align: middle; /* Ensures vertical centering */
+}
 </style>
 
 
