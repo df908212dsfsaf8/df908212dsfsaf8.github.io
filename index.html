@@ -18,23 +18,34 @@
   <link rel="icon" type="image/png" href="" />
 
 <style>
-  /* Apply the red underline effect on hover */
-  .menu a[href="/"]:hover,
-  .menu a[href="/publications/"]:hover,
-  .menu a[href="/students/"]:hover {
+  /* Ensure the link container is positioned correctly */
+  .menu a[href="/"],
+  .menu a[href="/publications/"],
+  .menu a[href="/students/"] {
     position: relative;
+    text-decoration: none; /* Remove default underline */
+    overflow: hidden;
   }
 
-  .menu a[href="/"]:hover::after,
-  .menu a[href="/publications/"]:hover::after,
-  .menu a[href="/students/"]:hover::after {
+  /* Create the underline effect */
+  .menu a[href="/"]::after,
+  .menu a[href="/publications/"]::after,
+  .menu a[href="/students/"]::after {
     content: "";
     position: absolute;
     left: 0;
     bottom: -3px; /* Adjust spacing below text */
-    width: 100%;
+    width: 0%; /* Start with no width */
     height: 2px; /* Thickness of the underline */
-    background-color: rgb(192, 0, 0); /* Red color */
+    background-color: rgb(192, 0, 0); /* Dark red color */
+    transition: width 0.3s ease-in-out; /* Smooth transition */
+  }
+
+  /* Expand the underline on hover */
+  .menu a[href="/"]:hover::after,
+  .menu a[href="/publications/"]:hover::after,
+  .menu a[href="/students/"]:hover::after {
+    width: 100%; /* Full width on hover */
   }
 </style>
 
