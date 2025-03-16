@@ -17,15 +17,26 @@
   <meta name="og:type" content="website" />
   <link rel="icon" type="image/png" href="" />
 
-  <!-- Add your CSS here -->
-  <style>
-    /* Underline effect on hover for Home, Publications, and Students */
-    .menu a[href="/"]:hover,
-    .menu a[href="/publications/"]:hover,
-    .menu a[href="/students/"]:hover {
-      text-decoration: underline;
-    }
-  </style>
+<style>
+  /* Apply the red underline effect on hover */
+  .menu a[href="/"]:hover,
+  .menu a[href="/publications/"]:hover,
+  .menu a[href="/students/"]:hover {
+    position: relative;
+  }
+
+  .menu a[href="/"]:hover::after,
+  .menu a[href="/publications/"]:hover::after,
+  .menu a[href="/students/"]:hover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px; /* Adjust spacing below text */
+    width: 100%;
+    height: 2px; /* Thickness of the underline */
+    background-color: red; /* Red color */
+  }
+</style>
 
  </head>
  <body class="leading-normal bg-white-255 dark:bg-black">
