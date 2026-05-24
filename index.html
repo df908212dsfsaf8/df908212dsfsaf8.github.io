@@ -56,7 +56,7 @@
     gap: 5px;
     padding: 3px 11px;
     border-radius: 999px;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.5;
     text-decoration: none !important;
     vertical-align: middle;
@@ -69,6 +69,11 @@
   .pub-link-poster { background: #EEEDFE; color: #3C3489 !important; }
   .pub-link-code   { background: #F1EFE8; color: #2C2C2A !important; }
   .pub-links { margin-left: 6px; display: inline; white-space: normal; }
+
+  /* Disable justify on narrow screens to avoid huge word-gaps */
+  @media (max-width: 768px) {
+    .text-justify { text-align: left; }
+  }
 </style>
 
  </head>
