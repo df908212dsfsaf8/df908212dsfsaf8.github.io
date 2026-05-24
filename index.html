@@ -48,6 +48,49 @@
     width: 100%; /* Expand to full width */
     left: 0%; /* Move left position to start from the left */
   }
+
+  /* Pill-style publication links (Style A) */
+  .pub-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    height: 22px !important;
+    min-height: 22px !important;
+    padding: 0 11px !important;
+    margin: 0 4px 0 0 !important;
+    box-sizing: border-box !important;
+    border-radius: 999px !important;
+    font-size: 13px !important;
+    line-height: 1 !important;
+    text-decoration: none !important;
+    vertical-align: middle !important;
+    white-space: nowrap !important;
+    transition: opacity 0.15s ease;
+  }
+  .pub-link:hover { opacity: 0.75; }
+  .pub-link::before, .pub-link::after { content: none !important; display: none !important; }
+  .pub-link svg {
+    display: block !important;
+    width: 14px !important;
+    height: 14px !important;
+    margin: 0 5px 0 0 !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+    align-self: center !important;
+    vertical-align: middle !important;
+  }
+  .pub-link-pdf    { background: #EAF3DE; color: #27500A !important; }
+  .pub-link-poster { background: #EEEDFE; color: #3C3489 !important; }
+  .pub-link-code   { background: #F1EFE8; color: #2C2C2A !important; }
+  .pub-links { margin-left: 6px; display: inline; white-space: normal; }
+
+  /* Disable justify on narrow screens to avoid huge word-gaps */
+  @media (max-width: 768px) {
+    .text-justify,
+    .md-content,
+    .md-content p,
+    .md-content h4 { text-align: left !important; }
+  }
 </style>
 
  </head>
@@ -147,38 +190,20 @@ My research broadly focuses on various aspects of AI safety and security.
 <div class="mb-4 publication">
 <div class="flex flex-col md:flex-row items-center">
  <div class="md:ml-0 leading-snug">
-  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Who Taught the Lie? Responsibility Attribution for Poisoned Knowledge in Retrieval-Augmented Generation</span>
-  <a style="color:rgb(0,123,255);" href="https://arxiv.org/pdf/2509.13772" target="_blank" class="publication-icon" rel="noopener"> 
-<svg class="contact-card-icon" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 100 100" xml:space="preserve">
-<desc>Created with Fabric.js 1.7.22</desc>
-<defs>
-</defs>
-<g transform="translate(0,-952.36218)">
-<path style="text-indent:0;text-transform:none;direction:ltr;block-progression:tb;baseline-shift:baseline;color:#000000;enable-background:accumulate;" d="m 16.747589,956.36214 c -1.4843,0.1244 -2.7526,1.5092 -2.7476,3 l 0,86.00006 c 2e-4,1.5708 1.428,2.9998 2.9974,3 15.9861,10e-5 48.9366,0 66.0051,0 1.5798,-10e-5 3.0136,-1.4501 2.9974,-3.0312 -0.021,-24.6666 -0.042,-49.33326 -0.062,-73.99986 -0.5728,-4.4178 -4.1361,-7.3999 -7.3686,-9.5 -3.8687,-2.4892 -8.7009,-4.452 -13.5507,-4.4688 -16.5565,-0.2512 -33.5464,-0.7334 -48.2706,-1.0002 z m 3.2472,6.0625 42.6192,0.875 c 2.9721,0.7849 5.1391,3.0105 5.9948,5.3125 2.0027,2.8809 -0.9375,6.393 -0.5626,8.4506 0.243,0.9917 1.0271,1.8324 1.9988,2.1432 3.2713,1.0237 6.6843,0.6154 9.8977,-1 l 0.062,64.15626 c -16.7698,0 -44.1353,10e-5 -60.0103,0 z m 16.0173,10.9375 0,6 27.9757,0 0,-6 z m -11.0216,14 0,6 21.9808,0 0,-6 z m 27.9756,0 0,6 21.9809,0 0,-6 z m -27.9756,8 0,5.99996 21.9808,0 0,-5.99996 z m 27.9756,0 0,5.99996 21.9809,0 0,-5.99996 z m -27.9756,7.99996 0,6.0001 21.9808,0 0,-6.0001 z m 27.9756,0 0,6.0001 21.9809,0 0,-6.0001 z m -27.9756,8.0001 0,6 21.9808,0 0,-6 z m 27.9756,0 0,6 21.9809,0 0,-6 z m -27.9756,8 0,6 21.9808,0 0,-6 z m 27.9756,0 0,6 21.9809,0 0,-6 z m -27.9756,8 0,6 21.9808,0 0,-6 z m 27.9756,0 0,6 21.9809,0 0,-6 z" fill="#000000" fill-opacity="1" stroke="none" marker="none" visibility="visible" display="inline" overflow="visible"/>
-</g>
-</svg>
-	<span>PDF</span>
-	</a>
-	  
-	<a href="/poster/RAGOrigin_poster.pdf" target="_blank" class="publication-icon">
-	<svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-	  <rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="#7f77dd" stroke-width="1.6"/>
-	  <rect x="5.5" y="5.5" width="13" height="2.2" fill="#7f77dd"/>
-	  <rect x="5.5" y="9.5" width="5.5" height="4.5" fill="#ef9f27"/>
-	  <rect x="12.5" y="9.5" width="6" height="4.5" fill="#1d9e75"/>
-	  <rect x="5.5" y="15.5" width="13" height="3" fill="#d85a30" fill-opacity="0.85"/>
-	</svg>
-	<span style="color:rgb(0,123,255);">Poster</span> 
-	</a>
-	  
-	  <a href="https://github.com/zhangbl6618/RAG-Responsibility-Attribution" target="_blank" class="publication-icon">
-       <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24">
-	<path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"/>
-       </svg>
-       <span style="color:rgb(0,123,255);">Code</span> 
-	</a>
-	  
-  </h4>
+  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Who Taught the Lie? Responsibility Attribution for Poisoned Knowledge in Retrieval-Augmented Generation</span><span class="pub-links">
+    <a href="https://arxiv.org/pdf/2509.13772" target="_blank" rel="noopener" class="pub-link pub-link-pdf">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/></svg>
+      PDF
+    </a>
+    <a href="/poster/RAGOrigin_poster.pdf" target="_blank" rel="noopener" class="pub-link pub-link-poster">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4l18 0"/><path d="M4 4v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-10"/><path d="M12 16l0 4"/><path d="M9 20l6 0"/><path d="M8 12l3 -3l2 2l3 -3"/></svg>
+      Poster
+    </a>
+    <a href="https://github.com/zhangbl6618/RAG-Responsibility-Attribution" target="_blank" rel="noopener" class="pub-link pub-link-code">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"/></svg>
+      Code
+    </a>
+  </span></h4>
   <p>Baolei Zhang*, Haoran Xin*, Yuxi Chen, Zhuqing Liu, Biao Yi, Tong Li, Lihai Nie, Zheli Liu, and <b>Minghong Fang</b></p>
   <p>In Proc. IEEE Symposium on Security and Privacy, 2026 (*co-primary authors, acceptance rate: 13%)</p>
  </div>
@@ -191,19 +216,12 @@ My research broadly focuses on various aspects of AI safety and security.
    <div class="mb-4 publication">
 	<div class="flex flex-col md:flex-row items-center">
 	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Do We Really Need to Design New Byzantine-robust Aggregation Rules?</span>
-	  <a style="color:rgb(0,123,255);" href="https://arxiv.org/pdf/2501.17381" target="_blank" class="publication-icon" rel="noopener"> 
-	<svg class="contact-card-icon" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 100 100" xml:space="preserve">
-	<desc>Created with Fabric.js 1.7.22</desc>
-	<defs>
-	</defs>
-	<g transform="translate(0,-952.36218)">
-	<path style="text-indent:0;text-transform:none;direction:ltr;block-progression:tb;baseline-shift:baseline;color:#000000;enable-background:accumulate;" d="m 16.747589,956.36214 c -1.4843,0.1244 -2.7526,1.5092 -2.7476,3 l 0,86.00006 c 2e-4,1.5708 1.428,2.9998 2.9974,3 15.9861,10e-5 48.9366,0 66.0051,0 1.5798,-10e-5 3.0136,-1.4501 2.9974,-3.0312 -0.021,-24.6666 -0.042,-49.33326 -0.062,-73.99986 -0.5728,-4.4178 -4.1361,-7.3999 -7.3686,-9.5 -3.8687,-2.4892 -8.7009,-4.452 -13.5507,-4.4688 -16.5565,-0.2512 -33.5464,-0.7334 -48.2706,-1.0002 z m 3.2472,6.0625 42.6192,0.875 c 2.9721,0.7849 5.1391,3.0105 5.9948,5.3125 2.0027,2.8809 -0.9375,6.393 -0.5626,8.4506 0.243,0.9917 1.0271,1.8324 1.9988,2.1432 3.2713,1.0237 6.6843,0.6154 9.8977,-1 l 0.062,64.15626 c -16.7698,0 -44.1353,10e-5 -60.0103,0 z m 16.0173,10.9375 0,6 27.9757,0 0,-6 z m -11.0216,14 0,6 21.9808,0 0,-6 z m 27.9756,0 0,6 21.9809,0 0,-6 z m -27.9756,8 0,5.99996 21.9808,0 0,-5.99996 z m 27.9756,0 0,5.99996 21.9809,0 0,-5.99996 z m -27.9756,7.99996 0,6.0001 21.9808,0 0,-6.0001 z m 27.9756,0 0,6.0001 21.9809,0 0,-6.0001 z m -27.9756,8.0001 0,6 21.9808,0 0,-6 z m 27.9756,0 0,6 21.9809,0 0,-6 z m -27.9756,8 0,6 21.9808,0 0,-6 z m 27.9756,0 0,6 21.9809,0 0,-6 z m -27.9756,8 0,6 21.9808,0 0,-6 z m 27.9756,0 0,6 21.9809,0 0,-6 z" fill="#000000" fill-opacity="1" stroke="none" marker="none" visibility="visible" display="inline" overflow="visible"/>
-	</g>
-	</svg>
-		<span>PDF</span>
-		</a>
-	  </h4>
+	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Do We Really Need to Design New Byzantine-robust Aggregation Rules?</span><span class="pub-links">
+	    <a href="https://arxiv.org/pdf/2501.17381" target="_blank" rel="noopener" class="pub-link pub-link-pdf">
+	      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/></svg>
+	      PDF
+	    </a>
+	  </span></h4>
 	  <p><b>Minghong Fang</b>, Seyedsina Nabavirazavi, Zhuqing Liu, Wei Sun, Sundararaja Sitharama Iyengar, and Haibo Yang</p>
 	  <p>In Proc. NDSS, 2025 (acceptance rate: 16.1%)</p>
 	 </div>
@@ -215,19 +233,12 @@ My research broadly focuses on various aspects of AI safety and security.
    <div class="mb-4 publication">
 	<div class="flex flex-col md:flex-row items-center">
 	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Byzantine-Robust Decentralized Federated Learning</span>
-	  <a style="color:rgb(0,123,255);" href="https://arxiv.org/pdf/2406.10416" target="_blank" class="publication-icon" rel="noopener"> 
-	<svg class="contact-card-icon" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 100 100" xml:space="preserve">
-	<desc>Created with Fabric.js 1.7.22</desc>
-	<defs>
-	</defs>
-	<g transform="translate(0,-952.36218)">
-	<path style="text-indent:0;text-transform:none;direction:ltr;block-progression:tb;baseline-shift:baseline;color:#000000;enable-background:accumulate;" d="m 16.747589,956.36214 c -1.4843,0.1244 -2.7526,1.5092 -2.7476,3 l 0,86.00006 c 2e-4,1.5708 1.428,2.9998 2.9974,3 15.9861,10e-5 48.9366,0 66.0051,0 1.5798,-10e-5 3.0136,-1.4501 2.9974,-3.0312 -0.021,-24.6666 -0.042,-49.33326 -0.062,-73.99986 -0.5728,-4.4178 -4.1361,-7.3999 -7.3686,-9.5 -3.8687,-2.4892 -8.7009,-4.452 -13.5507,-4.4688 -16.5565,-0.2512 -33.5464,-0.7334 -48.2706,-1.0002 z m 3.2472,6.0625 42.6192,0.875 c 2.9721,0.7849 5.1391,3.0105 5.9948,5.3125 2.0027,2.8809 -0.9375,6.393 -0.5626,8.4506 0.243,0.9917 1.0271,1.8324 1.9988,2.1432 3.2713,1.0237 6.6843,0.6154 9.8977,-1 l 0.062,64.15626 c -16.7698,0 -44.1353,10e-5 -60.0103,0 z m 16.0173,10.9375 0,6 27.9757,0 0,-6 z m -11.0216,14 0,6 21.9808,0 0,-6 z m 27.9756,0 0,6 21.9809,0 0,-6 z m -27.9756,8 0,5.99996 21.9808,0 0,-5.99996 z m 27.9756,0 0,5.99996 21.9809,0 0,-5.99996 z m -27.9756,7.99996 0,6.0001 21.9808,0 0,-6.0001 z m 27.9756,0 0,6.0001 21.9809,0 0,-6.0001 z m -27.9756,8.0001 0,6 21.9808,0 0,-6 z m 27.9756,0 0,6 21.9809,0 0,-6 z m -27.9756,8 0,6 21.9808,0 0,-6 z m 27.9756,0 0,6 21.9809,0 0,-6 z m -27.9756,8 0,6 21.9808,0 0,-6 z m 27.9756,0 0,6 21.9809,0 0,-6 z" fill="#000000" fill-opacity="1" stroke="none" marker="none" visibility="visible" display="inline" overflow="visible"/>
-	</g>
-	</svg>
-		<span>PDF</span>
-		</a>
-	  </h4>
+	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Byzantine-Robust Decentralized Federated Learning</span><span class="pub-links">
+	    <a href="https://arxiv.org/pdf/2406.10416" target="_blank" rel="noopener" class="pub-link pub-link-pdf">
+	      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/></svg>
+	      PDF
+	    </a>
+	  </span></h4>
 	  <p><b>Minghong Fang</b>, Zifan Zhang, Hairi, Prashant Khanduri, Jia Liu, Songtao Lu, Yuchen Liu, and Neil Gong</p>
 	  <p>In Proc. ACM CCS, 2024 (acceptance rate: 16.9%)</p>
 	 </div>
@@ -239,27 +250,16 @@ My research broadly focuses on various aspects of AI safety and security.
        <div class="mb-4 publication">
         <div class="flex flex-col md:flex-row items-center">
          <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">FLTrust: Byzantine-robust Federated Learning via Trust Bootstrapping</span>
-		  <a style="color:rgb(0,123,255);" href="https://arxiv.org/pdf/2012.13995.pdf" target="_blank" class="publication-icon" rel="noopener"> 
-		<svg class="contact-card-icon" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 100 100" xml:space="preserve">
-		<desc>Created with Fabric.js 1.7.22</desc>
-		<defs>
-		</defs>
-	<g transform="translate(0,-952.36218)">
-		<path style="text-indent:0;text-transform:none;direction:ltr;block-progression:tb;baseline-shift:baseline;color:#000000;enable-background:accumulate;" d="m 16.747589,956.36214 c -1.4843,0.1244 -2.7526,1.5092 -2.7476,3 l 0,86.00006 c 2e-4,1.5708 1.428,2.9998 2.9974,3 15.9861,10e-5 48.9366,0 66.0051,0 1.5798,-10e-5 3.0136,-1.4501 2.9974,-3.0312 -0.021,-24.6666 -0.042,-49.33326 -0.062,-73.99986 -0.5728,-4.4178 -4.1361,-7.3999 -7.3686,-9.5 -3.8687,-2.4892 -8.7009,-4.452 -13.5507,-4.4688 -16.5565,-0.2512 -33.5464,-0.7334 -48.2706,-1.0002 z m 3.2472,6.0625 42.6192,0.875 c 2.9721,0.7849 5.1391,3.0105 5.9948,5.3125 2.0027,2.8809 -0.9375,6.393 -0.5626,8.4506 0.243,0.9917 1.0271,1.8324 1.9988,2.1432 3.2713,1.0237 6.6843,0.6154 9.8977,-1 l 0.062,64.15626 c -16.7698,0 -44.1353,10e-5 -60.0103,0 z m 16.0173,10.9375 0,6 27.9757,0 0,-6 z m -11.0216,14 0,6 21.9808,0 0,-6 z m 27.9756,0 0,6 21.9809,0 0,-6 z m -27.9756,8 0,5.99996 21.9808,0 0,-5.99996 z m 27.9756,0 0,5.99996 21.9809,0 0,-5.99996 z m -27.9756,7.99996 0,6.0001 21.9808,0 0,-6.0001 z m 27.9756,0 0,6.0001 21.9809,0 0,-6.0001 z m -27.9756,8.0001 0,6 21.9808,0 0,-6 z m 27.9756,0 0,6 21.9809,0 0,-6 z m -27.9756,8 0,6 21.9808,0 0,-6 z m 27.9756,0 0,6 21.9809,0 0,-6 z m -27.9756,8 0,6 21.9808,0 0,-6 z m 27.9756,0 0,6 21.9809,0 0,-6 z" fill="#000000" fill-opacity="1" stroke="none" marker="none" visibility="visible" display="inline" overflow="visible"/>
-		</g>
-		</svg>
-			<span>PDF</span>
-		</a>
-
-	 <a href="/code/FLTrust_code.zip" target="_blank" class="publication-icon">
-	  <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24">
-		 <path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"/>
-	  </svg>
-	  <span style="color:rgb(0,123,255);">Code</span> 
-	</a>
-		  
-		  </h4>
+          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">FLTrust: Byzantine-robust Federated Learning via Trust Bootstrapping</span><span class="pub-links">
+            <a href="https://arxiv.org/pdf/2012.13995.pdf" target="_blank" rel="noopener" class="pub-link pub-link-pdf">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/></svg>
+              PDF
+            </a>
+            <a href="/code/FLTrust_code.zip" target="_blank" rel="noopener" class="pub-link pub-link-code">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"/></svg>
+              Code
+            </a>
+          </span></h4>
           <p>Xiaoyu Cao*, <b>Minghong Fang</b>*, Jia Liu, and Neil Zhenqiang Gong</p>
           <p> In Proc. NDSS, 2021 (*co-primary authors, acceptance rate: 15.2%)</p>
 	<p>🏆 <a style="color:rgb(192, 0, 0);" href="https://www.mlsec.org/topnotch/sec_2020s.html" target="_blank">Top-cited Security Papers from 2021</a> 
@@ -273,27 +273,16 @@ My research broadly focuses on various aspects of AI safety and security.
        <div class="mb-4 publication">
         <div class="flex flex-col md:flex-row items-center">
          <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Local Model Poisoning Attacks to Byzantine-Robust Federated Learning</span>
-		  <a style="color:rgb(0,123,255);" href="https://arxiv.org/pdf/1911.11815.pdf" target="_blank" class="publication-icon" rel="noopener"> 
-		<svg class="contact-card-icon" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 100 100" xml:space="preserve">
-		<desc>Created with Fabric.js 1.7.22</desc>
-		<defs>
-		</defs>
-		<g transform="translate(0,-952.36218)">
-		<path style="text-indent:0;text-transform:none;direction:ltr;block-progression:tb;baseline-shift:baseline;color:#000000;enable-background:accumulate;" d="m 16.747589,956.36214 c -1.4843,0.1244 -2.7526,1.5092 -2.7476,3 l 0,86.00006 c 2e-4,1.5708 1.428,2.9998 2.9974,3 15.9861,10e-5 48.9366,0 66.0051,0 1.5798,-10e-5 3.0136,-1.4501 2.9974,-3.0312 -0.021,-24.6666 -0.042,-49.33326 -0.062,-73.99986 -0.5728,-4.4178 -4.1361,-7.3999 -7.3686,-9.5 -3.8687,-2.4892 -8.7009,-4.452 -13.5507,-4.4688 -16.5565,-0.2512 -33.5464,-0.7334 -48.2706,-1.0002 z m 3.2472,6.0625 42.6192,0.875 c 2.9721,0.7849 5.1391,3.0105 5.9948,5.3125 2.0027,2.8809 -0.9375,6.393 -0.5626,8.4506 0.243,0.9917 1.0271,1.8324 1.9988,2.1432 3.2713,1.0237 6.6843,0.6154 9.8977,-1 l 0.062,64.15626 c -16.7698,0 -44.1353,10e-5 -60.0103,0 z m 16.0173,10.9375 0,6 27.9757,0 0,-6 z m -11.0216,14 0,6 21.9808,0 0,-6 z m 27.9756,0 0,6 21.9809,0 0,-6 z m -27.9756,8 0,5.99996 21.9808,0 0,-5.99996 z m 27.9756,0 0,5.99996 21.9809,0 0,-5.99996 z m -27.9756,7.99996 0,6.0001 21.9808,0 0,-6.0001 z m 27.9756,0 0,6.0001 21.9809,0 0,-6.0001 z m -27.9756,8.0001 0,6 21.9808,0 0,-6 z m 27.9756,0 0,6 21.9809,0 0,-6 z m -27.9756,8 0,6 21.9808,0 0,-6 z m 27.9756,0 0,6 21.9809,0 0,-6 z m -27.9756,8 0,6 21.9808,0 0,-6 z m 27.9756,0 0,6 21.9809,0 0,-6 z" fill="#000000" fill-opacity="1" stroke="none" marker="none" visibility="visible" display="inline" overflow="visible"/>
-		</g>
-		</svg>
-			<span>PDF</span>
-		</a>
-		
-		<a href="/code/FLTrust_code.zip" target="_blank" class="publication-icon">
-		  <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24">
-			 <path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"/>
-		  </svg>
-		  <span style="color:rgb(0,123,255);">Code</span> 
-		</a>
-		  
-		  </h4>
+          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Local Model Poisoning Attacks to Byzantine-Robust Federated Learning</span><span class="pub-links">
+            <a href="https://arxiv.org/pdf/1911.11815.pdf" target="_blank" rel="noopener" class="pub-link pub-link-pdf">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/></svg>
+              PDF
+            </a>
+            <a href="/code/FLTrust_code.zip" target="_blank" rel="noopener" class="pub-link pub-link-code">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"/></svg>
+              Code
+            </a>
+          </span></h4>
           <p><b>Minghong Fang</b>*, Xiaoyu Cao*, Jinyuan Jia, and Neil Zhenqiang Gong</p>
           <p> In Proc. USENIX Security Symposium, 2020 (*co-primary authors, acceptance rate: 16.1%)</p>
 		 <p>🏆 <a style="color:rgb(192, 0, 0);" href="https://www.mlsec.org/topnotch/sec_2020s.html" target="_blank">Top-cited Security Papers from 2020</a> 
