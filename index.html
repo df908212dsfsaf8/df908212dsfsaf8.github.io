@@ -72,7 +72,10 @@
 
   /* Disable justify on narrow screens to avoid huge word-gaps */
   @media (max-width: 768px) {
-    .text-justify { text-align: left; }
+    .text-justify,
+    .md-content,
+    .md-content p,
+    .md-content h4 { text-align: left !important; }
   }
 </style>
 
