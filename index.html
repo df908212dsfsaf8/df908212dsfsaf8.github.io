@@ -52,22 +52,28 @@
 
   /* Pill-style publication links (Style A) */
   .pub-link {
-    display: inline-block !important;
-    padding: 3px 11px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    height: 24px !important;
+    padding: 0 11px !important;
     border-radius: 999px !important;
-    font-size: 13.5px !important;
-    line-height: 1.5 !important;
+    font-size: 13px !important;
+    line-height: 1 !important;
     text-decoration: none !important;
     vertical-align: middle !important;
     margin: 0 4px 0 0 !important;
     white-space: nowrap !important;
+    box-sizing: border-box !important;
   }
   .pub-link:hover { opacity: 0.75; text-decoration: none !important; }
   .pub-link i.ti {
     font-size: 15px !important;
-    vertical-align: -2px !important;
-    margin-right: 4px !important;
     line-height: 1 !important;
+    margin-right: 4px !important;
+    flex-shrink: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
   }
   .pub-link-pdf    { background: #EAF3DE; color: #27500A !important; }
   .pub-link-poster { background: #EEEDFE; color: #3C3489 !important; }
