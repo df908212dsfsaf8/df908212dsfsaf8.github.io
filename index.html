@@ -51,13 +51,13 @@
   }
 
   /* Pill-style publication links (Style A) */
-  /* === pill-style v7 === if you don't see this comment in view-source, CSS is cached === */
+  /* === pill-style v8 === if you don't see this comment in view-source, CSS is cached === */
   .pub-link {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: flex-start !important;
     height: 22px !important;
-    padding: 2px 10px 0 10px !important;
+    padding: 0 10px !important;
     border-radius: 999px !important;
     font-size: 13px !important;
     line-height: 1 !important;
@@ -73,6 +73,15 @@
     line-height: 1 !important;
     margin-right: 4px !important;
     flex-shrink: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    height: 1em !important;
+  }
+  .pub-link .pub-link-text {
+    display: inline-flex !important;
+    align-items: center !important;
+    height: 100% !important;
+    line-height: 1 !important;
   }
   .pub-link-pdf    { background: #EAF3DE; color: #27500A !important; }
   .pub-link-poster { background: #EEEDFE; color: #3C3489 !important; }
@@ -188,15 +197,15 @@ My research broadly focuses on various aspects of AI safety and security.
   <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Who Taught the Lie? Responsibility Attribution for Poisoned Knowledge in Retrieval-Augmented Generation</span><span class="pub-links">
     <a href="https://arxiv.org/pdf/2509.13772" target="_blank" rel="noopener" class="pub-link pub-link-pdf">
       <i class="ti ti-file"></i>
-      PDF
+      <span class="pub-link-text">PDF</span>
     </a>
     <a href="/poster/RAGOrigin_poster.pdf" target="_blank" rel="noopener" class="pub-link pub-link-poster">
       <i class="ti ti-presentation"></i>
-      Poster
+      <span class="pub-link-text">Poster</span>
     </a>
     <a href="https://github.com/zhangbl6618/RAG-Responsibility-Attribution" target="_blank" rel="noopener" class="pub-link pub-link-code">
       <i class="ti ti-brand-github"></i>
-      Code
+      <span class="pub-link-text">Code</span>
     </a>
   </span></h4>
   <p>Baolei Zhang*, Haoran Xin*, Yuxi Chen, Zhuqing Liu, Biao Yi, Tong Li, Lihai Nie, Zheli Liu, and <b>Minghong Fang</b></p>
@@ -214,7 +223,7 @@ My research broadly focuses on various aspects of AI safety and security.
 	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Do We Really Need to Design New Byzantine-robust Aggregation Rules?</span><span class="pub-links">
 	    <a href="https://arxiv.org/pdf/2501.17381" target="_blank" rel="noopener" class="pub-link pub-link-pdf">
 	      <i class="ti ti-file"></i>
-	      PDF
+	      <span class="pub-link-text">PDF</span>
 	    </a>
 	  </span></h4>
 	  <p><b>Minghong Fang</b>, Seyedsina Nabavirazavi, Zhuqing Liu, Wei Sun, Sundararaja Sitharama Iyengar, and Haibo Yang</p>
@@ -231,7 +240,7 @@ My research broadly focuses on various aspects of AI safety and security.
 	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Byzantine-Robust Decentralized Federated Learning</span><span class="pub-links">
 	    <a href="https://arxiv.org/pdf/2406.10416" target="_blank" rel="noopener" class="pub-link pub-link-pdf">
 	      <i class="ti ti-file"></i>
-	      PDF
+	      <span class="pub-link-text">PDF</span>
 	    </a>
 	  </span></h4>
 	  <p><b>Minghong Fang</b>, Zifan Zhang, Hairi, Prashant Khanduri, Jia Liu, Songtao Lu, Yuchen Liu, and Neil Gong</p>
@@ -248,11 +257,11 @@ My research broadly focuses on various aspects of AI safety and security.
           <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">FLTrust: Byzantine-robust Federated Learning via Trust Bootstrapping</span><span class="pub-links">
             <a href="https://arxiv.org/pdf/2012.13995.pdf" target="_blank" rel="noopener" class="pub-link pub-link-pdf">
               <i class="ti ti-file"></i>
-              PDF
+              <span class="pub-link-text">PDF</span>
             </a>
             <a href="/code/FLTrust_code.zip" target="_blank" rel="noopener" class="pub-link pub-link-code">
               <i class="ti ti-brand-github"></i>
-              Code
+              <span class="pub-link-text">Code</span>
             </a>
           </span></h4>
           <p>Xiaoyu Cao*, <b>Minghong Fang</b>*, Jia Liu, and Neil Zhenqiang Gong</p>
@@ -271,11 +280,11 @@ My research broadly focuses on various aspects of AI safety and security.
           <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Local Model Poisoning Attacks to Byzantine-Robust Federated Learning</span><span class="pub-links">
             <a href="https://arxiv.org/pdf/1911.11815.pdf" target="_blank" rel="noopener" class="pub-link pub-link-pdf">
               <i class="ti ti-file"></i>
-              PDF
+              <span class="pub-link-text">PDF</span>
             </a>
             <a href="/code/FLTrust_code.zip" target="_blank" rel="noopener" class="pub-link pub-link-code">
               <i class="ti ti-brand-github"></i>
-              Code
+              <span class="pub-link-text">Code</span>
             </a>
           </span></h4>
           <p><b>Minghong Fang</b>*, Xiaoyu Cao*, Jinyuan Jia, and Neil Zhenqiang Gong</p>
