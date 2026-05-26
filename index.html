@@ -19,59 +19,39 @@
   <link rel="icon" type="image/png" href="" />
 
 <style>
-  /* === navigation bar: light background + pill-style active state === */
-  /* Apply bar background only on desktop (mobile uses a separate nav) */
-  @media (min-width: 768px) {
-    #header {
-      position: relative;
-      padding: 0.5rem 1.5rem !important;
-      background-color: transparent !important;
-    }
-    /* Extend the bar background to full viewport width without changing the
-       nav content's alignment (which stays inside the .inner constraint). */
-    #header::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      width: 100vw;
-      transform: translateX(-50%);
-      background-color: #F5F5F5;
-      z-index: -1;
-    }
-    /* Prevent any chance of horizontal scrollbar from the 100vw pseudo-element */
-    body { overflow-x: clip; }
-  }
-
-  /* Style each nav link as a hoverable pill (replaces the old underline effect) */
+  /* === navigation: minimal, no background, active state via underline + bold === */
   .menu a[href="/"],
   .menu a[href="/publications/"],
   .menu a[href="/students/"] {
     position: relative;
     text-decoration: none;
-    padding: 6px 14px !important;
-    border-radius: 6px !important;
-    transition: background-color 0.15s ease, color 0.15s ease;
+    color: #000;
+    transition: color 0.15s ease;
   }
 
-  /* Subtle hover for non-active links */
+  /* Hover: dim the link slightly to give feedback */
   .menu a[href="/"]:hover,
   .menu a[href="/publications/"]:hover,
   .menu a[href="/students/"]:hover {
-    background-color: rgba(0, 0, 0, 0.06);
+    color: #555;
   }
 
-  /* Active page: strong colored pill with white text (set by JS at end of body) */
+  /* Active page (set by JS at end of body): bold + permanent underline */
   .menu a.nav-active {
-    background-color: #1D9E75 !important;
-    color: #FFFFFF !important;
-    font-weight: 500 !important;
+    font-weight: 500;
+  }
+  .menu a.nav-active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 2px;
+    background-color: #000;
   }
   .menu a.nav-active:hover {
-    background-color: #178461 !important;
+    color: #000;
   }
-
 
   /* Pill-style publication links (Style A) */
   /* === pill-style v9 === if you don't see this comment in view-source, CSS is cached === */
@@ -130,10 +110,10 @@
     .md-content h4 { text-align: left !important; }
   }
 
-  /* Gap between the nav bar and the page content */
-  main#main { padding-top: 1rem !important; }
+  /* Gap between nav and content (snug since nav is minimal text-only) */
+  main#main { padding-top: 0.5rem !important; }
   @media (min-width: 1024px) {
-    main#main { padding-top: 1.5rem !important; }
+    main#main { padding-top: 1rem !important; }
   }
 </style>
 
