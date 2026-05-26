@@ -50,6 +50,14 @@
     left: 0%; /* Move left position to start from the left */
   }
 
+  /* Permanent underline for the current page (set by JS at end of body) */
+  .menu a.nav-active::after {
+    width: 100% !important;
+    left: 0 !important;
+    background-color: #000 !important;
+  }
+  .menu a.nav-active { font-weight: 500; }
+
   /* Pill-style publication links (Style A) */
   /* === pill-style v9 === if you don't see this comment in view-source, CSS is cached === */
   .pub-link {
@@ -335,6 +343,21 @@ My research broadly focuses on various aspects of AI safety and security.
    </ul>
   </nav>
   <button id="mobile-nav-toggle" class="mobile-nav-toggle block fixed h-16 w-full bottom-0 flex items-center justify-center font-bold border-none bg-gray-200 text-dark z-50 focus:outline-none md:hidden" aria-label="Mobile menu toggle" aria-expanded="false" aria-controls="mobile-nav"><span class="mobile-nav-label mr-2 font-medium">Menu</span> <span class="mobile-nav-icon" aria-hidden="true"><span class="mobile-nav-icon-line bg-black w-6 block transition-all duration-200 ease-out mb-1"></span> <span class="mobile-nav-icon-line bg-black w-6 block transition-all duration-200 ease-out mb-1"></span> <span class="mobile-nav-icon-line bg-black w-6 block transition-all duration-200 ease-out"></span></span></button>
+  <script>
+    // Mark the current page's nav link as active by adding .nav-active class
+    (function() {
+      var path = window.location.pathname.replace(/\/index\.html?$/, '/');
+      var isHome = (path === '/' || path === '');
+      document.querySelectorAll('.menu a').forEach(function(a) {
+        var href = a.getAttribute('href');
+        if (!href) return;
+        var hrefNorm = href.replace(/\/index\.html?$/, '/');
+        if (hrefNorm === '/' ? isHome : (path === hrefNorm || path.indexOf(hrefNorm) === 0)) {
+          a.classList.add('nav-active');
+        }
+      });
+    })();
+  </script>
  </body>
 </html>
 
