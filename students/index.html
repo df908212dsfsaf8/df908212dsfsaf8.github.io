@@ -65,9 +65,14 @@
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
+  table-layout: fixed;
   font-size: 15px;
   line-height: 1.45;
 }
+/* Fixed column widths for consistent row alignment */
+.tg th:nth-child(1), .tg td:nth-child(1) { width: 15%; }
+.tg th:nth-child(2), .tg td:nth-child(2) { width: 48%; }
+.tg th:nth-child(3), .tg td:nth-child(3) { width: 37%; }
 /* Header: subtle, uppercase, single bottom rule */
 .tg th {
   text-align: left;
