@@ -141,6 +141,13 @@
 @media (max-width: 768px) {
   .tg, .tg th, .tg td { font-size: 13px; }
   .tg th, .tg td { padding: 10px 8px; }
+  /* Drop fixed layout on small screens so columns size to content */
+  .tg { table-layout: auto; }
+  .tg th:nth-child(1), .tg td:nth-child(1),
+  .tg th:nth-child(2), .tg td:nth-child(2),
+  .tg th:nth-child(3), .tg td:nth-child(3) { width: auto; }
+  /* Allow headers to wrap instead of overflowing into the next column */
+  .tg th, .tg .no-wrap { white-space: normal; }
 }
 </style>
 
