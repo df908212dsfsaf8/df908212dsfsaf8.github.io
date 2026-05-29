@@ -16,35 +16,38 @@
   <link rel="icon" type="image/png" href="" />
 
  <style>
-  /* Ensure the link container is positioned correctly */
+  /* === navigation: minimal, no background, active state via underline + bold === */
   .menu a[href="/"],
   .menu a[href="/publications/"],
   .menu a[href="/students/"] {
     position: relative;
-    text-decoration: none; /* Remove default underline */
-    overflow: hidden;
+    text-decoration: none;
+    color: #000;
+    transition: color 0.15s ease;
   }
 
-  /* Create the centered underline effect */
-  .menu a[href="/"]::after,
-  .menu a[href="/publications/"]::after,
-  .menu a[href="/students/"]::after {
+  /* Hover: dim the link slightly to give feedback */
+  .menu a[href="/"]:hover,
+  .menu a[href="/publications/"]:hover,
+  .menu a[href="/students/"]:hover {
+    color: #555;
+  }
+
+  /* Active page (set by JS at end of body): bold + permanent underline */
+  .menu a.nav-active {
+    font-weight: 500;
+  }
+  .menu a.nav-active::after {
     content: "";
     position: absolute;
-    left: 50%; /* Start from the center */
-    bottom: -3px; /* Adjust spacing below text */
-    width: 0%; /* Start with no width */
-    height: 2px; /* Thickness of the underline */
-    background-color: rgb(100, 100, 100); /* Dark red color */
-    transition: width 0.2s ease-in-out, left 0.2s ease-in-out; /* Smooth transition */
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 2px;
+    background-color: #000;
   }
-
-  /* Expand the underline from center to full width on hover */
-  .menu a[href="/"]:hover::after,
-  .menu a[href="/publications/"]:hover::after,
-  .menu a[href="/students/"]:hover::after {
-    width: 100%; /* Expand to full width */
-    left: 0%; /* Move left position to start from the left */
+  .menu a.nav-active:hover {
+    color: #000;
   }
 </style>
 	 
@@ -99,10 +102,8 @@
       <ul class="menu list-reset text-base flex flex-row justify-between flex-grow">
        <div class="flex flex-col md:flex-row items-center">
         <li class="level-1 mb-4 md:mr-8 md:mb-0"><a href="/" class="link hover:text-primary active:text-primary text-black" style="text-decoration: none">Home</a></li>
-        <li class="level-1 mb-4 md:mr-8 md:mb-0"><a href="/publications/" class="link hover:text-primary active:text-primary active text-primary" aria-current="page" style="text-decoration: none">Publications</a></li>
-		
-	<li class="level-1 mb-4 md:mr-8 md:mb-0"><a href="/students/" class="link hover:text-primary active:text-primary active text-primary" aria-current="page" style="text-decoration: none">Students</a></li>	
-		
+        <li class="level-1 mb-4 md:mr-8 md:mb-0"><a href="/publications/" class="link hover:text-primary active:text-primary text-black" style="text-decoration: none">Publications</a></li>
+		<li class="level-1 mb-4 md:mr-8 md:mb-0"><a href="/students/" class="link hover:text-primary active:text-primary text-black" style="text-decoration: none">Students</a></li>
        </div>
       </ul>
      </nav>
@@ -357,14 +358,28 @@ The table below summarizes the publications of students who interned with me; th
   <nav id="mobile-nav" class="mobile-nav fixed left-0 top-0 h-screen w-full overflow-y-auto pt-12 bg-gray-200 z-50 md:hidden">
    <ul>
     <li class="item relative opacity-0"><a href="/" class="link block py-2 px-5 text-dark text-3xl hover:text-primary" style="text-decoration: none">Home</a></li>
-    <li class="item relative opacity-0"><a href="/publications/" class="link block py-2 px-5 text-dark text-3xl hover:text-primary active text-primary" aria-current="page" style="text-decoration: none">Publications</a></li>
+    <li class="item relative opacity-0"><a href="/publications/" class="link block py-2 px-5 text-dark text-3xl hover:text-primary" style="text-decoration: none">Publications</a></li>
 	
-    <li class="item relative opacity-0"><a href="/students/" class="link block py-2 px-5 text-dark text-3xl hover:text-primary active text-primary" aria-current="page" style="text-decoration: none">Students</a></li>	
+    <li class="item relative opacity-0"><a href="/students/" class="link block py-2 px-5 text-dark text-3xl hover:text-primary" style="text-decoration: none">Students</a></li>	
    
    </ul>
   </nav>
   <button id="mobile-nav-toggle" class="mobile-nav-toggle block fixed h-16 w-full bottom-0 flex items-center justify-center font-bold border-none bg-gray-200 text-dark z-50 focus:outline-none md:hidden" aria-label="Mobile menu toggle" aria-expanded="false" aria-controls="mobile-nav"><span class="mobile-nav-label mr-2 font-medium">Menu</span> <span class="mobile-nav-icon" aria-hidden="true"><span class="mobile-nav-icon-line bg-black w-6 block transition-all duration-200 ease-out mb-1"></span> <span class="mobile-nav-icon-line bg-black w-6 block transition-all duration-200 ease-out mb-1"></span> <span class="mobile-nav-icon-line bg-black w-6 block transition-all duration-200 ease-out"></span></span></button>
-  
+   <script>
+    // Mark the current page's nav link as active by adding .nav-active class
+    (function() {
+      var path = window.location.pathname.replace(/\/index\.html?$/, '/');
+      var isHome = (path === '/' || path === '');
+      document.querySelectorAll('.menu a').forEach(function(a) {
+        var href = a.getAttribute('href');
+        if (!href) return;
+        var hrefNorm = href.replace(/\/index\.html?$/, '/');
+        if (hrefNorm === '/' ? isHome : (path === hrefNorm || path.indexOf(hrefNorm) === 0)) {
+          a.classList.add('nav-active');
+        }
+      });
+    })();
+  </script>
   </body>
 </html> 
   
