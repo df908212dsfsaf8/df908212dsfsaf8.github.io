@@ -65,35 +65,70 @@
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
+  font-size: 15px;
+  line-height: 1.45;
 }
-.tg td, .tg th {
-  border: 1px solid black;
-  padding: 10px 5px;
-  height: 10px !important; /* Force the height to change */
-  vertical-align: middle; /* Ensures text aligns properly when other cells span multiple lines */
-}
+/* Header: subtle, uppercase, single bottom rule */
 .tg th {
-  font-weight: bold;
   text-align: left;
-  background-color: #f5f5f5;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #555;
+  background: transparent;
+  padding: 8px 16px 10px;
+  border-bottom: 1.5px solid #d4d4d4;
+  white-space: nowrap;
 }
+/* Cells: horizontal dividers only, no vertical lines */
+.tg td {
+  text-align: left;
+  vertical-align: top;
+  padding: 14px 16px;
+  border-bottom: 1px solid #ededed;
+  color: #1a1a1a;
+}
+.tg tbody tr:last-child td { border-bottom: none; }
+.tg tbody tr:hover td { background-color: #fafafa; }
+/* Student name column */
 .tg .no-wrap {
-  white-space: nowrap; /* Prevents text wrapping in the Student column */
-  text-align: left; /* Center align for better appearance */
+  white-space: nowrap;
+  font-weight: 500;
 }
+/* Publications list */
 .tg .no-wrap-publications ul {
   margin: 0;
-  padding-left: 20px; /* Keeps bullet list structure */
+  padding-left: 18px;
+  list-style: disc;
 }
 .tg .no-wrap-publications li {
-  white-space: nowrap; /* Prevents wrapping within list items */
+  white-space: normal;
+  margin-bottom: 5px;
 }
-.tg td {
-  text-align: left; /* Ensures left alignment for all other cells */
+.tg .no-wrap-publications li:last-child { margin-bottom: 0; }
+/* Authorship role badge */
+.tg .role {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #555;
+  background: #f0f0f0;
+  border-radius: 999px;
+  padding: 1px 8px;
+  margin-left: 6px;
+  white-space: nowrap;
+  vertical-align: 1px;
 }
+/* Institution column */
 .tg .center-left {
-  text-align: left;
-  vertical-align: middle; /* Ensures vertical centering */
+  vertical-align: top;
+  color: #444;
+}
+@media (max-width: 768px) {
+  .tg, .tg th, .tg td { font-size: 13px; }
+  .tg th, .tg td { padding: 10px 8px; }
 }
 </style>
 
@@ -137,8 +172,8 @@ The table below summarizes the publications of students who interned with me; th
       <td class="no-wrap">Ming Yin</td>
       <td class="no-wrap-publications">
         <ul>
-          <li>The Web Conference 2024 (co-primary author)</li>
-          <li>The Web Conference 2024 (co-primary author)</li>
+          <li>The Web Conference 2024 <span class="role">co-primary author</span></li>
+          <li>The Web Conference 2024 <span class="role">co-primary author</span></li>
         </ul>
       </td>
       <td class="center-left">University of Science and Technology of China → Duke University</td>
@@ -147,8 +182,8 @@ The table below summarizes the publications of students who interned with me; th
       <td class="no-wrap">Yichang Xu</td>
       <td class="no-wrap-publications">
         <ul>
-          <li>The Web Conference 2024 (co-primary author)</li>
-          <li>The Web Conference 2024 (co-primary author)</li>
+          <li>The Web Conference 2024 <span class="role">co-primary author</span></li>
+          <li>The Web Conference 2024 <span class="role">co-primary author</span></li>
         </ul>
       </td>
       <td class="center-left">University of Science and Technology of China → Georgia Institute of Technology</td>
@@ -157,9 +192,9 @@ The table below summarizes the publications of students who interned with me; th
       <td class="no-wrap">Zhihao Dou</td>
       <td class="no-wrap-publications">
         <ul>
-          <li>ACM LAMPS 2024 (co-primary author)</li>
-	     <li>ACM AsiaCCS 2025 (co-primary author)</li>
-		<li>The Web Conference 2026 (co-primary author)</li>
+          <li>ACM LAMPS 2024 <span class="role">co-primary author</span></li>
+	     <li>ACM AsiaCCS 2025 <span class="role">co-primary author</span></li>
+		<li>The Web Conference 2026 <span class="role">co-primary author</span></li>
         </ul>
       </td>
       <td class="center-left">Duke University → Case Western Reserve University</td>
@@ -168,7 +203,7 @@ The table below summarizes the publications of students who interned with me; th
       <td class="no-wrap">Xin Hu</td>
       <td class="no-wrap-publications">
         <ul>
-          <li>ACM LAMPS 2024 (co-primary author)</li>
+          <li>ACM LAMPS 2024 <span class="role">co-primary author</span></li>
         </ul>
       </td>
       <td class="center-left">The University of Tokyo</td>
@@ -177,7 +212,7 @@ The table below summarizes the publications of students who interned with me; th
       <td class="no-wrap">Xilong Wang</td>
       <td class="no-wrap-publications">
         <ul>
-          <li>The Web Conference 2025 (co-primary author)</li>
+          <li>The Web Conference 2025 <span class="role">co-primary author</span></li>
         </ul>
       </td>
       <td class="center-left">University of Science and Technology of China → Duke University</td>
@@ -186,9 +221,9 @@ The table below summarizes the publications of students who interned with me; th
       <td class="no-wrap">Baolei Zhang</td>
       <td class="no-wrap-publications">
         <ul>
-          <li>The Web Conference 2025 (co-primary author)</li>
-		  <li>IEEE Symposium on Security and Privacy 2026 (co-primary author)</li>
-		  <li>ACM SACMAT 2026 (first author)</li>
+          <li>The Web Conference 2025 <span class="role">co-primary author</span></li>
+		  <li>IEEE Symposium on Security and Privacy 2026 <span class="role">co-primary author</span></li>
+		  <li>ACM SACMAT 2026 <span class="role">first author</span></li>
         </ul>
       </td>
       <td class="center-left">Nankai University</td>
@@ -197,8 +232,8 @@ The table below summarizes the publications of students who interned with me; th
       <td class="no-wrap">Haoran Xin</td>
       <td class="no-wrap-publications">
         <ul>
-          <li>The Web Conference 2025 (co-primary author)</li>
-		  <li>IEEE Symposium on Security and Privacy 2026 (co-primary author)</li>
+          <li>The Web Conference 2025 <span class="role">co-primary author</span></li>
+		  <li>IEEE Symposium on Security and Privacy 2026 <span class="role">co-primary author</span></li>
         </ul>
       </td>
       <td class="center-left">Nankai University</td>
@@ -207,7 +242,7 @@ The table below summarizes the publications of students who interned with me; th
       <td class="no-wrap">Wenbin Wang</td>
       <td class="no-wrap-publications">
         <ul>
-          <li>The Web Conference 2025 (co-primary author)</li>
+          <li>The Web Conference 2025 <span class="role">co-primary author</span></li>
         </ul>
       </td>
       <td class="center-left">ShanghaiTech University</td>
@@ -216,7 +251,7 @@ The table below summarizes the publications of students who interned with me; th
       <td class="no-wrap">Qiwen Ma</td>
       <td class="no-wrap-publications">
         <ul>
-          <li>The Web Conference 2025 (co-primary author)</li>
+          <li>The Web Conference 2025 <span class="role">co-primary author</span></li>
         </ul>
       </td>
       <td class="center-left">Xidian University</td>
@@ -225,7 +260,7 @@ The table below summarizes the publications of students who interned with me; th
       <td class="no-wrap">Xuecen Zhao</td>
       <td class="no-wrap-publications">
         <ul>
-          <li>The Web Conference 2025 (third author)</li>
+          <li>The Web Conference 2025 <span class="role">third author</span></li>
         </ul>
       </td>
       <td class="center-left">University of Washington → University of Iowa</td>
@@ -234,7 +269,7 @@ The table below summarizes the publications of students who interned with me; th
       <td class="no-wrap">Jiaqi Wang</td>
       <td class="no-wrap-publications">
         <ul>
-          <li>ACM AsiaCCS 2025 (co-primary author)</li>
+          <li>ACM AsiaCCS 2025 <span class="role">co-primary author</span></li>
         </ul>
       </td>
       <td class="center-left">Hainan Normal University</td>
@@ -244,7 +279,7 @@ The table below summarizes the publications of students who interned with me; th
   <td class="no-wrap">Wenjin Mo</td>
   <td class="no-wrap-publications">
 	<ul>
-	  <li>ICCV 2025 (co-primary author)</li>
+	  <li>ICCV 2025 <span class="role">co-primary author</span></li>
 	</ul>
   </td>
   <td class="center-left">Sun Yat-sen University → Yale University</td>
@@ -254,7 +289,7 @@ The table below summarizes the publications of students who interned with me; th
   <td class="no-wrap">Zhiyuan Li</td>
   <td class="no-wrap-publications">
 	<ul>
-	  <li>ICCV 2025 (co-primary author)</li>
+	  <li>ICCV 2025 <span class="role">co-primary author</span></li>
 	</ul>
   </td>
   <td class="center-left">Independent Researcher</td>
@@ -264,7 +299,7 @@ The table below summarizes the publications of students who interned with me; th
   <td class="no-wrap">Yueyang Quan</td>
   <td class="no-wrap-publications">
 	<ul>
-	  <li>MobiHoc 2025 (first author)</li>
+	  <li>MobiHoc 2025 <span class="role">first author</span></li>
 	</ul>
   </td>
   <td class="center-left">Northeastern University → University of North Texas</td>
@@ -274,7 +309,7 @@ The table below summarizes the publications of students who interned with me; th
   <td class="no-wrap">Chang Wang</td>
   <td class="no-wrap-publications">
 	<ul>
-	  <li>MobiHoc 2025 (second author)</li>
+	  <li>MobiHoc 2025 <span class="role">second author</span></li>
 	</ul>
   </td>
   <td class="center-left">Nanjing University of Posts and Telecommunications → University of Nevada, Las Vegas</td>
@@ -284,8 +319,8 @@ The table below summarizes the publications of students who interned with me; th
   <td class="no-wrap">Yuxi Chen</td>
   <td class="no-wrap-publications">
 	<ul>
-	  <li>IEEE Symposium on Security and Privacy 2026 (second author)</li>
-	  <li>ACM SACMAT 2026 (second author)</li>
+	  <li>IEEE Symposium on Security and Privacy 2026 <span class="role">second author</span></li>
+	  <li>ACM SACMAT 2026 <span class="role">second author</span></li>
 	</ul>
   </td>
   <td class="center-left">Independent Researcher</td>
@@ -295,7 +330,7 @@ The table below summarizes the publications of students who interned with me; th
   <td class="no-wrap">Zirui Cheng</td>
   <td class="no-wrap-publications">
 	<ul>
-	  <li>IEEE BigData 2025 (co-primary author)</li>
+	  <li>IEEE BigData 2025 <span class="role">co-primary author</span></li>
 	</ul>
   </td>
   <td class="center-left">Huazhong University of Science and Technology → National University of Singapore</td>
@@ -305,7 +340,7 @@ The table below summarizes the publications of students who interned with me; th
   <td class="no-wrap">Jikai Sun</td>
   <td class="no-wrap-publications">
 	<ul>
-	  <li>IEEE BigData 2025 (co-primary author)</li>
+	  <li>IEEE BigData 2025 <span class="role">co-primary author</span></li>
 	</ul>
   </td>
   <td class="center-left">National University of Singapore</td>
@@ -315,7 +350,7 @@ The table below summarizes the publications of students who interned with me; th
   <td class="no-wrap">Tianrun Yu</td>
   <td class="no-wrap-publications">
 	<ul>
-	  <li>WiOpt 2026 (co-primary author)</li>
+	  <li>WiOpt 2026 <span class="role">co-primary author</span></li>
 	</ul>
   </td>
   <td class="center-left">The Pennsylvania State University</td>
@@ -325,7 +360,7 @@ The table below summarizes the publications of students who interned with me; th
   <td class="no-wrap">Kaixiang Zhao</td>
   <td class="no-wrap-publications">
 	<ul>
-	  <li>WiOpt 2026 (co-primary author)</li>
+	  <li>WiOpt 2026 <span class="role">co-primary author</span></li>
 	</ul>
   </td>
   <td class="center-left">University of Notre Dame</td>
@@ -335,7 +370,7 @@ The table below summarizes the publications of students who interned with me; th
   <td class="no-wrap">Cheng Zhang</td>
   <td class="no-wrap-publications">
 	<ul>
-	  <li>WiOpt 2026 (second author)</li>
+	  <li>WiOpt 2026 <span class="role">second author</span></li>
 	</ul>
   </td>
   <td class="center-left">North Carolina State University</td>
@@ -346,7 +381,7 @@ The table below summarizes the publications of students who interned with me; th
   <td class="no-wrap">Feng Wang</td>
   <td class="no-wrap-publications">
 	<ul>
-	  <li>ACM AsiaCCS 2026 (co-primary author)</li>
+	  <li>ACM AsiaCCS 2026 <span class="role">co-primary author</span></li>
 	</ul>
   </td>
   <td class="center-left">Northeastern University</td>
