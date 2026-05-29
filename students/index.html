@@ -85,14 +85,13 @@
 .tg td {
   text-align: left;
   vertical-align: top;
-  padding: 14px 16px;
+  padding: 9px 16px;
   border-bottom: 1px solid #ededed;
   color: #1a1a1a;
 }
 .tg tbody tr:last-child td { border-bottom: none; }
-/* Zebra striping: each student row alternates a faint background */
+/* Zebra striping: each student row gets a faint background so multiple papers stay grouped */
 .tg tbody tr:nth-child(even) td { background-color: #f7f6f3; }
-.tg tbody tr:hover td { background-color: #e3e0d8; }
 /* Student name column */
 .tg .no-wrap {
   white-space: nowrap;
@@ -106,22 +105,21 @@
 }
 .tg .no-wrap-publications li {
   white-space: normal;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
 }
 .tg .no-wrap-publications li:last-child { margin-bottom: 0; }
-/* Authorship role badge */
+/* Authorship role: quiet italic note, not a loud pill */
 .tg .role {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: #555;
-  background: #f0f0f0;
-  border-radius: 999px;
-  padding: 1px 8px;
-  margin-left: 6px;
+  font-size: 13px;
+  font-style: italic;
+  color: #8a8a85;
+  margin-left: 7px;
   white-space: nowrap;
-  vertical-align: 1px;
+}
+.tg .role::before {
+  content: "\00b7";
+  margin-right: 7px;
+  font-style: normal;
 }
 /* Institution column */
 .tg .center-left {
@@ -158,7 +156,7 @@
    <div class="w-full md:px-8 leading-relaxed md-content text-justify">
      <h1 class="font-small mt-0 hidden md:block" style="margin-top:-15px;">Research Interns</h1>
 <p>
-The table below summarizes the publications of students who interned with me; these students are not my formal advisees.
+This table lists publications by students who interned with me. They are not my formal advisees.
 </p>
 	   
 <table class="tg">
