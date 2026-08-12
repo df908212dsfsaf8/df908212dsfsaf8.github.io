@@ -1,389 +1,435 @@
 <!DOCTYPE html>
-<html lang="en" class="min-h-full antialiased">
- <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Minghong Fang</title>
-  <link rel="shortcut icon" type="image/png" href="/images/icon_MF_8.png">
-  
-  <meta name="robots" content="index,follow" />
-  <link rel="preload" href="fonts/gillsans/Gill_Sans_Medium.otf" />
-  <link rel="stylesheet" href="/css/main.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.34.0/dist/tabler-icons.min.css" />
-  <script src="/js/main.min.js" defer="defer"></script>
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="" />
-  <meta name="twitter:creator" content="" />
-  <meta name="og:locale" content="en_GB" />
-  <meta name="og:type" content="website" />
-  <link rel="icon" type="image/png" href="" />
-
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" type="image/png" href="/images/icon_MF_8.png">
+<title>Minghong Fang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  /* === navigation: minimal, no background, active state via underline + bold === */
-  .menu a[href="/"],
-  .menu a[href="/publications/"],
-  .menu a[href="/students/"] {
-    position: relative;
-    text-decoration: none;
-    color: #000;
-    transition: color 0.15s ease;
-  }
+:root{
+  --ink:#000000;
+  --muted:#5f6470;
+  --faint:#9aa0ad;
+  --card-red:#ad0000;
+  --card-red-soft:#fdf2f2;
+  --line:#e8e8ec;
+  --bg:#ffffff;
+  --sans:"Inter",-apple-system,"Segoe UI",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--bg);
+  font-size:15.5px;
+  line-height:1.65;
+}
+a{color:var(--card-red);text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible{outline:2px solid var(--card-red);outline-offset:2px;border-radius:2px}
 
-  /* Hover: dim the link slightly to give feedback */
-  .menu a[href="/"]:hover,
-  .menu a[href="/publications/"]:hover,
-  .menu a[href="/students/"]:hover {
-    color: #555;
-  }
+.layout{
+  display:grid;
+  grid-template-columns:300px 1fr;
+  max-width:1120px;
+  margin:0 auto;
+  min-height:100vh;
+}
 
-  /* Active page (set by JS at end of body): bold + permanent underline */
-  .menu a.nav-active {
-    font-weight: 500;
-  }
-  .menu a.nav-active::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -4px;
-    height: 2px;
-    background-color: #000;
-  }
-  .menu a.nav-active:hover {
-    color: #000;
-  }
+/* ---------- Sidebar ---------- */
+.sidebar{
+  background:#fff;
+  padding:44px 28px 40px 36px;
+}
+.sidebar-inner{
+  position:sticky;
+  top:92px;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+}
+.avatar{
+  width:180px;height:180px;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+  box-shadow:0 2px 12px rgba(28,28,34,.10);
+}
+.name{
+  font-size:1.5rem;
+  font-weight:700;
+  letter-spacing:-.02em;
+  margin-top:22px;
+  line-height:1.2;
+}
+.role{
+  margin-top:8px;
+  font-size:.92rem;
+  color:var(--ink);
+  line-height:1.5;
+}
+.contact{
+  margin-top:20px;
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+  font-size:.9rem;
+}
+.contact a{
+  display:flex;align-items:center;gap:9px;
+  color:var(--ink);
+}
+.contact a:hover{color:var(--card-red);text-decoration:none}
+.contact svg{width:15px;height:15px;flex:none;color:var(--card-red)}
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:#fff;
+  box-shadow:0 1px 4px rgba(28,28,34,.07);
+}
+.top-nav{
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 36px;
+  height:48px;
+  display:flex;
+  align-items:center;
+}
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:26px;
+}
+.nav-links a{
+  color:var(--ink);
+  font-size:.9rem;
+  font-weight:500;
+  padding:14px 0 12px;
+  border-bottom:2px solid transparent;
+}
+.nav-links a:hover{color:var(--card-red);text-decoration:none}
+.nav-links a.active{
+  color:var(--card-red);
+  border-bottom-color:var(--card-red);
+}
+.quote{
+  margin-top:34px;
+  padding-top:24px;
+  border-top:1px solid var(--line);
+  font-style:italic;
+  font-size:.88rem;
+  color:var(--faint);
+  line-height:1.6;
+}
+.quote cite{
+  display:block;
+  margin-top:6px;
+  font-style:normal;
+  font-size:.78rem;
+  letter-spacing:.04em;
+}
 
-  /* Pill-style publication links (Style A) */
-  /* === pill-style v9 === if you don't see this comment in view-source, CSS is cached === */
-  .pub-link {
-    display: inline-flex !important;
-    align-items: stretch !important;
-    justify-content: flex-start !important;
-    height: 22px !important;
-    padding: 0 10px !important;
-    border-radius: 999px !important;
-    font-size: 13px !important;
-    line-height: 1 !important;
-    text-decoration: none !important;
-    vertical-align: middle !important;
-    margin: 0 4px 0 0 !important;
-    white-space: nowrap !important;
-    box-sizing: border-box !important;
-  }
-  .pub-link:hover { opacity: 0.75; text-decoration: none !important; }
-  .pub-link i.ti {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    font-size: 14px !important;
-    line-height: 1 !important;
-    margin-right: 4px !important;
-    flex-shrink: 0 !important;
-    height: 22px !important;
-  }
-  .pub-link .pub-link-text {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    font-size: 13px !important;
-    line-height: 1 !important;
-    height: 22px !important;
-    padding-top: 1px !important;
-    box-sizing: border-box !important;
-  }
-  /* iOS Safari needs an extra nudge: caps in SF Pro sit higher in the line box */
-  @supports (-webkit-touch-callout: none) {
-    .pub-link .pub-link-text {
-      padding-top: 3px !important;
-    }
-  }
-  .pub-link-pdf    { background: #EAF3DE; color: #27500A !important; }
-  .pub-link-poster { background: #EEEDFE; color: #3C3489 !important; }
-  .pub-link-code   { background: #F1EFE8; color: #2C2C2A !important; }
-  .pub-links { margin-left: 6px; display: inline; white-space: normal; }
+/* ---------- Main ---------- */
+.main{padding:36px 36px 64px 56px}
+.intro{
+  line-height:1.7;
+}
+.intro .research{
+  display:block;
+  margin-top:10px;
+}
+.intro .research strong{font-weight:600}
 
-  /* Disable justify on narrow screens to avoid huge word-gaps */
-  @media (max-width: 768px) {
-    .text-justify,
-    .md-content,
-    .md-content p,
-    .md-content h4 { text-align: left !important; }
-  }
+.section{margin-top:30px}
+.section-title{
+  font-size:1.18rem;
+  font-weight:700;
+  letter-spacing:-.01em;
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  padding-bottom:10px;
+  border-bottom:2px solid var(--ink);
+  margin-bottom:16px;
+}
+.section-title .more{
+  font-size:.85rem;
+  font-weight:500;
+  margin-left:auto;
+}
 
-  /* Gap between nav and content (snug since nav is minimal text-only) */
-  main#main { padding-top: 0.5rem !important; }
-  @media (min-width: 1024px) {
-    main#main { padding-top: 1rem !important; }
+/* Awards */
+.awards{list-style:none;display:flex;flex-direction:column;gap:9px}
+.awards li{
+  position:relative;
+  padding-left:22px;
+  font-size:.95rem;
+}
+.awards li::before{
+  content:"";
+  position:absolute;
+  left:0;top:.58em;
+  width:6px;height:6px;
+  border-radius:1.5px;
+  background:var(--card-red);
+}
+.awards a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+.awards a:hover{color:var(--card-red);text-decoration-color:var(--card-red)}
+
+/* Publications */
+.pubs{list-style:none;display:flex;flex-direction:column}
+.pub{
+  padding:8px 0 8px 22px;
+}
+.pub:first-child{padding-top:0}
+.pub:last-child{padding-bottom:0}
+.pub-title{
+  position:relative;
+  font-weight:600;
+  line-height:1.5;
+  color:var(--ink);
+}
+.pub-title::before{
+  content:"";
+  position:absolute;
+  left:-22px;top:.53em;
+  width:6px;height:6px;
+  border-radius:1.5px;
+  background:var(--card-red);
+}
+.pub-authors{
+  margin-top:6px;
+  font-size:.9rem;
+  color:var(--ink);
+}
+.pub-authors .me{
+  color:var(--ink);
+  font-weight:600;
+}
+.pub-meta{
+  margin-top:6px;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px;
+  font-size:.85rem;
+}
+.venue{
+  font-weight:400;
+  color:var(--ink);
+}
+.note{
+  color:var(--ink);
+  font-weight:400;
+}
+.pub-awards{
+  margin-top:8px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+}
+.tag{
+  display:inline-block;
+  padding:2px 9px;
+  border-radius:999px;
+  font-size:.76rem;
+  font-weight:500;
+  background:#f2f2f5;
+  color:var(--ink);
+}
+.tag.award{
+  background:var(--card-red-soft);
+  color:var(--card-red);
+}
+.tag.award a{color:var(--card-red)}
+.pub-links{
+  display:inline;
+  margin-left:4px;
+  white-space:nowrap;
+}
+.pub-links a{
+  display:inline-block;
+  margin-left:6px;
+  padding:1px 10px;
+  font-weight:500;
+  vertical-align:2px;
+  border:1px solid #d9d9df;
+  border-radius:999px;
+  font-size:.78rem;
+  color:var(--ink);
+  transition:border-color .15s,color .15s,background .15s;
+}
+.pub-links a:hover{
+  border-color:var(--card-red);
+  color:var(--card-red);
+  background:var(--card-red-soft);
+  text-decoration:none;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width:960px) and (min-width:721px){
+  .layout{grid-template-columns:240px 1fr}
+  .sidebar{padding:36px 20px 32px 24px}
+  .sidebar-inner{top:84px}
+  .avatar{width:150px;height:150px}
+  .name{font-size:1.3rem}
+  .main{padding:32px 24px 56px 36px}
+}
+@media (max-width:720px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{
+    border-bottom:1px solid var(--line);
+    padding:36px 28px 28px;
   }
+  .sidebar-inner{position:static}
+  .avatar{width:132px;height:132px;margin:0 auto}
+  .name,.role{text-align:center}
+  .contact{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:10px 22px}
+  .top-nav{padding:0 20px}
+  .nav-links{gap:18px}
+  .quote{text-align:center;margin-top:24px;padding-top:18px}
+  .main{padding:32px 24px 56px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .pub-links a{transition:none}
+}
 </style>
-
- </head>
- <body class="leading-normal bg-white-255 dark:bg-black">
-  <a class="sr-only" href="#main">Skip to content</a>
-  <div id="wrapper" class="wrapper pb-16 md:pb-0 flex flex-col relative min-h-screen">
-   <div class="">
-    <header id="header" class="inner header flex flex-col md:flex-row md:justify-start items-center p-2 md:p-4">
-     <nav id="nav" class="nav hidden md:flex flex-grow">
-      <ul class="menu list-reset text-base flex flex-row justify-between flex-grow">
-       <div class="flex flex-col md:flex-row items-center">
-        <li class="level-1 mb-4 md:mr-8 md:mb-0"><a href="/" class="link hover:text-primary active:text-primary text-black" style="text-decoration: none">Home</a></li>
-        <li class="level-1 mb-4 md:mr-8 md:mb-0"><a href="/publications/" class="link hover:text-primary active:text-primary text-black" style="text-decoration: none">Publications</a></li>
-			
-		<li class="level-1 mb-4 md:mr-8 md:mb-0"><a href="/students/" class="link hover:text-primary active:text-primary text-black" style="text-decoration: none">Students</a></li>
-			
-       </div>
-      </ul>
-     </nav>
-    </header>
-   </div>
-   <main id="main" class="main inner flex flex-1 flex-col py-5 lg:py-10 focus:outline-none" tabindex="-1">
-    <article id="container-centre" class="column centre flex-1">
-     <div class="flex flex-col md:flex-row mb-8">
-      <div class="w-full md:w-1/4">
-       <div class="bg-white-255 overflow-hidden">
-        <div class="md:flex flex-col">
-
-
-		
-   <div class="md:flex-shrink-0">
-	    <img style="border-radius: 8px;" alt="Rounded image" src="/images/people/956.png" alt="Photo" width=230 oncontextmenu="return false;" ondragstart="return false;"/>    
-	    </div>
-         
-		 <div class="mt-4 mb-4 pb-4 ml-0 md:ml-0 border-b border-gray-300 md:border-b-0">
-		<p style="margin: 0;">Minghong Fang</p>
-		<p style="margin: 0;">Assistant Professor</p>
-		<p style="margin: 0;">University of Louisville</p>
-		  <ul class="mt-2 text-sm break-all contact-card">
-	
-		  <li>
-		<a style="color:#1A73E8;" href="https://scholar.google.com/citations?user=L6vkkC8AAAAJ&hl=en" class="inline">
-		 <i class="ti ti-school" style="font-size: 16px; vertical-align: -2px; margin-right: 6px;" aria-hidden="true"></i><span style="color:#1A73E8;">Google Scholar</span>
-		 </a>
-		</li>
-		
-		
-        <li>
-		<a style="color:#1A73E8;" href="mailto:minghong.fang@louisville.edu"><i class="ti ti-mail" style="font-size: 16px; vertical-align: -2px; margin-right: 6px;" aria-hidden="true"></i>minghong.fang@louisville.edu</a>
-		</li>
-		
-         </ul>
-		 
-		 <br>
-		<p style="font-size: 14px; font-style: italic; color: #444; line-height: 1.6; margin: 0 0 4px;">&ldquo;It does not matter how slowly you go,<br>so long as you do not stop.&rdquo;</p>
-		<p style="font-size: 13px; color: #888; margin: 0; line-height: 1;">&ndash; Confucius</p>
-         </div>
-		 
-
-		
-        </div>
-       </div>
-      </div>
-      <div class="w-full md:w-3/4 md:px-8 leading-relaxed md-content text-justify">
-       <p class="leading-relaxed"></p>
-	<p>
-I am a tenure-track Assistant Professor in the <a style="color:#1A73E8;" href="https://engineering.louisville.edu/academics/departments/computer/" target="_blank">Department of Computer Science and Engineering</a> at <a style="color:#1A73E8;" href="https://louisville.edu/" target="_blank">University of Louisville</a>. From 2022 to 2024, I was a Postdoctoral Associate in the Department of Electrical and Computer Engineering at Duke University. I received my Ph.D. in Electrical and Computer Engineering from The Ohio State University in August 2022. 
-My research broadly focuses on various aspects of AI safety and security.
-	</p>
-	
-	<!-- <div class="text-left mt-4"><span class="inline-block px-5 py-4" style="max-width: 100%; background-color: #f5f5f5; text-align: justify; border-radius: 8px;"><span style="color:rgb(192, 0, 0);">[Recruiting PhDs]:</span> I am actively looking for highly motivated students for Ph.D. positions. Please email me with your CV and transcripts if you are interested!</span></div> -->
-	      
-	<h1>Honors and Awards</h1>
-       <ul>
-	<li><a style="color:rgb(192, 0, 0);" href="https://iclr.cc/Conferences/2025/Reviewers" target="_blank">ICLR 2025 Notable Reviewer</a></li>
-   <li><a style="color:rgb(192, 0, 0);" href="https://networking.ifip.org/2024/" target="_blank">IFIP Networking 2024 Best Paper Runner-up Award</a></li> 
-	<li> NDSS’21 paper measured as <a style="color:rgb(192, 0, 0);" href="https://www.mlsec.org/topnotch/sec_2020s.html" target="_blank">Top-cited Security Papers from 2021</a></li>
-        <li> USENIX Security Symposium’20 paper measured as one of the <a style="color:rgb(192, 0, 0);" href="https://mlsec.org/topnotch/sec_ntop100.html" target="_blank">Normalized Top-100 Security Papers since 1981</a></li>
-       </ul>
-       <h1>Selected Publications<span style="font-size: 0.7em; color: #555; vertical-align: middle; margin: 0 8px 0 14px;">&middot;</span><a href="/publications/" style="font-size: 0.6em; font-weight: normal; color: #1A73E8; text-decoration: none; vertical-align: middle;">Full list &rsaquo;</a></h1>
-	   <ul>
-
-
-  <li>
-   <div class="mb-4 publication">
-	<div class="flex flex-col md:flex-row items-center">
-	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Patcher: Post-Hoc Patching of Backdoored Large Language Models</span><span class="pub-links">
-	    <a href="https://arxiv.org/pdf/2606.02995" target="_blank" rel="noopener" class="pub-link pub-link-pdf">
-	      <i class="ti ti-file"></i>
-	      <span class="pub-link-text">PDF</span>
-	    </a>
-	   <a href="https://zenodo.org/records/20362596" target="_blank" rel="noopener" class="pub-link pub-link-code">
-      <i class="ti ti-brand-github"></i>
-      <span class="pub-link-text">Code</span>
-       </a>
-	  </span></h4>
-	  <p>Anjun Gao, Yueyang Quan, Yufei Xia, Zhuqing Liu, and <b>Minghong Fang</b></p>
-	  <p>In Proc. USENIX Security Symposium, 2026</p>
-	 </div>
-	</div>
-   </div>
-  </li>
-
-<li>
-<div class="mb-4 publication">
-<div class="flex flex-col md:flex-row items-center">
- <div class="md:ml-0 leading-snug">
-  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Five Queries Are Enough: Query-Efficient and Surrogate-Free Membership Inference Attacks on RAG via Entailment</span><span class="pub-links">
-    <a href="https://arxiv.org/pdf/2605.24312" target="_blank" rel="noopener" class="pub-link pub-link-pdf">
-      <i class="ti ti-file"></i>
-      <span class="pub-link-text">PDF</span>
-    </a>
-    <a href="https://zenodo.org/records/20335971" target="_blank" rel="noopener" class="pub-link pub-link-code">
-      <i class="ti ti-brand-github"></i>
-      <span class="pub-link-text">Code</span>
-    </a>
-  </span></h4>
-  <p>Nguyen Linh Bao Nguyen, Wanlun Ma, Viet Vo, Alsharif Abuadbba, <b>Minghong Fang</b>, Jun Zhang, and Yang Xiang</p>
-  <p>In Proc. USENIX Security Symposium, 2026</p>
- </div>
-</div>
-</div>
-</li>
-		   
- <li>
-<div class="mb-4 publication">
-<div class="flex flex-col md:flex-row items-center">
- <div class="md:ml-0 leading-snug">
-  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Who Taught the Lie? Responsibility Attribution for Poisoned Knowledge in Retrieval-Augmented Generation</span><span class="pub-links">
-    <a href="https://arxiv.org/pdf/2509.13772" target="_blank" rel="noopener" class="pub-link pub-link-pdf">
-      <i class="ti ti-file"></i>
-      <span class="pub-link-text">PDF</span>
-    </a>
-    <a href="/poster/RAGOrigin_poster.pdf" target="_blank" rel="noopener" class="pub-link pub-link-poster">
-      <i class="ti ti-presentation"></i>
-      <span class="pub-link-text">Poster</span>
-    </a>
-    <a href="https://github.com/zhangbl6618/RAG-Responsibility-Attribution" target="_blank" rel="noopener" class="pub-link pub-link-code">
-      <i class="ti ti-brand-github"></i>
-      <span class="pub-link-text">Code</span>
-    </a>
-  </span></h4>
-  <p>Baolei Zhang*, Haoran Xin*, Yuxi Chen, Zhuqing Liu, Biao Yi, Tong Li, Lihai Nie, Zheli Liu, and <b>Minghong Fang</b></p>
-  <p>In Proc. IEEE Symposium on Security and Privacy, 2026 (*co-primary authors, acceptance rate: 12.7%)</p>
- </div>
-</div>
-</div>
-</li>
-
-		   
- <li>
-   <div class="mb-4 publication">
-	<div class="flex flex-col md:flex-row items-center">
-	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Do We Really Need to Design New Byzantine-robust Aggregation Rules?</span><span class="pub-links">
-	    <a href="https://arxiv.org/pdf/2501.17381" target="_blank" rel="noopener" class="pub-link pub-link-pdf">
-	      <i class="ti ti-file"></i>
-	      <span class="pub-link-text">PDF</span>
-	    </a>
-	  </span></h4>
-	  <p><b>Minghong Fang</b>, Seyedsina Nabavirazavi, Zhuqing Liu, Wei Sun, Sundararaja Sitharama Iyengar, and Haibo Yang</p>
-	  <p>In Proc. NDSS, 2025 (acceptance rate: 16.1%)</p>
-	 </div>
-	</div>
-   </div>
-  </li>
-
-<li>
-   <div class="mb-4 publication">
-	<div class="flex flex-col md:flex-row items-center">
-	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Byzantine-Robust Decentralized Federated Learning</span><span class="pub-links">
-	    <a href="https://arxiv.org/pdf/2406.10416" target="_blank" rel="noopener" class="pub-link pub-link-pdf">
-	      <i class="ti ti-file"></i>
-	      <span class="pub-link-text">PDF</span>
-	    </a>
-	  </span></h4>
-	  <p><b>Minghong Fang</b>, Zifan Zhang, Hairi, Prashant Khanduri, Jia Liu, Songtao Lu, Yuchen Liu, and Neil Gong</p>
-	  <p>In Proc. ACM CCS, 2024 (acceptance rate: 16.9%)</p>
-	 </div>
-	</div>
-   </div>
-  </li>
-		   
- <li>
-       <div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">FLTrust: Byzantine-robust Federated Learning via Trust Bootstrapping</span><span class="pub-links">
-            <a href="https://arxiv.org/pdf/2012.13995.pdf" target="_blank" rel="noopener" class="pub-link pub-link-pdf">
-              <i class="ti ti-file"></i>
-              <span class="pub-link-text">PDF</span>
-            </a>
-            <a href="/code/FLTrust_code.zip" target="_blank" rel="noopener" class="pub-link pub-link-code">
-              <i class="ti ti-brand-github"></i>
-              <span class="pub-link-text">Code</span>
-            </a>
-          </span></h4>
-          <p>Xiaoyu Cao*, <b>Minghong Fang</b>*, Jia Liu, and Neil Zhenqiang Gong</p>
-          <p> In Proc. NDSS, 2021 (*co-primary authors, acceptance rate: 15.2%)</p>
-	<p>🏆 <a style="color:rgb(192, 0, 0);" href="https://www.mlsec.org/topnotch/sec_2020s.html" target="_blank">Top-cited Security Papers from 2021</a> 
-        </p>	 
-         </div>
-        </div>
-       </div>
-	</li>
-	   
-	<li>
-       <div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Local Model Poisoning Attacks to Byzantine-Robust Federated Learning</span><span class="pub-links">
-            <a href="https://arxiv.org/pdf/1911.11815.pdf" target="_blank" rel="noopener" class="pub-link pub-link-pdf">
-              <i class="ti ti-file"></i>
-              <span class="pub-link-text">PDF</span>
-            </a>
-            <a href="/code/FLTrust_code.zip" target="_blank" rel="noopener" class="pub-link pub-link-code">
-              <i class="ti ti-brand-github"></i>
-              <span class="pub-link-text">Code</span>
-            </a>
-          </span></h4>
-          <p><b>Minghong Fang</b>*, Xiaoyu Cao*, Jinyuan Jia, and Neil Zhenqiang Gong</p>
-          <p> In Proc. USENIX Security Symposium, 2020 (*co-primary authors, acceptance rate: 16.1%)</p>
-		 <p>🏆 <a style="color:rgb(192, 0, 0);" href="https://www.mlsec.org/topnotch/sec_2020s.html" target="_blank">Top-cited Security Papers from 2020</a> 
-		</p>
-		  <p>🏆 <a style="color:rgb(192, 0, 0);" href="https://mlsec.org/topnotch/sec_ntop100.html" target="_blank">Normalized Top-100 Security Papers since 1981</a> 
-		  </p>
-         </div>
-        </div>
-       </div>
-	   </li>
-	   
-	   
-	   </ul>
-       <p></p>
-      </div>
-     </div>
-    </article>
-   </main>
-
-   
-   
-  </div>
-  <nav id="mobile-nav" class="mobile-nav fixed left-0 top-0 h-screen w-full overflow-y-auto pt-12 bg-gray-200 z-50 md:hidden">
-   <ul>
-    <li class="item relative opacity-0"><a href="/" class="link block py-2 px-5 text-dark text-3xl hover:text-primary" style="text-decoration: none">Home</a></li>
-	<li class="item relative opacity-0"><a href="/publications/" class="link block py-2 px-5 text-dark text-3xl hover:text-primary" style="text-decoration: none">Publications</a></li>
-	
-	<li class="item relative opacity-0"><a href="/students/" class="link block py-2 px-5 text-dark text-3xl hover:text-primary" style="text-decoration: none">Students</a></li>
-		
-   </ul>
+</head>
+<body>
+<header class="topbar">
+  <nav class="top-nav">
+    <div class="nav-links">
+      <a class="active" href="/">Home</a>
+      <a href="/publications/">Publications</a>
+      <a href="/students/">Students</a>
+    </div>
   </nav>
-  <button id="mobile-nav-toggle" class="mobile-nav-toggle block fixed h-16 w-full bottom-0 flex items-center justify-center font-bold border-none bg-gray-200 text-dark z-50 focus:outline-none md:hidden" aria-label="Mobile menu toggle" aria-expanded="false" aria-controls="mobile-nav"><span class="mobile-nav-label mr-2 font-medium">Menu</span> <span class="mobile-nav-icon" aria-hidden="true"><span class="mobile-nav-icon-line bg-black w-6 block transition-all duration-200 ease-out mb-1"></span> <span class="mobile-nav-icon-line bg-black w-6 block transition-all duration-200 ease-out mb-1"></span> <span class="mobile-nav-icon-line bg-black w-6 block transition-all duration-200 ease-out"></span></span></button>
-  <script>
-    // Mark the current page's nav link as active by adding .nav-active class
-    (function() {
-      var path = window.location.pathname.replace(/\/index\.html?$/, '/');
-      var isHome = (path === '/' || path === '');
-      document.querySelectorAll('.menu a').forEach(function(a) {
-        var href = a.getAttribute('href');
-        if (!href) return;
-        var hrefNorm = href.replace(/\/index\.html?$/, '/');
-        if (hrefNorm === '/' ? isHome : (path === hrefNorm || path.indexOf(hrefNorm) === 0)) {
-          a.classList.add('nav-active');
-        }
-      });
-    })();
-  </script>
- </body>
-</html>
+</header>
+<div class="layout">
 
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <img class="avatar" src="/images/people/956.png" alt="Portrait of Minghong Fang">
+      <h1 class="name">Minghong Fang</h1>
+      <p class="role">Assistant Professor<br>
+        Computer Science &amp; Engineering<br>
+        University of Louisville
+      </p>
+
+      <div class="contact">
+        <a href="mailto:minghong.fang@louisville.edu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+          minghong.fang@louisville.edu
+        </a>
+        <a href="https://scholar.google.com/citations?user=L6vkkC8AAAAJ&amp;hl=en">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg>
+          Google Scholar
+        </a>
+      </div>
+
+      <blockquote class="quote">
+        “It does not matter how slowly you go, so long as you do not stop.”
+        <cite>— Confucius</cite>
+      </blockquote>
+    </div>
+  </aside>
+
+  <main class="main">
+    <p class="intro">
+      I am a tenure-track Assistant Professor in the <a href="https://engineering.louisville.edu/academics/departments/computer/">Department of Computer Science and Engineering</a> at the <a href="https://louisville.edu/">University of Louisville</a>. From 2022 to 2024, I was a Postdoctoral Associate in the Department of Electrical and Computer Engineering at Duke University. I received my Ph.D. in Electrical and Computer Engineering from The Ohio State University in August 2022.
+      <span class="research">My research broadly focuses on various aspects of <strong>AI safety and security</strong>.</span>
+    </p>
+
+    <section class="section">
+      <h2 class="section-title">Honors &amp; Awards</h2>
+      <ul class="awards">
+        <li><a href="https://iclr.cc/Conferences/2025/Reviewers">ICLR 2025 Notable Reviewer</a></li>
+        <li><a href="https://networking.ifip.org/2024/">IFIP Networking 2024 Best Paper Runner-up Award</a></li>
+        <li>NDSS’21 paper measured as <a href="https://www.mlsec.org/topnotch/sec_2020s.html">Top-cited Security Papers from 2021</a></li>
+        <li>USENIX Security Symposium’20 paper measured as one of the <a href="https://mlsec.org/topnotch/sec_ntop100.html">Normalized Top-100 Security Papers since 1981</a></li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Selected Publications
+        <a class="more" href="/publications/">Full list ›</a>
+      </h2>
+      <ul class="pubs">
+
+        <li class="pub">
+          <div class="pub-title">Patcher: Post-Hoc Patching of Backdoored Large Language Models <span class="pub-links"><a href="https://arxiv.org/pdf/2606.02995">PDF</a><a href="https://zenodo.org/records/20362596">Code</a></span></div>
+          <div class="pub-authors">Anjun Gao, Yueyang Quan, Yufei Xia, Zhuqing Liu, and <span class="me">Minghong Fang</span></div>
+          <div class="pub-meta"><span class="venue">In Proc. USENIX Security Symposium, 2026</span></div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Five Queries Are Enough: Query-Efficient and Surrogate-Free Membership Inference Attacks on RAG via Entailment <span class="pub-links"><a href="https://arxiv.org/pdf/2605.24312">PDF</a><a href="https://zenodo.org/records/20335971">Code</a></span></div>
+          <div class="pub-authors">Nguyen Linh Bao Nguyen, Wanlun Ma, Viet Vo, Alsharif Abuadbba, <span class="me">Minghong Fang</span>, Jun Zhang, and Yang Xiang</div>
+          <div class="pub-meta"><span class="venue">In Proc. USENIX Security Symposium, 2026</span></div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Who Taught the Lie? Responsibility Attribution for Poisoned Knowledge in Retrieval-Augmented Generation <span class="pub-links"><a href="https://arxiv.org/pdf/2509.13772">PDF</a><a href="/poster/RAGOrigin_poster.pdf">Poster</a><a href="https://github.com/zhangbl6618/RAG-Responsibility-Attribution">Code</a></span></div>
+          <div class="pub-authors">Baolei Zhang*, Haoran Xin*, Yuxi Chen, Zhuqing Liu, Biao Yi, Tong Li, Lihai Nie, Zheli Liu, and <span class="me">Minghong Fang</span></div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. IEEE Symposium on Security and Privacy, 2026</span>
+            <span class="note">(*co-primary authors, acceptance rate: 12.7%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Do We Really Need to Design New Byzantine-robust Aggregation Rules? <span class="pub-links"><a href="https://arxiv.org/pdf/2501.17381">PDF</a></span></div>
+          <div class="pub-authors"><span class="me">Minghong Fang</span>, Seyedsina Nabavirazavi, Zhuqing Liu, Wei Sun, Sundararaja Sitharama Iyengar, and Haibo Yang</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. NDSS, 2025</span>
+            <span class="note">(acceptance rate: 16.1%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Byzantine-Robust Decentralized Federated Learning <span class="pub-links"><a href="https://arxiv.org/pdf/2406.10416">PDF</a></span></div>
+          <div class="pub-authors"><span class="me">Minghong Fang</span>, Zifan Zhang, Hairi, Prashant Khanduri, Jia Liu, Songtao Lu, Yuchen Liu, and Neil Gong</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. ACM CCS, 2024</span>
+            <span class="note">(acceptance rate: 16.9%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">FLTrust: Byzantine-robust Federated Learning via Trust Bootstrapping <span class="pub-links"><a href="https://arxiv.org/pdf/2012.13995.pdf">PDF</a><a href="/code/FLTrust_code.zip">Code</a></span></div>
+          <div class="pub-authors">Xiaoyu Cao*, <span class="me">Minghong Fang</span>*, Jia Liu, and Neil Zhenqiang Gong</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. NDSS, 2021</span>
+            <span class="note">(*co-primary authors, acceptance rate: 15.2%)</span>
+          </div>
+          <div class="pub-awards">
+            <span class="tag award"><a href="https://www.mlsec.org/topnotch/sec_2020s.html">🏆 Top-cited Security Papers from 2021</a></span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Local Model Poisoning Attacks to Byzantine-Robust Federated Learning <span class="pub-links"><a href="https://arxiv.org/pdf/1911.11815.pdf">PDF</a><a href="/code/FLTrust_code.zip">Code</a></span></div>
+          <div class="pub-authors"><span class="me">Minghong Fang</span>*, Xiaoyu Cao*, Jinyuan Jia, and Neil Zhenqiang Gong</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. USENIX Security Symposium, 2020</span>
+            <span class="note">(*co-primary authors, acceptance rate: 16.1%)</span>
+          </div>
+          <div class="pub-awards">
+            <span class="tag award"><a href="https://www.mlsec.org/topnotch/sec_2020s.html">🏆 Top-cited Security Papers from 2020</a></span>
+            <span class="tag award"><a href="https://mlsec.org/topnotch/sec_ntop100.html">🏆 Normalized Top-100 Security Papers since 1981</a></span>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+  </main>
+
+</div>
+</body>
+</html>
