@@ -1,1056 +1,868 @@
 <!DOCTYPE html>
-<html lang="en" class="min-h-full antialiased">
- <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Minghong Fang</title>
-  <link rel="shortcut icon" type="image/png" href="/images/icon_MF_8.png">
-  <meta name="robots" content="index,follow" />
-  <link rel="preload" href="fonts/gillsans/Gill_Sans_Medium.otf" />
-  <link rel="stylesheet" href="/css/main.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.34.0/dist/tabler-icons.min.css" />
-  <script src="/js/main.min.js" defer="defer"></script>
-  <meta name="twitter:site" content="" />
-  <meta name="twitter:creator" content="" />
-  <meta name="og:locale" content="en_GB" />
-  <meta name="og:type" content="website" />
-  <link rel="icon" type="image/png" href="" />
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" type="image/png" href="/images/icon_MF_8.png">
+<title>Publications | Minghong Fang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#000000;
+  --muted:#5f6470;
+  --faint:#9aa0ad;
+  --card-red:#ad0000;
+  --card-red-soft:#fdf2f2;
+  --line:#e8e8ec;
+  --bg:#ffffff;
+  --sans:"Inter",-apple-system,"Segoe UI",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--bg);
+  font-size:15.5px;
+  line-height:1.65;
+}
+a{color:var(--card-red);text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible{outline:2px solid var(--card-red);outline-offset:2px;border-radius:2px}
 
- <style>
-  /* === navigation: minimal, no background, active state via underline + bold === */
-  .menu a[href="/"],
-  .menu a[href="/publications/"],
-  .menu a[href="/students/"] {
-    position: relative;
-    text-decoration: none;
-    color: #000;
-    transition: color 0.15s ease;
-  }
+.layout{
+  display:grid;
+  grid-template-columns:300px 1fr;
+  max-width:1120px;
+  margin:0 auto;
+  min-height:100vh;
+}
 
-  /* Hover: dim the link slightly to give feedback */
-  .menu a[href="/"]:hover,
-  .menu a[href="/publications/"]:hover,
-  .menu a[href="/students/"]:hover {
-    color: #555;
-  }
+/* ---------- Sidebar ---------- */
+.sidebar{
+  background:#fff;
+  padding:44px 28px 40px 36px;
+}
+.sidebar-inner{
+  position:sticky;
+  top:92px;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+}
+.avatar{
+  width:180px;height:180px;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+  box-shadow:0 2px 12px rgba(28,28,34,.10);
+}
+.name{
+  font-size:1.5rem;
+  font-weight:700;
+  letter-spacing:-.02em;
+  margin-top:22px;
+  line-height:1.2;
+}
+.role{
+  margin-top:8px;
+  font-size:.92rem;
+  color:var(--ink);
+  line-height:1.5;
+}
+.contact{
+  margin-top:20px;
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+  font-size:.9rem;
+}
+.contact a{
+  display:flex;align-items:center;gap:9px;
+  color:var(--ink);
+}
+.contact a:hover{color:var(--card-red);text-decoration:none}
+.contact svg{width:15px;height:15px;flex:none;color:var(--card-red)}
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:#fff;
+  box-shadow:0 1px 4px rgba(28,28,34,.07);
+}
+.top-nav{
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 36px;
+  height:48px;
+  display:flex;
+  align-items:center;
+}
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:26px;
+}
+.nav-links a{
+  color:var(--ink);
+  font-size:.9rem;
+  font-weight:500;
+  padding:14px 0 12px;
+  border-bottom:2px solid transparent;
+}
+.nav-links a:hover{color:var(--card-red);text-decoration:none}
+.nav-links a.active{
+  color:var(--card-red);
+  border-bottom-color:var(--card-red);
+}
+.quote{
+  margin-top:34px;
+  padding-top:24px;
+  border-top:1px solid var(--line);
+  font-style:italic;
+  font-size:.88rem;
+  color:var(--faint);
+  line-height:1.6;
+}
+.quote cite{
+  display:block;
+  margin-top:6px;
+  font-style:normal;
+  font-size:.78rem;
+  letter-spacing:.04em;
+}
 
-  /* Active page (set by JS at end of body): bold + permanent underline */
-  .menu a.nav-active {
-    font-weight: 500;
-  }
-  .menu a.nav-active::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -4px;
-    height: 2px;
-    background-color: #000;
-  }
-  .menu a.nav-active:hover {
-    color: #000;
-  }
+/* ---------- Main ---------- */
+.main{padding:36px 36px 64px 56px}
+.intro{
+  line-height:1.7;
+}
+.intro .research{
+  display:block;
+  margin-top:10px;
+}
+.intro .research strong{font-weight:600}
 
-  /* Pill-style publication links (Style A) */
-  /* === pill-style v9 === if you don't see this comment in view-source, CSS is cached === */
-  .pub-link {
-    display: inline-flex !important;
-    align-items: stretch !important;
-    justify-content: flex-start !important;
-    height: 22px !important;
-    padding: 0 10px !important;
-    border-radius: 999px !important;
-    font-size: 13px !important;
-    line-height: 1 !important;
-    text-decoration: none !important;
-    vertical-align: middle !important;
-    margin: 0 4px 0 0 !important;
-    white-space: nowrap !important;
-    box-sizing: border-box !important;
-  }
-  .pub-link:hover { opacity: 0.75; text-decoration: none !important; }
-  .pub-link i.ti {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    font-size: 14px !important;
-    line-height: 1 !important;
-    margin-right: 4px !important;
-    flex-shrink: 0 !important;
-    height: 22px !important;
-  }
-  .pub-link .pub-link-text {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    font-size: 13px !important;
-    line-height: 1 !important;
-    height: 22px !important;
-    padding-top: 1px !important;
-    box-sizing: border-box !important;
-  }
-  /* iOS Safari needs an extra nudge: caps in SF Pro sit higher in the line box */
-  @supports (-webkit-touch-callout: none) {
-    .pub-link .pub-link-text {
-      padding-top: 3px !important;
-    }
-  }
-  .pub-link-pdf    { background: #EAF3DE; color: #27500A !important; }
-  .pub-link-poster { background: #EEEDFE; color: #3C3489 !important; }
-  .pub-link-code   { background: #F1EFE8; color: #2C2C2A !important; }
-  .pub-link-podcast { background: #FAECE7; color: #993C1D !important; }
-  .pub-link-coverage { background: #E6F1FB; color: #0C447C !important; }
-  .pub-links { margin-left: 6px; display: inline; white-space: normal; }
+.section{margin-top:30px}
+.section-title{
+  font-size:1.18rem;
+  font-weight:700;
+  letter-spacing:-.01em;
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  padding-bottom:10px;
+  border-bottom:2px solid var(--ink);
+  margin-bottom:16px;
+}
+.section-title .more{
+  font-size:.85rem;
+  font-weight:500;
+  margin-left:auto;
+}
 
-  /* Disable justify on narrow screens to avoid huge word-gaps */
-  @media (max-width: 768px) {
-    .text-justify,
-    .md-content,
-    .md-content p,
-    .md-content h4 { text-align: left !important; }
-  }
+/* Awards */
+.awards{list-style:none;display:flex;flex-direction:column;gap:9px}
+.awards li{
+  position:relative;
+  padding-left:22px;
+  font-size:.95rem;
+}
+.awards li::before{
+  content:"";
+  position:absolute;
+  left:0;top:.58em;
+  width:6px;height:6px;
+  border-radius:1.5px;
+  background:var(--card-red);
+}
+.awards a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+.awards a:hover{color:var(--card-red);text-decoration-color:var(--card-red)}
 
-  /* Gap between nav and content (snug since nav is minimal text-only) */
-  main#main { padding-top: 0.5rem !important; }
-  @media (min-width: 1024px) {
-    main#main { padding-top: 1rem !important; }
+/* Publications */
+.pubs{list-style:none;display:flex;flex-direction:column}
+.pub{
+  padding:8px 0 8px 22px;
+}
+.pub:first-child{padding-top:0}
+.pub:last-child{padding-bottom:0}
+.pub-title{
+  position:relative;
+  font-weight:600;
+  line-height:1.5;
+  color:var(--ink);
+}
+.pub-title::before{
+  content:"";
+  position:absolute;
+  left:-22px;top:.53em;
+  width:6px;height:6px;
+  border-radius:1.5px;
+  background:var(--card-red);
+}
+.pub-authors{
+  margin-top:6px;
+  font-size:.9rem;
+  color:var(--ink);
+}
+.pub-authors .me{
+  color:var(--ink);
+  font-weight:600;
+}
+.pub-meta{
+  margin-top:6px;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px;
+  font-size:.85rem;
+}
+.venue{
+  font-weight:400;
+  color:var(--ink);
+}
+.note{
+  color:var(--ink);
+  font-weight:400;
+}
+.pub-awards{
+  margin-top:8px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+}
+.tag{
+  display:inline-block;
+  padding:2px 9px;
+  border-radius:999px;
+  font-size:.76rem;
+  font-weight:500;
+  background:#f2f2f5;
+  color:var(--ink);
+}
+.tag.award{
+  background:var(--card-red-soft);
+  color:var(--card-red);
+}
+.tag.award a{color:var(--card-red)}
+.pub-links{
+  display:inline;
+  margin-left:4px;
+  white-space:nowrap;
+}
+.pub-links a{
+  display:inline-block;
+  margin-left:6px;
+  padding:1px 10px;
+  font-weight:500;
+  vertical-align:2px;
+  border:1px solid #d9d9df;
+  border-radius:999px;
+  font-size:.78rem;
+  color:var(--ink);
+  transition:border-color .15s,color .15s,background .15s;
+}
+.pub-links a:hover{
+  border-color:var(--card-red);
+  color:var(--card-red);
+  background:var(--card-red-soft);
+  text-decoration:none;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width:960px) and (min-width:721px){
+  .layout{grid-template-columns:240px 1fr}
+  .sidebar{padding:36px 20px 32px 24px}
+  .sidebar-inner{top:84px}
+  .avatar{width:150px;height:150px}
+  .name{font-size:1.3rem}
+  .main{padding:32px 24px 56px 36px}
+}
+@media (max-width:720px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{
+    border-bottom:1px solid var(--line);
+    padding:36px 28px 28px;
   }
+  .sidebar-inner{position:static}
+  .avatar{width:132px;height:132px;margin:0 auto}
+  .name,.role{text-align:center}
+  .contact{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:10px 22px}
+  .top-nav{padding:0 20px}
+  .nav-links{gap:18px}
+  .quote{text-align:center;margin-top:24px;padding-top:18px}
+  .main{padding:32px 24px 56px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .pub-links a{transition:none}
+}
+
+/* Publications page: full-width column aligned with the top nav */
+.page{max-width:1120px;margin:0 auto;padding:20px 36px 64px}
+.page-head{
+  text-align:left;
+  font-size:.85rem;
+  font-weight:500;
+  margin-bottom:18px;
+}
+.page-head + .tag a{color:inherit}
+@media (max-width:720px){
+  .page{padding:32px 24px 56px}
+}
 </style>
-	 
- </head>
- <body id="publications" class="leading-normal bg-white-255 dark:bg-black">
-  <a class="sr-only" href="#main">Skip to content</a>
-  <div id="wrapper" class="wrapper pb-16 md:pb-0 flex flex-col relative min-h-screen">
-   <div class="">
-    <header id="header" class="inner header flex flex-col md:flex-row md:justify-start items-center p-2 md:p-4">
-     <nav id="nav" class="nav hidden md:flex flex-grow">
-      <ul class="menu list-reset text-base flex flex-row justify-between flex-grow">
-       <div class="flex flex-col md:flex-row items-center">
-        <li class="level-1 mb-4 md:mr-8 md:mb-0"><a href="/" class="link hover:text-primary active:text-primary text-black" style="text-decoration: none">Home</a></li>
-        <li class="level-1 mb-4 md:mr-8 md:mb-0"><a href="/publications/" class="link hover:text-primary active:text-primary text-black" style="text-decoration: none">Publications</a></li>
-		<li class="level-1 mb-4 md:mr-8 md:mb-0"><a href="/students/" class="link hover:text-primary active:text-primary text-black" style="text-decoration: none">Students</a></li>
-       
-       </div>
-      </ul>
-     </nav>
-    </header>
-   </div>
-   <main id="main" class="main inner flex flex-1 flex-col py-5 lg:py-10 focus:outline-none" tabindex="-1">
-   <div class="w-full md:px-8 leading-relaxed md-content text-justify">
-     <h1 class="sr-only">Publications</h1>
-<p style="margin: -15px 0 0.5rem;">
-  <a style="color:#1A73E8;" href="https://scholar.google.com/citations?user=L6vkkC8AAAAJ&hl=en" target="_blank" rel="noopener" class="inline">
-    <i class="ti ti-school" style="font-size: 16px; vertical-align: -2px; margin-right: 6px;" aria-hidden="true"></i><span style="color:#1A73E8;">Google Scholar</span>
-  </a>
-</p>
- <ul style="margin-top: 0;">
-
-  <li>
-   <div class="mb-4 publication">
-	<div class="flex flex-col md:flex-row items-center">
-	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Patcher: Post-Hoc Patching of Backdoored Large Language Models</span><span class="pub-links">
-	    <a href="https://arxiv.org/pdf/2606.02995" target="_blank" rel="noopener" class="pub-link pub-link-pdf">
-	      <i class="ti ti-file"></i>
-	      <span class="pub-link-text">PDF</span>
-	    </a>
-	   <a href="https://zenodo.org/records/20362596" target="_blank" rel="noopener" class="pub-link pub-link-code">
-      <i class="ti ti-brand-github"></i>
-      <span class="pub-link-text">Code</span>
-       </a>
-	  </span></h4>
-	  <p>Anjun Gao, Yueyang Quan, Yufei Xia, Zhuqing Liu, and <b>Minghong Fang</b></p>
-	  <p>In Proc. USENIX Security Symposium, 2026</p>
-	 </div>
-	</div>
-   </div>
-  </li>
-
-	 
-<li>
-<div class="mb-4 publication">
-<div class="flex flex-col md:flex-row items-center">
- <div class="md:ml-0 leading-snug">
-  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Five Queries Are Enough: Query-Efficient and Surrogate-Free Membership Inference Attacks on RAG via Entailment</span><span class="pub-links">
-    <a href="https://arxiv.org/pdf/2605.24312" target="_blank" rel="noopener" class="pub-link pub-link-pdf">
-      <i class="ti ti-file"></i>
-      <span class="pub-link-text">PDF</span>
-    </a>
-    <a href="https://zenodo.org/records/20335971" target="_blank" rel="noopener" class="pub-link pub-link-code">
-      <i class="ti ti-brand-github"></i>
-      <span class="pub-link-text">Code</span>
-    </a>
-  </span></h4>
-  <p>Nguyen Linh Bao Nguyen, Wanlun Ma, Viet Vo, Alsharif Abuadbba, <b>Minghong Fang</b>, Jun Zhang, and Yang Xiang</p>
-  <p>In Proc. USENIX Security Symposium, 2026</p>
- </div>
-</div>
-</div>
-</li>
-	 
-<li>
-<div class="mb-4 publication">
-<div class="flex flex-col md:flex-row items-center">
- <div class="md:ml-0 leading-snug">
-  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Who Taught the Lie? Responsibility Attribution for Poisoned Knowledge in Retrieval-Augmented Generation</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2509.13772" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-
-	  <a href="/poster/RAGOrigin_poster.pdf" target="_blank" rel="noopener" class="pub-link pub-link-poster"><i class="ti ti-presentation"></i><span class="pub-link-text">Poster</span></a>
-	  
-
-	  <a href="https://github.com/zhangbl6618/RAG-Responsibility-Attribution" target="_blank" rel="noopener" class="pub-link pub-link-code"><i class="ti ti-brand-github"></i><span class="pub-link-text">Code</span></a>
-  </span></h4>
-  <p>Baolei Zhang*, Haoran Xin*, Yuxi Chen, Zhuqing Liu, Biao Yi, Tong Li, Lihai Nie, Zheli Liu, and <b>Minghong Fang</b></p>
-  <p>In Proc. IEEE Symposium on Security and Privacy, 2026 (*co-primary authors, acceptance rate: 12.7%)</p>
- </div>
-</div>
-</div>
-</li>
-
-<li>
-<div class="mb-4 publication">
-<div class="flex flex-col md:flex-row items-center">
- <div class="md:ml-0 leading-snug">
-  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Beware What You Autocomplete: Forensic Attribution of Backdoored Code Completions</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2607.08011" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-  <p>Anjun Gao, Yueyang Quan, Zhuqing Liu, and <b>Minghong Fang</b></p>
-  <p>In Proc. COLM, 2026 (acceptance rate: 29%)</p>
- </div>
-</div>
-</div>
-</li>
-
-
-<li>
-<div class="mb-4 publication">
-<div class="flex flex-col md:flex-row items-center">
- <div class="md:ml-0 leading-snug">
-  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Who Broke the System? Failure Localization in LLM-Based Multi-Agent Systems</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2607.07989" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-<a href="https://www.youtube.com/watch?v=9pa3_S5TZvs" target="_blank" rel="noopener" class="pub-link pub-link-podcast"><i class="ti ti-microphone"></i><span class="pub-link-text">Podcast</span></a>
-<a href="https://www.llm-hacking.com/hacks/agentlocate-multi-agent-failure-localization.md/" target="_blank" rel="noopener" class="pub-link pub-link-coverage"><i class="ti ti-message-circle"></i><span class="pub-link-text">Coverage</span></a>
-  </span></h4>
-  <p>Yufei Xia, Anjun Gao, Yueyang Quan, Zhuqing Liu, and <b>Minghong Fang</b></p>
-  <p>In Proc. COLM, 2026 (acceptance rate: 29%)</p>
- </div>
-</div>
-</div>
-</li>	
-	 
-<li>
-<div class="mb-4 publication">
-<div class="flex flex-col md:flex-row items-center">
- <div class="md:ml-0 leading-snug">
-  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Network Digital Untwinning: Towards Backward Optimization of Digital Twins</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2605.00169" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-  <p>Zifan Zhang, Dianwei Chen, Anjun Gao, Manhua Wang, Mingzhe Chen, <b>Minghong Fang</b>, Xianfeng Yang, and Yuchen Liu</b></p>
-  <p>In Proc. ICDCS, 2026 (acceptance rate: 18.59%)</p>
- </div>
-</div>
-</div>
-</li>
-
-<li>
-<div class="mb-4 publication">
-<div class="flex flex-col md:flex-row items-center">
- <div class="md:ml-0 leading-snug">
-  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">SecureSplit: Mitigating Backdoor Attacks in Split Learning</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2601.14054" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-  <p>Zhihao Dou, Dongfei Cui, Weida Wang, Anjun Gao, Yueyang Quan, Mengyao Ma, Viet Vo, Guangdong Bai, Zhuqing Liu, and <b>Minghong Fang</b></p>
-  <p>In Proc. The Web Conference (WWW), 2026 (acceptance rate: 20.1%)</p>
- </div>
-</div>
-</div>
-</li>
-	 
-
-<li>
-<div class="mb-4 publication">
-<div class="flex flex-col md:flex-row items-center">
- <div class="md:ml-0 leading-snug">
-  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">When the Server Steps In: Calibrated Updates for Fair Federated Learning</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2601.05352" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-  <p>Tianrun Yu*, Kaixiang Zhao*, Cheng Zhang, Anjun Gao, Yueyang Quan, Zhuqing Liu, and <b>Minghong Fang</b></p>
-    <p>In Proc. WiOpt, 2026 (*co-primary authors)</p>
- </div>
-</div>
-</div>
-</li>
-
-	 	 <li>
-   <div class="mb-4 publication">
-	<div class="flex flex-col md:flex-row items-center">
-	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">SecureAFL: Secure Asynchronous Federated Learning</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2604.03862" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-	  <p>Anjun Gao*, Feng Wang*, Zhenglin Wan, Yueyang Quan, Zhuqing Liu, and <b>Minghong Fang</b></p>
-	  <p>In Proc. ACM AsiaCCS, 2026 (*co-primary authors)</p>
-	 </div>
-	</div>
-   </div>
-   </li>
-	 
-	 <li>
-   <div class="mb-4 publication">
-	<div class="flex flex-col md:flex-row items-center">
-	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">ClieND: Client-Side Neuron-Level Detection against Poisoning Attacks on Cross-Silo Federated Learning</span><span class="pub-links">
-<a href="https://dl.acm.org/doi/10.1145/3779208.3785390" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-<a href="https://github.com/Trusted-System-Lab/ClieND" target="_blank" rel="noopener" class="pub-link pub-link-code">
-<i class="ti ti-brand-github"></i>
-<span class="pub-link-text">Code</span>
-</a>
-  </span></h4>
-	  <p>Mengyao Ma, Shuofeng Liu, Viet Vo, <b>Minghong Fang</b>, Surya Nepal, and Guangdong Bai</p>
-	  <p>In Proc. ACM AsiaCCS, 2026</p>
-	 </div>
-	</div>
-   </div>
-   </li>
-  
-  
-<li>
-   <div class="mb-4 publication">
-	<div class="flex flex-col md:flex-row items-center">
-	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Practical Poisoning Attacks against Retrieval-Augmented Generation</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2504.03957" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-	  <p>Baolei Zhang, Yuxi Chen, Zhuqing Liu, Lihai Nie, Tong Li, Zheli Liu, and <b>Minghong Fang</b></p>
-	  <p>In Proc. ACM SACMAT, 2026</p>
-	 </div>
-	</div>
-   </div>
-  </li>
-
-	<li>
-   <div class="mb-4 publication">
-	<div class="flex flex-col md:flex-row items-center">
-	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Practical Framework for Privacy-Preserving and Byzantine-robust Federated Learning</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2512.17254" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-	  <p>Baolei Zhang, <b>Minghong Fang</b>, Zhuqing Liu, Biao Yi, Peizhao Zhou, Yuan Wang, Tong Li, Zheli Liu</p>
-	  <p>In IEEE Transactions on Information Forensics and Security, 2026</p>
-	 </div>
-	</div>
-   </div>
-  </li>
-	 
- <li>
-   <div class="mb-4 publication">
-	<div class="flex flex-col md:flex-row items-center">
-	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Tracing Back the Malicious Clients in Poisoning Attacks to Federated Learning</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2407.07221" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-	  <a href="https://github.com/jyqhahah/FLForensics" target="_blank" rel="noopener" class="pub-link pub-link-code"><i class="ti ti-brand-github"></i><span class="pub-link-text">Code</span></a>
-  </span></h4>
-	  <p>Yuqi Jia, <b>Minghong Fang</b>, Hongbin Liu, Jinghuai Zhang, and Neil Zhenqiang Gong</p>
-	  <p>In Proc. NeurIPS, 2025 (acceptance rate: 24.52%)</p>
-	 </div>
-	</div>
-   </div>
-   </li>
-   
-  
-<li>
-   <div class="mb-4 publication">
-	<div class="flex flex-col md:flex-row items-center">
-	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Competitive Advantage Attacks to Decentralized Federated Learning</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2310.13862.pdf" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-	  <a href="https://github.com/jyqhahah/SelfishAttack" target="_blank" rel="noopener" class="pub-link pub-link-code"><i class="ti ti-brand-github"></i><span class="pub-link-text">Code</span></a>
-  </span></h4>
-	  <p>Yuqi Jia, <b>Minghong Fang</b>, and Neil Zhenqiang Gong</p>
-	  <p>In Proc. NeurIPS, 2025 (acceptance rate: 24.52%)</p>
-	 </div>
-	</div>
-   </div>
-</li>
-
- <li>
-   <div class="mb-4 publication">
-	<div class="flex flex-col md:flex-row items-center">
-	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Secure Retrieval-Augmented Generation against Poisoning Attacks</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2510.25025" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-	  <p>Zirui Cheng*, Jikai Sun*, Anjun Gao, Yueyang Quan, Zhuqing Liu, Xiaohua Hu, and <b>Minghong Fang</b></p>
-	  <p>In Proc. IEEE BigData, 2025 (*co-primary authors)</p>
-	 </div>
-	</div>
-   </div>
-</li>
-
-	 
-<li>
-   <div class="mb-4 publication">
-	<div class="flex flex-col md:flex-row items-center">
-	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Fairness-Constrained Optimization Attack in Federated Learning</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2510.12143" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-	  <p>Harsh Kasyap, <b>Minghong Fang</b>, Zhuqing Liu, Carsten Maple, and Somanath Tripathy</p>
-	  <p>In Proc. IEEE TrustCom, 2025</p>
-	 </div>
-	</div>
-   </div>
-</li>
-
-
-
-<li>
-<div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Benchmarking Poisoning Attacks against Retrieval-Augmented Generation</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2505.18543" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-		  <p>Baolei Zhang*, Haoran Xin*, Jiatong Li*, Dongzhe Zhang*, <b>Minghong Fang</b>, Zhuqing Liu, Lihai Nie, and Zheli Liu</p>
-          <p>Preprint, 2025 (*co-primary authors)</p>
-         </div>
-        </div>
-</div>
-</li>
-	 
- <li>
-<div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Enhancing Privacy in Decentralized Min-Max Optimization: A Differentially Private Approach</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2508.07505" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-		  <p>Yueyang Quan, Chang Wang, Shengjie Zhai, <b>Minghong Fang</b>, and Zhuqing Liu</p>
-          <p>In Proc. ACM MobiHoc, 2025 (acceptance rate: 23%)</p>
-         </div>
-        </div>
-</div>
-</li>
-
-<li>
-<div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">On Transferring, Merging, and Splitting Task-Oriented Network Digital Twins</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2509.02551v1" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-		  <p>Zifan Zhang, <b>Minghong Fang</b>, Mingzhe Chen, and Yuchen Liu</p>
-          <p>In Proc. ACM MobiWac, 2025 (acceptance rate: 24%)</p>
-         </div>
-        </div>
-</div>
-</li>
-
-
-<li>
-<div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">A Power Line Backbone-Assisted Wireless Transit Network</span><span class="pub-links">
-<a href="https://ieeexplore.ieee.org/abstract/document/11192444" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-		  <p>Wei Sun, <b>Minghong Fang</b></p>
-          <p>In Proc. IEEE ICNP, 2025 (acceptance rate: 25.2%)</p>
-         </div>
-        </div>
-</div>
-</li>
-
-<li>
-   <div class="mb-4 publication">
-	<div class="flex flex-col md:flex-row items-center">
-	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Periodic Recovery From Poisoning Attacks in Machine Learning</span><span class="pub-links">
-<a href="https://ieeexplore.ieee.org/document/10962550" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-	  <p>Yuepeng Hu, <b>Minghong Fang</b>, Yuqi Jia, Hongbin Liu, and Neil Zhenqiang Gong</p>
-	  <p>In IEEE Transactions on Dependable and Secure Computing, 2025</p>
-	 </div>
-	</div>
-   </div>
-</li>
-
-<li>
-<div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Synergizing AI and Digital Twins for Next-Generation Network Optimization, Forecasting, and Security</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2503.06302" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-		  <p>Zifan Zhang, <b>Minghong Fang</b>, Dianwei Chen, Xianfeng Yang, and Yuchen Liu</p>
-          <p>In IEEE Wireless Communications, 2025</p>
-         </div>
-        </div>
-</div>
-</li>
-
-
-<li>
-<div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Find a Scapegoat: Poisoning Membership Inference Attack and Defense to Federated Learning</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2507.00423" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-		  <p>Wenjin Mo*, Zhiyuan Li*, <b>Minghong Fang</b>, and Mingwei Fang</b></p>
-          <p>In Proc. ICCV, 2025 (*co-primary authors, acceptance rate: 24%)</p>
-         </div>
-        </div>
-</div>
-</li>
-	 
- <li>
-<div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Toward Malicious Clients Detection in Federated Learning</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2505.09110" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-		  <p>Zhihao Dou*, Jiaqi Wang*, Wei Sun, Zhuqing Liu, and <b>Minghong Fang</b></p>
-          <p>In Proc. ACM AsiaCCS, 2025 (*co-primary authors, acceptance rate: 20.4%)</p>
-         </div>
-        </div>
-</div>
-</li>
-	 
- <li>
-<div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Model Poisoning Attacks to Federated Learning via Multi-Round Consistency</span><span class="pub-links">
-<a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Xie_Model_Poisoning_Attacks_to_Federated_Learning_via_Multi-Round_Consistency_CVPR_2025_paper.pdf" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-		  <a href="https://github.com/xyq7/PoisonedFL/" target="_blank" rel="noopener" class="pub-link pub-link-code"><i class="ti ti-brand-github"></i><span class="pub-link-text">Code</span></a>
-  </span></h4>
-		  <p>Yueqi Xie, <b>Minghong Fang</b>, and Neil Zhenqiang Gong</p>
-          <p>In Proc. CVPR, 2025 (acceptance rate: 22.1%)</p>
-         </div>
-        </div>
-</div>
-</li>
-	 
- <li>
-   <div class="mb-4 publication">
-	<div class="flex flex-col md:flex-row items-center">
-	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Do We Really Need to Design New Byzantine-robust Aggregation Rules?</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2501.17381" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-	  <p><b>Minghong Fang</b>, Seyedsina Nabavirazavi, Zhuqing Liu, Wei Sun, Sundararaja Sitharama Iyengar, and Haibo Yang</p>
-	  <p>In Proc. NDSS, 2025 (acceptance rate: 16.1%)</p>
-	 </div>
-	</div>
-   </div>
-  </li>
-
- <li>
-   <div class="mb-4 publication">
-	<div class="flex flex-col md:flex-row items-center">
-	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Traceback of Poisoning Attacks to Retrieval-Augmented Generation</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2504.21668" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-
-		  <a href="https://github.com/zhangbl6618/RAG-Responsibility-Attribution" target="_blank" rel="noopener" class="pub-link pub-link-code"><i class="ti ti-brand-github"></i><span class="pub-link-text">Code</span></a>
-  </span></h4>
-	  <p>Baolei Zhang*, Haoran Xin*, <b>Minghong Fang</b>, Zhuqing Liu, Biao Yi, Tong Li, and Zheli Liu</p>
-	  <p>In Proc. The Web Conference (WWW), 2025 (*co-primary authors, acceptance rate: 19.8%)</p>
-	 </div>
-	</div>
-   </div>
-  </li>
-	 
-<li>
-   <div class="mb-4 publication">
-	<div class="flex flex-col md:flex-row items-center">
-	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Provably Robust Federated Reinforcement Learning</span><span class="pub-links">
-<a href="https://www.arxiv.org/pdf/2502.08123" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-	  <p><b>Minghong Fang</b>*, Xilong Wang*, and Neil Zhenqiang Gong</p>
-	  <p>In Proc. The Web Conference (WWW), 2025 (*co-primary authors)</p>
-      <p style="color:rgb(192, 0, 0);">Oral Presentation (acceptance rate: 7.5%)</p>
-	 </div>
-	</div>
-   </div>
-  </li>
-	 
- <li>
-   <div class="mb-4 publication">
-	<div class="flex flex-col md:flex-row items-center">
-	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Byzantine-Robust Federated Learning over Ring-All-Reduce Distributed Computing</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2501.17392" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-	  <p><b>Minghong Fang</b>, Zhuqing Liu, Xuecen Zhao, and Jia Liu</p>
-	  <p>In Proc. The Web Conference (WWW), 2025</p>
-	 </div>
-	</div>
-   </div>
-  </li>
-  
-   <li>
-   <div class="mb-4 publication">
-	<div class="flex flex-col md:flex-row items-center">
-	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Poisoning Attacks and Defenses to Federated Unlearning</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2501.17396" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-	  <p>Wenbin Wang*, Qiwen Ma*, Zifan Zhang, Yuchen Liu, Zhuqing Liu, and <b>Minghong Fang</b></p>
-	  <p>In Proc. The Web Conference (WWW), 2025 (*co-primary authors)</p>
-          <p>🎙️ Media Coverage: <a style="color:rgb(192, 0, 0);" href="https://www.devdiscourse.com/article/technology/3245409-federated-learning-under-siege-the-silent-war-between-poisoning-attacks-and-security-defenses" target="_blank">Devdiscourse</a></p>
-	 </div>
-	</div>
-   </div>
-  </li>
-	 
- <li>
-   <div class="mb-4 publication">
-	<div class="flex flex-col md:flex-row items-center">
-	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Byzantine-Robust Decentralized Federated Learning</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2406.10416" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-	  <p><b>Minghong Fang</b>, Zifan Zhang, Hairi, Prashant Khanduri, Jia Liu, Songtao Lu, Yuchen Liu, and Neil Gong</p>
-	  <p>In Proc. ACM CCS, 2024 (acceptance rate: 16.9%)</p>
-	 </div>
-	</div>
-   </div>
-  </li>
-
-
- <li>
-   <div class="mb-4 publication">
-	<div class="flex flex-col md:flex-row items-center">
-	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">On the Hardness of Decentralized Multi-Agent Policy Evaluation under Byzantine Attacks</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2409.12882" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-	  <p>Hairi*, <b>Minghong Fang</b>*, Zifan Zhang, Alvaro Velasquez, and Jia Liu</p>
-	  <p>In Proc. WiOpt, 2024 (*co-primary authors)</p>
-	 </div>
-	</div>
-   </div>
-  </li>
-	 
- <li>
-   <div class="mb-4 publication">
-	<div class="flex flex-col md:flex-row items-center">
-	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Adversarial Attacks to Multi-Modal Models</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2409.06793" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-	  <p>Zhihao Dou, Xin Hu, Haibo Yang, Zhuqing Liu, and <b>Minghong Fang</b></p>
-	  <p>In Proc. ACM LAMPS, 2024</p>
-	 </div>
-	</div>
-   </div>
-  </li>
-	 
-	 
- <li>
-   <div class="mb-4 publication">
-	<div class="flex flex-col md:flex-row items-center">
-	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Securing Distributed Network Digital Twin Systems Against Model Poisoning Attacks</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2407.01917" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-	  <p>Zifan Zhang, <b>Minghong Fang</b>, Mingzhe Chen, Gaolei Li, Xi Lin, and Yuchen Liu</p>
-	  <p>In IEEE Internet of Things Journal, 2024</p>
-	 </div>
-	</div>
-   </div>
-</li>
-
-	 
- <li>
-   <div class="mb-4 publication">
-	<div class="flex flex-col md:flex-row items-center">
-	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Understanding Server-Assisted Federated Learning in the Presence of Incomplete Client Participation</span><span class="pub-links">
-<a href="https://openreview.net/pdf/1476cc056cf1c412cb0b007630c127a8d70e1f21.pdf" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-	  <p>Haibo Yang, Peiwen Qiu, Prashant Khanduri, <b>Minghong Fang</b>, and Jia Liu</p>
-	  <p>In Proc. ICML, 2024 (acceptance rate: 27.5%)</p>
-	 </div>
-	</div>
-   </div>
-  </li>
-  
-  
- <li>
-   <div class="mb-4 publication">
-	<div class="flex flex-col md:flex-row items-center">
-	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">FedREDefense: Defending against Model Poisoning Attacks for Federated Learning using Model Update Reconstruction Error</span><span class="pub-links">
-<a href="https://openreview.net/pdf?id=Wjq2bS7fTK" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-
-	<a href="https://github.com/xyq7/FedREDefense" target="_blank" rel="noopener" class="pub-link pub-link-code"><i class="ti ti-brand-github"></i><span class="pub-link-text">Code</span></a>
-  </span></h4>
-	  <p>Yueqi Xie, <b>Minghong Fang</b>, and Neil Zhenqiang Gong</p>
-	  <p>In Proc. ICML, 2024 (acceptance rate: 27.5%)</p>
-	 </div>
-	</div>
-   </div>
- </li>
-
-<li>
-   <div class="mb-4 publication">
-	<div class="flex flex-col md:flex-row items-center">
-	 <div class="md:ml-0 leading-snug">
-	  <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Poisoning Attacks on Federated Learning-based Wireless Traffic Prediction</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2404.14389" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-	  <p>Zifan Zhang, <b>Minghong Fang</b>, Jiayuan Huang, and Yuchen Liu</p>
-	  <p>In Proc. IFIP Networking, 2024 (acceptance rate: 24.6%)</p>
-          <p>🏆 <a style="color:rgb(192, 0, 0);" href="https://networking.ifip.org/2024/" target="_blank">Best Paper Runner-up Award</a></p>
-	 </div>
-	</div>
-   </div>
-</li>	 
-
-
-	 
-  <li>
-       <div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">GradSafe: Detecting Jailbreak Prompts for LLMs via Safety-Critical Gradient Analysis</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2402.13494.pdf" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-
-		<a href="https://github.com/xyq7/GradSafe" target="_blank" rel="noopener" class="pub-link pub-link-code"><i class="ti ti-brand-github"></i><span class="pub-link-text">Code</span></a>
-  </span></h4>
-		  <p>Yueqi Xie, <b>Minghong Fang</b>, Renjie Pi, and Neil Gong</p>
-          <p>In Proc. ACL, 2024 (acceptance rate: 21.3%)</p>
-         </div>
-        </div>
-       </div>
-    </li>
-
-    <li>
-       <div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Poisoning Federated Recommender Systems with Fake Users</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2402.11637.pdf" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-          <p>Ming Yin*, Yichang Xu*, <b>Minghong Fang</b>, and Neil Zhenqiang Gong</p>
-          <p>In Proc. The Web Conference (WWW), 2024 (*co-primary authors, acceptance rate: 20.2%)</p>
-         </div>
-        </div>
-       </div>
-      </li>
-	 
-  <li>
-       <div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Robust Federated Learning Mitigates Client-side Training Data Distribution Inference Attacks</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2403.03149.pdf" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-          <p>Yichang Xu*, Ming Yin*, <b>Minghong Fang</b>, and Neil Zhenqiang Gong</p>
-          <p>In Proc. The Web Conference (WWW), 2024 (*co-primary authors)</p>
-         </div>
-        </div>
-       </div>
-    </li>
- 
-
- 	<li>
-       <div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">IPCert: Provably Robust Intellectual Property Protection for Machine Learning</span><span class="pub-links">
-<a href="https://openaccess.thecvf.com/content/ICCV2023W/AROW/papers/Jiang_IPCert_Provably_Robust_Intellectual_Property_Protection_for_Machine_Learning_ICCVW_2023_paper.pdf" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-		  <p>Zhengyuan Jiang, <b>Minghong Fang</b>, and Neil Zhenqiang Gong</p>
-          <p>In Proc. ICCV Workshops, 2023</p>
-         </div>
-        </div>
-       </div>
-    </li>
-	
-	
-    
-	<li>
-       <div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Machine learning-based modeling approaches for estimating pyrolysis products of varied biomass and operating conditions</span><span class="pub-links">
-<a href="https://www.sciencedirect.com/science/article/abs/pii/S2589014X22003425" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-		  <p>Jiangfeng Shen, Mengguo Yan, <b>Minghong Fang</b>, and Xi Gao</p>
-          <p>In Bioresource Technology Reports, 2022</p>
-         </div>
-        </div>
-       </div>
-    </li>
-	
-	
-    <li>
-       <div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">AFLGuard: Byzantine-robust Asynchronous Federated Learning</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2212.06325.pdf" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-		  <p><b>Minghong Fang</b>, Jia Liu, Neil Zhenqiang Gong, and Elizabeth S. Bentley</p>
-          <p>In Proc. ACM ACSAC, 2022 (acceptance rate: 24.1%)</p>
-         </div>
-        </div>
-       </div>
-    </li>
-	 
-		
-    <li>
-       <div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">NET-FLEET: Achieving Linear Convergence Speedup for Fully Decentralized Federated Learning with Heterogeneous Data</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2208.08490.pdf" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-		  <p>Xin Zhang, <b>Minghong Fang</b>, Zhuqing Liu, Haibo Yang, Jia Liu, and Zhengyuan Zhu</p>
-          <p>In Proc. ACM MobiHoc, 2022 (acceptance rate: 19.8%)</p>
-         </div>
-        </div>
-       </div>
-    </li>
-
-   <li>
-       <div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">FairRoad: Achieving Fairness for Recommender Systems with Optimized Antidote Data</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2212.06750.pdf" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-		  <p><b>Minghong Fang</b>, Jia Liu, Michinari Momma, and Yi Sun</p>
-          <p>In Proc. ACM SACMAT, 2022</p>
-         </div>
-        </div>
-       </div>
-	</li>
-	
-	   <li>
-       <div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Data Poisoning Attacks and Defenses to Crowdsourcing Systems</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2102.09171.pdf" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-		  <p><b>Minghong Fang</b>, Minghao Sun, Qi Li, Neil Zhenqiang Gong, Jin Tian, and Jia Liu</p>
-          <p>In Proc. The Web Conference (WWW), 2021 (acceptance rate: 20.6%)</p>
-         </div>
-        </div>
-       </div>
-	   </li>
-	   
-	   
-	   <li>
-       <div class="mb-4  publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Achieving Linear Speedup with Partial Worker Participation in Non-IID Federated Learning</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2101.11203.pdf" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-          <p>Haibo Yang, <b>Minghong Fang</b>, and Jia Liu</p>
-          <p>In Proc. ICLR, 2021 (acceptance rate: 28.7%)</p>
-         </div>
-        </div>
-       </div>
-	   </li>
-	   
-	   <li>
-       <div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">FLTrust: Byzantine-robust Federated Learning via Trust Bootstrapping</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2012.13995.pdf" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-
-		<a href="/code/FLTrust_code.zip" target="_blank" rel="noopener" class="pub-link pub-link-code"><i class="ti ti-brand-github"></i><span class="pub-link-text">Code</span></a>
-  </span></h4>
-          <p>Xiaoyu Cao*, <b>Minghong Fang</b>*, Jia Liu, and Neil Zhenqiang Gong</p>
-          <p> In Proc. NDSS, 2021 (*co-primary authors, acceptance rate: 15.2%)</p>
-	  <p>🏆 <a style="color:rgb(192, 0, 0);" href="https://www.mlsec.org/topnotch/sec_2020s.html" target="_blank">Top-cited Security Papers from 2021</a> 
-           </p>
-         </div>
-        </div>
-       </div>
-	   </li>
-	   
-	   
-	   <li>
-       <div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Adaptive Multi-Hierarchical signSGD for Communication-Efficient Distributed Optimization</span><span class="pub-links">
-<a href="https://ieeexplore.ieee.org/document/9154256" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-          <p>Haibo Yang, Xin Zhang, <b>Minghong Fang</b>, and Jia Liu</p>
-          <p> In Proc. IEEE SPAWC, Special Session on Distributed Signal Processing for Coding and Communications, 2020 (Invited Paper)</p>
-         </div>
-        </div>
-       </div>
-	   </li>
-	   
-	   	<li>
-       <div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Private and Communication-Efficient Edge Learning: A Sparse Differential Gaussian-Masking Distributed SGD Approach</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2001.03836.pdf" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-          <p>Xin Zhang, <b>Minghong Fang</b>, Jia Liu, and Zhengyuan Zhu</p>
-          <p>In Proc. ACM MobiHoc, 2020 (acceptance rate: 15%)</p>
-         </div>
-        </div>
-       </div>
-	   </li>
-	   
-	   <li>
-       <div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Influence Function based Data Poisoning Attacks to Top-N Recommender Systems</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2002.08025.pdf" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-          <p><b>Minghong Fang</b>, Neil Zhenqiang Gong, and Jia Liu</p>
-          <p> In Proc. The Web Conference (WWW), 2020 (acceptance rate: 25%)</p>
-         </div>
-        </div>
-       </div>
-	   </li>
-	   
-	   
-	   	<li>
-       <div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Toward Low-Cost and Stable Blockchain Networks</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/2002.08027.pdf" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-          <p><b>Minghong Fang</b> and Jia Liu</p>
-          <p> In Proc. IEEE ICC, 2020</p>
-         </div>
-        </div>
-       </div>
-	   </li>
-	   
-	   
-	   <li>
-       <div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Local Model Poisoning Attacks to Byzantine-Robust Federated Learning</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/1911.11815.pdf" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-
-		<a href="/code/FLTrust_code.zip" target="_blank" rel="noopener" class="pub-link pub-link-code"><i class="ti ti-brand-github"></i><span class="pub-link-text">Code</span></a>
-  </span></h4>
-          <p><b>Minghong Fang</b>*, Xiaoyu Cao*, Jinyuan Jia, and Neil Zhenqiang Gong</p>
-		  <p> In Proc. USENIX Security Symposium, 2020 (*co-primary authors, acceptance rate: 16.1%)</p>
-		 <p>🏆 <a style="color:rgb(192, 0, 0);" href="https://www.mlsec.org/topnotch/sec_2020s.html" target="_blank">Top-cited Security Papers from 2020</a> 
-                  </p>
-		<p>🏆 <a style="color:rgb(192, 0, 0);" href="https://mlsec.org/topnotch/sec_ntop100.html" 	target="_blank">Normalized Top-100 Security Papers since 1981</a> 
-		</p>
-         </div>
-        </div>
-       </div>
-	   </li>
-	   
-	   <li>
-       <div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Byzantine-Resilient Stochastic Gradient Descent for Distributed Learning: A Lipschitz-Inspired Coordinate-wise Median Approach</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/1909.04532.pdf" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-          <p>Haibo Yang, Xin Zhang, <b>Minghong Fang</b>, and Jia Liu</p>
-          <p class="text-red-600 font-bold"></p>
-          <p> In Proc. IEEE CDC, 2019</p>
-         </div>
-        </div>
-       </div>
-	   </li>
-	   
-	   	<li>
-       <div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Poisoning Attacks to Graph-Based Recommender Systems</span><span class="pub-links">
-<a href="https://arxiv.org/pdf/1809.04127.pdf" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-          <p><b>Minghong Fang</b>, Guolei Yang, Neil Zhenqiang Gong, and Jia Liu</p>
-          <p> In Proc. ACSAC, 2018 (acceptance rate: 20.1%)</p>
-         </div>
-        </div>
-       </div>
-	   </li>
-	   
-	   
-	   	<li>
-       <div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">Prioritizing Disease-Causing Genes Based on Network Diffusion and Rank Concordance</span><span class="pub-links">
-<a href="https://ieeexplore.ieee.org/document/6999162" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-          <p><b>Minghong Fang</b>, Xiaohua Hu, Tingting He, Yan Wang, Junmin Zhao, Xianjun Shen, and Jie Yuan</p>
-          <p> In Proc. IEEE BIBM, 2014 (acceptance rate: 19%)</p>
-         </div>
-        </div>
-       </div>
-	   </li>
-	   
-	   	<li>
-       <div class="mb-4 publication">
-        <div class="flex flex-col md:flex-row items-center">
-         <div class="md:ml-0 leading-snug">
-          <h4 class="mb-0 mt-0"><span class="mr-4 font-medium">A Novel Disease Gene Prediction Method Based on PPI Network</span><span class="pub-links">
-<a href="https://ieeexplore.ieee.org/abstract/document/6999175" target="_blank" rel="noopener" class="pub-link pub-link-pdf"><i class="ti ti-file"></i><span class="pub-link-text">PDF</span></a>
-  </span></h4>
-          <p>Junmin Zhao, Tingting He, Xiaohua Hu, Yan Wang, Xianjun Shen, <b>Minghong Fang</b>, and Jie Yuan</p>
-          <p> In Proc. IEEE BIBM, 2014 (acceptance rate: 19%)</p>
-         </div>
-        </div>
-       </div>
-	   </li>
-	   
-	</ul>
-	</div>
-   </main>
-   
-
-   
-   
-  </div>
-  <nav id="mobile-nav" class="mobile-nav fixed left-0 top-0 h-screen w-full overflow-y-auto pt-12 bg-gray-200 z-50 md:hidden">
-   <ul>
-    <li class="item relative opacity-0"><a href="/" class="link block py-2 px-5 text-dark text-3xl hover:text-primary" style="text-decoration: none">Home</a></li>
-    <li class="item relative opacity-0"><a href="/publications/" class="link block py-2 px-5 text-dark text-3xl hover:text-primary" style="text-decoration: none">Publications</a></li>
-	
-	<li class="item relative opacity-0"><a href="/students/" class="link block py-2 px-5 text-dark text-3xl hover:text-primary" style="text-decoration: none">Students</a></li>
-	   
-   </ul>
+</head>
+<body>
+<header class="topbar">
+  <nav class="top-nav">
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a class="active" href="/publications/">Publications</a>
+      <a href="/students/">Students</a>
+    </div>
   </nav>
-  <button id="mobile-nav-toggle" class="mobile-nav-toggle block fixed h-16 w-full bottom-0 flex items-center justify-center font-bold border-none bg-gray-200 text-dark z-50 focus:outline-none md:hidden" aria-label="Mobile menu toggle" aria-expanded="false" aria-controls="mobile-nav"><span class="mobile-nav-label mr-2 font-medium">Menu</span> <span class="mobile-nav-icon" aria-hidden="true"><span class="mobile-nav-icon-line bg-black w-6 block transition-all duration-200 ease-out mb-1"></span> <span class="mobile-nav-icon-line bg-black w-6 block transition-all duration-200 ease-out mb-1"></span> <span class="mobile-nav-icon-line bg-black w-6 block transition-all duration-200 ease-out"></span></span></button>
-   <script>
-    // Mark the current page's nav link as active by adding .nav-active class
-    (function() {
-      var path = window.location.pathname.replace(/\/index\.html?$/, '/');
-      var isHome = (path === '/' || path === '');
-      document.querySelectorAll('.menu a').forEach(function(a) {
-        var href = a.getAttribute('href');
-        if (!href) return;
-        var hrefNorm = href.replace(/\/index\.html?$/, '/');
-        if (hrefNorm === '/' ? isHome : (path === hrefNorm || path.indexOf(hrefNorm) === 0)) {
-          a.classList.add('nav-active');
-        }
-      });
-    })();
-  </script>
- </body>
+</header>
+<main class="page">
+  <p class="page-head">
+    <a href="https://scholar.google.com/citations?user=L6vkkC8AAAAJ&amp;hl=en">Google Scholar &rsaquo;</a>
+  </p>
+
+  <ul class="pubs">
+
+        <li class="pub">
+          <div class="pub-title">Patcher: Post-Hoc Patching of Backdoored Large Language Models <span class="pub-links"><a href="https://arxiv.org/pdf/2606.02995">PDF</a><a href="https://zenodo.org/records/20362596">Code</a></span></div>
+          <div class="pub-authors">Anjun Gao, Yueyang Quan, Yufei Xia, Zhuqing Liu, and <span class="me">Minghong Fang</span></div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. USENIX Security Symposium, 2026</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Five Queries Are Enough: Query-Efficient and Surrogate-Free Membership Inference Attacks on RAG via Entailment <span class="pub-links"><a href="https://arxiv.org/pdf/2605.24312">PDF</a><a href="https://zenodo.org/records/20335971">Code</a></span></div>
+          <div class="pub-authors">Nguyen Linh Bao Nguyen, Wanlun Ma, Viet Vo, Alsharif Abuadbba, <span class="me">Minghong Fang</span>, Jun Zhang, and Yang Xiang</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. USENIX Security Symposium, 2026</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Who Taught the Lie? Responsibility Attribution for Poisoned Knowledge in Retrieval-Augmented Generation <span class="pub-links"><a href="https://arxiv.org/pdf/2509.13772">PDF</a><a href="/poster/RAGOrigin_poster.pdf">Poster</a><a href="https://github.com/zhangbl6618/RAG-Responsibility-Attribution">Code</a></span></div>
+          <div class="pub-authors">Baolei Zhang*, Haoran Xin*, Yuxi Chen, Zhuqing Liu, Biao Yi, Tong Li, Lihai Nie, Zheli Liu, and <span class="me">Minghong Fang</span></div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. IEEE Symposium on Security and Privacy, 2026</span>
+            <span class="note">(*co-primary authors, acceptance rate: 12.7%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Beware What You Autocomplete: Forensic Attribution of Backdoored Code Completions <span class="pub-links"><a href="https://arxiv.org/pdf/2607.08011">PDF</a></span></div>
+          <div class="pub-authors">Anjun Gao, Yueyang Quan, Zhuqing Liu, and <span class="me">Minghong Fang</span></div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. COLM, 2026</span>
+            <span class="note">(acceptance rate: 29%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Who Broke the System? Failure Localization in LLM-Based Multi-Agent Systems <span class="pub-links"><a href="https://arxiv.org/pdf/2607.07989">PDF</a><a href="https://www.youtube.com/watch?v=9pa3_S5TZvs">Podcast</a><a href="https://www.llm-hacking.com/hacks/agentlocate-multi-agent-failure-localization.md/">Coverage</a></span></div>
+          <div class="pub-authors">Yufei Xia, Anjun Gao, Yueyang Quan, Zhuqing Liu, and <span class="me">Minghong Fang</span></div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. COLM, 2026</span>
+            <span class="note">(acceptance rate: 29%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Network Digital Untwinning: Towards Backward Optimization of Digital Twins <span class="pub-links"><a href="https://arxiv.org/pdf/2605.00169">PDF</a></span></div>
+          <div class="pub-authors">Zifan Zhang, Dianwei Chen, Anjun Gao, Manhua Wang, Mingzhe Chen, <span class="me">Minghong Fang</span>, Xianfeng Yang, and Yuchen Liu</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. ICDCS, 2026</span>
+            <span class="note">(acceptance rate: 18.59%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">SecureSplit: Mitigating Backdoor Attacks in Split Learning <span class="pub-links"><a href="https://arxiv.org/pdf/2601.14054">PDF</a></span></div>
+          <div class="pub-authors">Zhihao Dou, Dongfei Cui, Weida Wang, Anjun Gao, Yueyang Quan, Mengyao Ma, Viet Vo, Guangdong Bai, Zhuqing Liu, and <span class="me">Minghong Fang</span></div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. The Web Conference (WWW), 2026</span>
+            <span class="note">(acceptance rate: 20.1%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">When the Server Steps In: Calibrated Updates for Fair Federated Learning <span class="pub-links"><a href="https://arxiv.org/pdf/2601.05352">PDF</a></span></div>
+          <div class="pub-authors">Tianrun Yu*, Kaixiang Zhao*, Cheng Zhang, Anjun Gao, Yueyang Quan, Zhuqing Liu, and <span class="me">Minghong Fang</span></div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. WiOpt, 2026</span>
+            <span class="note">(*co-primary authors)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">SecureAFL: Secure Asynchronous Federated Learning <span class="pub-links"><a href="https://arxiv.org/pdf/2604.03862">PDF</a></span></div>
+          <div class="pub-authors">Anjun Gao*, Feng Wang*, Zhenglin Wan, Yueyang Quan, Zhuqing Liu, and <span class="me">Minghong Fang</span></div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. ACM AsiaCCS, 2026</span>
+            <span class="note">(*co-primary authors)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">ClieND: Client-Side Neuron-Level Detection against Poisoning Attacks on Cross-Silo Federated Learning <span class="pub-links"><a href="https://dl.acm.org/doi/10.1145/3779208.3785390">PDF</a><a href="https://github.com/Trusted-System-Lab/ClieND">Code</a></span></div>
+          <div class="pub-authors">Mengyao Ma, Shuofeng Liu, Viet Vo, <span class="me">Minghong Fang</span>, Surya Nepal, and Guangdong Bai</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. ACM AsiaCCS, 2026</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Practical Poisoning Attacks against Retrieval-Augmented Generation <span class="pub-links"><a href="https://arxiv.org/pdf/2504.03957">PDF</a></span></div>
+          <div class="pub-authors">Baolei Zhang, Yuxi Chen, Zhuqing Liu, Lihai Nie, Tong Li, Zheli Liu, and <span class="me">Minghong Fang</span></div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. ACM SACMAT, 2026</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Practical Framework for Privacy-Preserving and Byzantine-robust Federated Learning <span class="pub-links"><a href="https://arxiv.org/pdf/2512.17254">PDF</a></span></div>
+          <div class="pub-authors">Baolei Zhang, <span class="me">Minghong Fang</span>, Zhuqing Liu, Biao Yi, Peizhao Zhou, Yuan Wang, Tong Li, Zheli Liu</div>
+          <div class="pub-meta">
+            <span class="venue">In IEEE Transactions on Information Forensics and Security, 2026</span>
+          </div>
+        </li>
+
+  
+
+        <li class="pub">
+          <div class="pub-title">Tracing Back the Malicious Clients in Poisoning Attacks to Federated Learning <span class="pub-links"><a href="https://arxiv.org/pdf/2407.07221">PDF</a><a href="https://github.com/jyqhahah/FLForensics">Code</a></span></div>
+          <div class="pub-authors">Yuqi Jia, <span class="me">Minghong Fang</span>, Hongbin Liu, Jinghuai Zhang, and Neil Zhenqiang Gong</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. NeurIPS, 2025</span>
+            <span class="note">(acceptance rate: 24.52%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Competitive Advantage Attacks to Decentralized Federated Learning <span class="pub-links"><a href="https://arxiv.org/pdf/2310.13862.pdf">PDF</a><a href="https://github.com/jyqhahah/SelfishAttack">Code</a></span></div>
+          <div class="pub-authors">Yuqi Jia, <span class="me">Minghong Fang</span>, and Neil Zhenqiang Gong</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. NeurIPS, 2025</span>
+            <span class="note">(acceptance rate: 24.52%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Secure Retrieval-Augmented Generation against Poisoning Attacks <span class="pub-links"><a href="https://arxiv.org/pdf/2510.25025">PDF</a></span></div>
+          <div class="pub-authors">Zirui Cheng*, Jikai Sun*, Anjun Gao, Yueyang Quan, Zhuqing Liu, Xiaohua Hu, and <span class="me">Minghong Fang</span></div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. IEEE BigData, 2025</span>
+            <span class="note">(*co-primary authors)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Fairness-Constrained Optimization Attack in Federated Learning <span class="pub-links"><a href="https://arxiv.org/pdf/2510.12143">PDF</a></span></div>
+          <div class="pub-authors">Harsh Kasyap, <span class="me">Minghong Fang</span>, Zhuqing Liu, Carsten Maple, and Somanath Tripathy</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. IEEE TrustCom, 2025</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Benchmarking Poisoning Attacks against Retrieval-Augmented Generation <span class="pub-links"><a href="https://arxiv.org/pdf/2505.18543">PDF</a></span></div>
+          <div class="pub-authors">Baolei Zhang*, Haoran Xin*, Jiatong Li*, Dongzhe Zhang*, <span class="me">Minghong Fang</span>, Zhuqing Liu, Lihai Nie, and Zheli Liu</div>
+          <div class="pub-meta">
+            <span class="venue">Preprint, 2025</span>
+            <span class="note">(*co-primary authors)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Enhancing Privacy in Decentralized Min-Max Optimization: A Differentially Private Approach <span class="pub-links"><a href="https://arxiv.org/pdf/2508.07505">PDF</a></span></div>
+          <div class="pub-authors">Yueyang Quan, Chang Wang, Shengjie Zhai, <span class="me">Minghong Fang</span>, and Zhuqing Liu</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. ACM MobiHoc, 2025</span>
+            <span class="note">(acceptance rate: 23%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">On Transferring, Merging, and Splitting Task-Oriented Network Digital Twins <span class="pub-links"><a href="https://arxiv.org/pdf/2509.02551v1">PDF</a></span></div>
+          <div class="pub-authors">Zifan Zhang, <span class="me">Minghong Fang</span>, Mingzhe Chen, and Yuchen Liu</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. ACM MobiWac, 2025</span>
+            <span class="note">(acceptance rate: 24%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">A Power Line Backbone-Assisted Wireless Transit Network <span class="pub-links"><a href="https://ieeexplore.ieee.org/abstract/document/11192444">PDF</a></span></div>
+          <div class="pub-authors">Wei Sun, <span class="me">Minghong Fang</span></div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. IEEE ICNP, 2025</span>
+            <span class="note">(acceptance rate: 25.2%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Periodic Recovery From Poisoning Attacks in Machine Learning <span class="pub-links"><a href="https://ieeexplore.ieee.org/document/10962550">PDF</a></span></div>
+          <div class="pub-authors">Yuepeng Hu, <span class="me">Minghong Fang</span>, Yuqi Jia, Hongbin Liu, and Neil Zhenqiang Gong</div>
+          <div class="pub-meta">
+            <span class="venue">In IEEE Transactions on Dependable and Secure Computing, 2025</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Synergizing AI and Digital Twins for Next-Generation Network Optimization, Forecasting, and Security <span class="pub-links"><a href="https://arxiv.org/pdf/2503.06302">PDF</a></span></div>
+          <div class="pub-authors">Zifan Zhang, <span class="me">Minghong Fang</span>, Dianwei Chen, Xianfeng Yang, and Yuchen Liu</div>
+          <div class="pub-meta">
+            <span class="venue">In IEEE Wireless Communications, 2025</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Find a Scapegoat: Poisoning Membership Inference Attack and Defense to Federated Learning <span class="pub-links"><a href="https://arxiv.org/pdf/2507.00423">PDF</a></span></div>
+          <div class="pub-authors">Wenjin Mo*, Zhiyuan Li*, <span class="me">Minghong Fang</span>, and Mingwei Fang</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. ICCV, 2025</span>
+            <span class="note">(*co-primary authors, acceptance rate: 24%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Toward Malicious Clients Detection in Federated Learning <span class="pub-links"><a href="https://arxiv.org/pdf/2505.09110">PDF</a></span></div>
+          <div class="pub-authors">Zhihao Dou*, Jiaqi Wang*, Wei Sun, Zhuqing Liu, and <span class="me">Minghong Fang</span></div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. ACM AsiaCCS, 2025</span>
+            <span class="note">(*co-primary authors, acceptance rate: 20.4%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Model Poisoning Attacks to Federated Learning via Multi-Round Consistency <span class="pub-links"><a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Xie_Model_Poisoning_Attacks_to_Federated_Learning_via_Multi-Round_Consistency_CVPR_2025_paper.pdf">PDF</a><a href="https://github.com/xyq7/PoisonedFL/">Code</a></span></div>
+          <div class="pub-authors">Yueqi Xie, <span class="me">Minghong Fang</span>, and Neil Zhenqiang Gong</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. CVPR, 2025</span>
+            <span class="note">(acceptance rate: 22.1%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Do We Really Need to Design New Byzantine-robust Aggregation Rules? <span class="pub-links"><a href="https://arxiv.org/pdf/2501.17381">PDF</a></span></div>
+          <div class="pub-authors"><span class="me">Minghong Fang</span>, Seyedsina Nabavirazavi, Zhuqing Liu, Wei Sun, Sundararaja Sitharama Iyengar, and Haibo Yang</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. NDSS, 2025</span>
+            <span class="note">(acceptance rate: 16.1%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Traceback of Poisoning Attacks to Retrieval-Augmented Generation <span class="pub-links"><a href="https://arxiv.org/pdf/2504.21668">PDF</a><a href="https://github.com/zhangbl6618/RAG-Responsibility-Attribution">Code</a></span></div>
+          <div class="pub-authors">Baolei Zhang*, Haoran Xin*, <span class="me">Minghong Fang</span>, Zhuqing Liu, Biao Yi, Tong Li, and Zheli Liu</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. The Web Conference (WWW), 2025</span>
+            <span class="note">(*co-primary authors, acceptance rate: 19.8%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Provably Robust Federated Reinforcement Learning <span class="pub-links"><a href="https://www.arxiv.org/pdf/2502.08123">PDF</a></span></div>
+          <div class="pub-authors"><span class="me">Minghong Fang</span>*, Xilong Wang*, and Neil Zhenqiang Gong</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. The Web Conference (WWW), 2025</span>
+            <span class="note">(*co-primary authors)</span>
+          </div>
+          <div class="pub-meta">
+            <span class="note">Oral Presentation (acceptance rate: 7.5%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Byzantine-Robust Federated Learning over Ring-All-Reduce Distributed Computing <span class="pub-links"><a href="https://arxiv.org/pdf/2501.17392">PDF</a></span></div>
+          <div class="pub-authors"><span class="me">Minghong Fang</span>, Zhuqing Liu, Xuecen Zhao, and Jia Liu</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. The Web Conference (WWW), 2025</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Poisoning Attacks and Defenses to Federated Unlearning <span class="pub-links"><a href="https://arxiv.org/pdf/2501.17396">PDF</a></span></div>
+          <div class="pub-authors">Wenbin Wang*, Qiwen Ma*, Zifan Zhang, Yuchen Liu, Zhuqing Liu, and <span class="me">Minghong Fang</span></div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. The Web Conference (WWW), 2025</span>
+            <span class="note">(*co-primary authors)</span>
+          </div>
+          <div class="pub-awards">
+            <span class="tag"><a href="https://www.devdiscourse.com/article/technology/3245409-federated-learning-under-siege-the-silent-war-between-poisoning-attacks-and-security-defenses">🎙️ Media Coverage: Devdiscourse</a></span>
+          </div>
+        </li>
+
+  
+
+        <li class="pub">
+          <div class="pub-title">Byzantine-Robust Decentralized Federated Learning <span class="pub-links"><a href="https://arxiv.org/pdf/2406.10416">PDF</a></span></div>
+          <div class="pub-authors"><span class="me">Minghong Fang</span>, Zifan Zhang, Hairi, Prashant Khanduri, Jia Liu, Songtao Lu, Yuchen Liu, and Neil Gong</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. ACM CCS, 2024</span>
+            <span class="note">(acceptance rate: 16.9%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">On the Hardness of Decentralized Multi-Agent Policy Evaluation under Byzantine Attacks <span class="pub-links"><a href="https://arxiv.org/pdf/2409.12882">PDF</a></span></div>
+          <div class="pub-authors">Hairi*, <span class="me">Minghong Fang</span>*, Zifan Zhang, Alvaro Velasquez, and Jia Liu</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. WiOpt, 2024</span>
+            <span class="note">(*co-primary authors)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Adversarial Attacks to Multi-Modal Models <span class="pub-links"><a href="https://arxiv.org/pdf/2409.06793">PDF</a></span></div>
+          <div class="pub-authors">Zhihao Dou, Xin Hu, Haibo Yang, Zhuqing Liu, and <span class="me">Minghong Fang</span></div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. ACM LAMPS, 2024</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Securing Distributed Network Digital Twin Systems Against Model Poisoning Attacks <span class="pub-links"><a href="https://arxiv.org/pdf/2407.01917">PDF</a></span></div>
+          <div class="pub-authors">Zifan Zhang, <span class="me">Minghong Fang</span>, Mingzhe Chen, Gaolei Li, Xi Lin, and Yuchen Liu</div>
+          <div class="pub-meta">
+            <span class="venue">In IEEE Internet of Things Journal, 2024</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Understanding Server-Assisted Federated Learning in the Presence of Incomplete Client Participation <span class="pub-links"><a href="https://openreview.net/pdf/1476cc056cf1c412cb0b007630c127a8d70e1f21.pdf">PDF</a></span></div>
+          <div class="pub-authors">Haibo Yang, Peiwen Qiu, Prashant Khanduri, <span class="me">Minghong Fang</span>, and Jia Liu</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. ICML, 2024</span>
+            <span class="note">(acceptance rate: 27.5%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">FedREDefense: Defending against Model Poisoning Attacks for Federated Learning using Model Update Reconstruction Error <span class="pub-links"><a href="https://openreview.net/pdf?id=Wjq2bS7fTK">PDF</a><a href="https://github.com/xyq7/FedREDefense">Code</a></span></div>
+          <div class="pub-authors">Yueqi Xie, <span class="me">Minghong Fang</span>, and Neil Zhenqiang Gong</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. ICML, 2024</span>
+            <span class="note">(acceptance rate: 27.5%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Poisoning Attacks on Federated Learning-based Wireless Traffic Prediction <span class="pub-links"><a href="https://arxiv.org/pdf/2404.14389">PDF</a></span></div>
+          <div class="pub-authors">Zifan Zhang, <span class="me">Minghong Fang</span>, Jiayuan Huang, and Yuchen Liu</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. IFIP Networking, 2024</span>
+            <span class="note">(acceptance rate: 24.6%)</span>
+          </div>
+          <div class="pub-awards">
+            <span class="tag award"><a href="https://networking.ifip.org/2024/">🏆 Best Paper Runner-up Award</a></span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">GradSafe: Detecting Jailbreak Prompts for LLMs via Safety-Critical Gradient Analysis <span class="pub-links"><a href="https://arxiv.org/pdf/2402.13494.pdf">PDF</a><a href="https://github.com/xyq7/GradSafe">Code</a></span></div>
+          <div class="pub-authors">Yueqi Xie, <span class="me">Minghong Fang</span>, Renjie Pi, and Neil Gong</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. ACL, 2024</span>
+            <span class="note">(acceptance rate: 21.3%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Poisoning Federated Recommender Systems with Fake Users <span class="pub-links"><a href="https://arxiv.org/pdf/2402.11637.pdf">PDF</a></span></div>
+          <div class="pub-authors">Ming Yin*, Yichang Xu*, <span class="me">Minghong Fang</span>, and Neil Zhenqiang Gong</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. The Web Conference (WWW), 2024</span>
+            <span class="note">(*co-primary authors, acceptance rate: 20.2%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Robust Federated Learning Mitigates Client-side Training Data Distribution Inference Attacks <span class="pub-links"><a href="https://arxiv.org/pdf/2403.03149.pdf">PDF</a></span></div>
+          <div class="pub-authors">Yichang Xu*, Ming Yin*, <span class="me">Minghong Fang</span>, and Neil Zhenqiang Gong</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. The Web Conference (WWW), 2024</span>
+            <span class="note">(*co-primary authors)</span>
+          </div>
+        </li>
+
+  
+
+        <li class="pub">
+          <div class="pub-title">IPCert: Provably Robust Intellectual Property Protection for Machine Learning <span class="pub-links"><a href="https://openaccess.thecvf.com/content/ICCV2023W/AROW/papers/Jiang_IPCert_Provably_Robust_Intellectual_Property_Protection_for_Machine_Learning_ICCVW_2023_paper.pdf">PDF</a></span></div>
+          <div class="pub-authors">Zhengyuan Jiang, <span class="me">Minghong Fang</span>, and Neil Zhenqiang Gong</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. ICCV Workshops, 2023</span>
+          </div>
+        </li>
+
+  
+
+        <li class="pub">
+          <div class="pub-title">Machine learning-based modeling approaches for estimating pyrolysis products of varied biomass and operating conditions <span class="pub-links"><a href="https://www.sciencedirect.com/science/article/abs/pii/S2589014X22003425">PDF</a></span></div>
+          <div class="pub-authors">Jiangfeng Shen, Mengguo Yan, <span class="me">Minghong Fang</span>, and Xi Gao</div>
+          <div class="pub-meta">
+            <span class="venue">In Bioresource Technology Reports, 2022</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">AFLGuard: Byzantine-robust Asynchronous Federated Learning <span class="pub-links"><a href="https://arxiv.org/pdf/2212.06325.pdf">PDF</a></span></div>
+          <div class="pub-authors"><span class="me">Minghong Fang</span>, Jia Liu, Neil Zhenqiang Gong, and Elizabeth S. Bentley</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. ACM ACSAC, 2022</span>
+            <span class="note">(acceptance rate: 24.1%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">NET-FLEET: Achieving Linear Convergence Speedup for Fully Decentralized Federated Learning with Heterogeneous Data <span class="pub-links"><a href="https://arxiv.org/pdf/2208.08490.pdf">PDF</a></span></div>
+          <div class="pub-authors">Xin Zhang, <span class="me">Minghong Fang</span>, Zhuqing Liu, Haibo Yang, Jia Liu, and Zhengyuan Zhu</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. ACM MobiHoc, 2022</span>
+            <span class="note">(acceptance rate: 19.8%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">FairRoad: Achieving Fairness for Recommender Systems with Optimized Antidote Data <span class="pub-links"><a href="https://arxiv.org/pdf/2212.06750.pdf">PDF</a></span></div>
+          <div class="pub-authors"><span class="me">Minghong Fang</span>, Jia Liu, Michinari Momma, and Yi Sun</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. ACM SACMAT, 2022</span>
+          </div>
+        </li>
+
+  
+
+        <li class="pub">
+          <div class="pub-title">Data Poisoning Attacks and Defenses to Crowdsourcing Systems <span class="pub-links"><a href="https://arxiv.org/pdf/2102.09171.pdf">PDF</a></span></div>
+          <div class="pub-authors"><span class="me">Minghong Fang</span>, Minghao Sun, Qi Li, Neil Zhenqiang Gong, Jin Tian, and Jia Liu</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. The Web Conference (WWW), 2021</span>
+            <span class="note">(acceptance rate: 20.6%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Achieving Linear Speedup with Partial Worker Participation in Non-IID Federated Learning <span class="pub-links"><a href="https://arxiv.org/pdf/2101.11203.pdf">PDF</a></span></div>
+          <div class="pub-authors">Haibo Yang, <span class="me">Minghong Fang</span>, and Jia Liu</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. ICLR, 2021</span>
+            <span class="note">(acceptance rate: 28.7%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">FLTrust: Byzantine-robust Federated Learning via Trust Bootstrapping <span class="pub-links"><a href="https://arxiv.org/pdf/2012.13995.pdf">PDF</a><a href="/code/FLTrust_code.zip">Code</a></span></div>
+          <div class="pub-authors">Xiaoyu Cao*, <span class="me">Minghong Fang</span>*, Jia Liu, and Neil Zhenqiang Gong</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. NDSS, 2021</span>
+            <span class="note">(*co-primary authors, acceptance rate: 15.2%)</span>
+          </div>
+          <div class="pub-awards">
+            <span class="tag award"><a href="https://www.mlsec.org/topnotch/sec_2020s.html">🏆 Top-cited Security Papers from 2021</a></span>
+          </div>
+        </li>
+
+  
+
+        <li class="pub">
+          <div class="pub-title">Adaptive Multi-Hierarchical signSGD for Communication-Efficient Distributed Optimization <span class="pub-links"><a href="https://ieeexplore.ieee.org/document/9154256">PDF</a></span></div>
+          <div class="pub-authors">Haibo Yang, Xin Zhang, <span class="me">Minghong Fang</span>, and Jia Liu</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. IEEE SPAWC, Special Session on Distributed Signal Processing for Coding and Communications, 2020</span>
+            <span class="note">(Invited Paper)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Private and Communication-Efficient Edge Learning: A Sparse Differential Gaussian-Masking Distributed SGD Approach <span class="pub-links"><a href="https://arxiv.org/pdf/2001.03836.pdf">PDF</a></span></div>
+          <div class="pub-authors">Xin Zhang, <span class="me">Minghong Fang</span>, Jia Liu, and Zhengyuan Zhu</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. ACM MobiHoc, 2020</span>
+            <span class="note">(acceptance rate: 15%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Influence Function based Data Poisoning Attacks to Top-N Recommender Systems <span class="pub-links"><a href="https://arxiv.org/pdf/2002.08025.pdf">PDF</a></span></div>
+          <div class="pub-authors"><span class="me">Minghong Fang</span>, Neil Zhenqiang Gong, and Jia Liu</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. The Web Conference (WWW), 2020</span>
+            <span class="note">(acceptance rate: 25%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Toward Low-Cost and Stable Blockchain Networks <span class="pub-links"><a href="https://arxiv.org/pdf/2002.08027.pdf">PDF</a></span></div>
+          <div class="pub-authors"><span class="me">Minghong Fang</span> and Jia Liu</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. IEEE ICC, 2020</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">Local Model Poisoning Attacks to Byzantine-Robust Federated Learning <span class="pub-links"><a href="https://arxiv.org/pdf/1911.11815.pdf">PDF</a><a href="/code/FLTrust_code.zip">Code</a></span></div>
+          <div class="pub-authors"><span class="me">Minghong Fang</span>*, Xiaoyu Cao*, Jinyuan Jia, and Neil Zhenqiang Gong</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. USENIX Security Symposium, 2020</span>
+            <span class="note">(*co-primary authors, acceptance rate: 16.1%)</span>
+          </div>
+          <div class="pub-awards">
+            <span class="tag award"><a href="https://www.mlsec.org/topnotch/sec_2020s.html">🏆 Top-cited Security Papers from 2020</a></span>
+            <span class="tag award"><a href="https://mlsec.org/topnotch/sec_ntop100.html">🏆 Normalized Top-100 Security Papers since 1981</a></span>
+          </div>
+        </li>
+
+  
+
+        <li class="pub">
+          <div class="pub-title">Byzantine-Resilient Stochastic Gradient Descent for Distributed Learning: A Lipschitz-Inspired Coordinate-wise Median Approach <span class="pub-links"><a href="https://arxiv.org/pdf/1909.04532.pdf">PDF</a></span></div>
+          <div class="pub-authors">Haibo Yang, Xin Zhang, <span class="me">Minghong Fang</span>, and Jia Liu</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. IEEE CDC, 2019</span>
+          </div>
+        </li>
+
+  
+
+        <li class="pub">
+          <div class="pub-title">Poisoning Attacks to Graph-Based Recommender Systems <span class="pub-links"><a href="https://arxiv.org/pdf/1809.04127.pdf">PDF</a></span></div>
+          <div class="pub-authors"><span class="me">Minghong Fang</span>, Guolei Yang, Neil Zhenqiang Gong, and Jia Liu</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. ACSAC, 2018</span>
+            <span class="note">(acceptance rate: 20.1%)</span>
+          </div>
+        </li>
+
+  
+
+        <li class="pub">
+          <div class="pub-title">Prioritizing Disease-Causing Genes Based on Network Diffusion and Rank Concordance <span class="pub-links"><a href="https://ieeexplore.ieee.org/document/6999162">PDF</a></span></div>
+          <div class="pub-authors"><span class="me">Minghong Fang</span>, Xiaohua Hu, Tingting He, Yan Wang, Junmin Zhao, Xianjun Shen, and Jie Yuan</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. IEEE BIBM, 2014</span>
+            <span class="note">(acceptance rate: 19%)</span>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-title">A Novel Disease Gene Prediction Method Based on PPI Network <span class="pub-links"><a href="https://ieeexplore.ieee.org/abstract/document/6999175">PDF</a></span></div>
+          <div class="pub-authors">Junmin Zhao, Tingting He, Xiaohua Hu, Yan Wang, Xianjun Shen, <span class="me">Minghong Fang</span>, and Jie Yuan</div>
+          <div class="pub-meta">
+            <span class="venue">In Proc. IEEE BIBM, 2014</span>
+            <span class="note">(acceptance rate: 19%)</span>
+          </div>
+        </li>
+
+  </ul>
+</main>
+</body>
 </html>
-
-
