@@ -1,446 +1,538 @@
 <!DOCTYPE html>
-<html lang="en" class="min-h-full antialiased">
- <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Minghong Fang</title>
-  <link rel="shortcut icon" type="image/png" href="/images/icon_MF_8.png">
-  <meta name="robots" content="index,follow" />
-  <link rel="preload" href="fonts/gillsans/Gill_Sans_Medium.otf" />
-  <link rel="stylesheet" href="/css/main.min.css" />
-  <script src="/js/main.min.js" defer="defer"></script>
-  <meta name="twitter:site" content="" />
-  <meta name="twitter:creator" content="" />
-  <meta name="og:locale" content="en_GB" />
-  <meta name="og:type" content="website" />
-  <link rel="icon" type="image/png" href="" />
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" type="image/png" href="/images/icon_MF_8.png">
+<title>Students | Minghong Fang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#000000;
+  --muted:#5f6470;
+  --faint:#9aa0ad;
+  --card-red:#ad0000;
+  --card-red-soft:#fdf2f2;
+  --line:#e8e8ec;
+  --bg:#ffffff;
+  --sans:"Inter",-apple-system,"Segoe UI",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--bg);
+  font-size:15.5px;
+  line-height:1.65;
+}
+a{color:var(--card-red);text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible{outline:2px solid var(--card-red);outline-offset:2px;border-radius:2px}
 
- <style>
-  /* === navigation: minimal, no background, active state via underline + bold === */
-  .menu a[href="/"],
-  .menu a[href="/publications/"],
-  .menu a[href="/students/"] {
-    position: relative;
-    text-decoration: none;
-    color: #000;
-    transition: color 0.15s ease;
-  }
+.layout{
+  display:grid;
+  grid-template-columns:300px 1fr;
+  max-width:1120px;
+  margin:0 auto;
+  min-height:100vh;
+}
 
-  /* Hover: dim the link slightly to give feedback */
-  .menu a[href="/"]:hover,
-  .menu a[href="/publications/"]:hover,
-  .menu a[href="/students/"]:hover {
-    color: #555;
-  }
+/* ---------- Sidebar ---------- */
+.sidebar{
+  background:#fff;
+  padding:44px 28px 40px 36px;
+}
+.sidebar-inner{
+  position:sticky;
+  top:92px;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+}
+.avatar{
+  width:180px;height:180px;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+  box-shadow:0 2px 12px rgba(28,28,34,.10);
+}
+.name{
+  font-size:1.5rem;
+  font-weight:700;
+  letter-spacing:-.02em;
+  margin-top:22px;
+  line-height:1.2;
+}
+.role{
+  margin-top:8px;
+  font-size:.92rem;
+  color:var(--ink);
+  line-height:1.5;
+}
+.contact{
+  margin-top:20px;
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+  font-size:.9rem;
+}
+.contact a{
+  display:flex;align-items:center;gap:9px;
+  color:var(--ink);
+}
+.contact a:hover{color:var(--card-red);text-decoration:none}
+.contact svg{width:15px;height:15px;flex:none;color:var(--card-red)}
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:#fff;
+  box-shadow:0 1px 4px rgba(28,28,34,.07);
+}
+.top-nav{
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 36px;
+  height:48px;
+  display:flex;
+  align-items:center;
+}
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:26px;
+}
+.nav-links a{
+  color:var(--ink);
+  font-size:.9rem;
+  font-weight:500;
+  padding:14px 0 12px;
+  border-bottom:2px solid transparent;
+}
+.nav-links a:hover{color:var(--card-red);text-decoration:none}
+.nav-links a.active{
+  color:var(--card-red);
+  border-bottom-color:var(--card-red);
+}
+.quote{
+  margin-top:34px;
+  padding-top:24px;
+  border-top:1px solid var(--line);
+  font-style:italic;
+  font-size:.88rem;
+  color:var(--faint);
+  line-height:1.6;
+}
+.quote cite{
+  display:block;
+  margin-top:6px;
+  font-style:normal;
+  font-size:.78rem;
+  letter-spacing:.04em;
+}
 
-  /* Active page (set by JS at end of body): bold + permanent underline */
-  .menu a.nav-active {
-    font-weight: 500;
-  }
-  .menu a.nav-active::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -4px;
-    height: 2px;
-    background-color: #000;
-  }
-  .menu a.nav-active:hover {
-    color: #000;
-  }
+/* ---------- Main ---------- */
+.main{padding:36px 36px 64px 56px}
+.intro{
+  line-height:1.7;
+}
+.intro .research{
+  display:block;
+  margin-top:10px;
+}
+.intro .research strong{font-weight:600}
 
-  /* Gap between nav and content (snug, matches Publications page) */
-  main#main { padding-top: 0.5rem !important; }
-  @media (min-width: 1024px) {
-    main#main { padding-top: 1rem !important; }
+.section{margin-top:30px}
+.section-title{
+  font-size:1.18rem;
+  font-weight:700;
+  letter-spacing:-.01em;
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  padding-bottom:10px;
+  border-bottom:2px solid var(--ink);
+  margin-bottom:16px;
+}
+.section-title .more{
+  font-size:.85rem;
+  font-weight:500;
+  margin-left:auto;
+}
+
+/* Awards */
+.awards{list-style:none;display:flex;flex-direction:column;gap:9px}
+.awards li{
+  position:relative;
+  padding-left:22px;
+  font-size:.95rem;
+}
+.awards li::before{
+  content:"";
+  position:absolute;
+  left:0;top:.58em;
+  width:6px;height:6px;
+  border-radius:1.5px;
+  background:var(--card-red);
+}
+.awards a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+.awards a:hover{color:var(--card-red);text-decoration-color:var(--card-red)}
+
+/* Publications */
+.pubs{list-style:none;display:flex;flex-direction:column}
+.pub{
+  padding:8px 0 8px 22px;
+}
+.pub:first-child{padding-top:0}
+.pub:last-child{padding-bottom:0}
+.pub-title{
+  position:relative;
+  font-weight:600;
+  line-height:1.5;
+  color:var(--ink);
+}
+.pub-title::before{
+  content:"";
+  position:absolute;
+  left:-22px;top:.53em;
+  width:6px;height:6px;
+  border-radius:1.5px;
+  background:var(--card-red);
+}
+.pub-authors{
+  margin-top:6px;
+  font-size:.9rem;
+  color:var(--ink);
+}
+.pub-authors .me{
+  color:var(--ink);
+  font-weight:600;
+}
+.pub-meta{
+  margin-top:6px;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px;
+  font-size:.85rem;
+}
+.venue{
+  font-weight:400;
+  color:var(--ink);
+}
+.note{
+  color:var(--ink);
+  font-weight:400;
+}
+.pub-awards{
+  margin-top:8px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+}
+.tag{
+  display:inline-block;
+  padding:2px 9px;
+  border-radius:999px;
+  font-size:.76rem;
+  font-weight:500;
+  background:#f2f2f5;
+  color:var(--ink);
+}
+.tag.award{
+  background:var(--card-red-soft);
+  color:var(--card-red);
+}
+.tag.award a{color:var(--card-red)}
+.pub-links{
+  display:inline;
+  margin-left:4px;
+  white-space:nowrap;
+}
+.pub-links a{
+  display:inline-block;
+  margin-left:6px;
+  padding:1px 10px;
+  font-weight:500;
+  vertical-align:2px;
+  border:1px solid #d9d9df;
+  border-radius:999px;
+  font-size:.78rem;
+  color:var(--ink);
+  transition:border-color .15s,color .15s,background .15s;
+}
+.pub-links a:hover{
+  border-color:var(--card-red);
+  color:var(--card-red);
+  background:var(--card-red-soft);
+  text-decoration:none;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width:960px) and (min-width:721px){
+  .layout{grid-template-columns:240px 1fr}
+  .sidebar{padding:36px 20px 32px 24px}
+  .sidebar-inner{top:84px}
+  .avatar{width:150px;height:150px}
+  .name{font-size:1.3rem}
+  .main{padding:32px 24px 56px 36px}
+}
+@media (max-width:720px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{
+    border-bottom:1px solid var(--line);
+    padding:36px 28px 28px;
   }
+  .sidebar-inner{position:static}
+  .avatar{width:132px;height:132px;margin:0 auto}
+  .name,.role{text-align:center}
+  .contact{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:10px 22px}
+  .top-nav{padding:0 20px}
+  .nav-links{gap:18px}
+  .quote{text-align:center;margin-top:24px;padding-top:18px}
+  .main{padding:32px 24px 56px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .pub-links a{transition:none}
+}
+
+/* Students page */
+.page{max-width:1120px;margin:0 auto;padding:20px 36px 64px}
+.page-note{margin-bottom:20px}
+.table-wrap{overflow-x:auto}
+.students{
+  width:100%;
+  border-collapse:collapse;
+  font-size:.9rem;
+}
+.students th{
+  text-align:left;
+  font-weight:700;
+  padding:0 28px 12px 0;
+  border-bottom:2px solid var(--ink);
+}
+.students td{
+  vertical-align:middle;
+  padding:12px 28px 12px 0;
+  border-bottom:1px solid var(--line);
+}
+.students th:last-child,.students td:last-child{padding-right:0}
+.students tbody tr:hover{background:#fafafa}
+.students .col-name{width:16%}
+.students .col-pubs{width:52%}
+.students .col-inst{width:32%}
+.student-name{font-weight:600}
+.pub-line{line-height:1.6}
+.pub-line + .pub-line{margin-top:6px}
+.authorship{
+  display:inline-block;
+  margin-left:8px;
+  padding:1px 9px;
+  border-radius:999px;
+  font-size:.74rem;
+  font-weight:500;
+  background:#f2f2f5;
+  color:var(--ink);
+  vertical-align:1px;
+}
+.arrow{color:var(--card-red);padding:0 2px}
+@media (max-width:720px){
+  .page{padding:20px 24px 56px}
+  .students{min-width:680px}
+}
 </style>
-	 
- </head>
- 
-
-<style type="text/css">
-.tg {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-  table-layout: fixed;
-  font-size: 15px;
-  line-height: 1.45;
-}
-/* Fixed column widths for consistent row alignment */
-.tg th:nth-child(1), .tg td:nth-child(1) { width: 15%; }
-.tg th:nth-child(2), .tg td:nth-child(2) { width: 48%; }
-.tg th:nth-child(3), .tg td:nth-child(3) { width: 37%; }
-/* Header: subtle, uppercase, single bottom rule */
-.tg th {
-  text-align: left;
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  color: #555;
-  background: transparent;
-  padding: 8px 16px 10px;
-  border-bottom: 1.5px solid #d4d4d4;
-  white-space: nowrap;
-}
-/* Cells: horizontal dividers only, no vertical lines */
-.tg td {
-  text-align: left;
-  vertical-align: top;
-  padding: 9px 16px;
-  border-bottom: 1px solid #ededed;
-  color: #1a1a1a;
-}
-.tg tbody tr:last-child td { border-bottom: none; }
-/* Zebra striping: each student row gets a faint background so multiple papers stay grouped */
-.tg tbody tr:nth-child(even) td { background-color: #f7f6f3; }
-/* Student name column */
-.tg .no-wrap {
-  white-space: nowrap;
-  font-weight: 500;
-  vertical-align: middle;
-}
-/* Publications list */
-.tg .no-wrap-publications {
-  vertical-align: middle;
-}
-.tg .no-wrap-publications ul {
-  margin: 0;
-  padding-left: 18px;
-  list-style: disc;
-}
-.tg .no-wrap-publications li {
-  white-space: normal;
-  margin-bottom: 3px;
-}
-.tg .no-wrap-publications li:last-child { margin-bottom: 0; }
-/* Authorship role: soft light-blue pill */
-.tg .role {
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  color: #4f6c8f;
-  background: #eef4fb;
-  border: 1px solid #d4e3f4;
-  border-radius: 999px;
-  padding: 0 8px;
-  line-height: 1.55;
-  margin-left: 8px;
-  white-space: nowrap;
-  vertical-align: 1px;
-}
-/* Institution column */
-.tg .center-left {
-  vertical-align: middle;
-  color: #444;
-}
-@media (max-width: 768px) {
-  .tg, .tg th, .tg td { font-size: 13px; }
-  .tg th, .tg td { padding: 10px 8px; }
-  /* Drop fixed layout on small screens so columns size to content */
-  .tg { table-layout: auto; }
-  .tg th:nth-child(1), .tg td:nth-child(1),
-  .tg th:nth-child(2), .tg td:nth-child(2),
-  .tg th:nth-child(3), .tg td:nth-child(3) { width: auto; }
-  /* Allow headers to wrap instead of overflowing into the next column */
-  .tg th, .tg .no-wrap { white-space: normal; }
-}
-</style>
-
-
-
- <body id="publications" class="leading-normal bg-white-255 dark:bg-black">
-  <a class="sr-only" href="#main">Skip to content</a>
-  <div id="wrapper" class="wrapper pb-16 md:pb-0 flex flex-col relative min-h-screen">
-   <div class="">
-    <header id="header" class="inner header flex flex-col md:flex-row md:justify-start items-center p-2 md:p-4">
-     <nav id="nav" class="nav hidden md:flex flex-grow">
-      <ul class="menu list-reset text-base flex flex-row justify-between flex-grow">
-       <div class="flex flex-col md:flex-row items-center">
-        <li class="level-1 mb-4 md:mr-8 md:mb-0"><a href="/" class="link hover:text-primary active:text-primary text-black" style="text-decoration: none">Home</a></li>
-        <li class="level-1 mb-4 md:mr-8 md:mb-0"><a href="/publications/" class="link hover:text-primary active:text-primary text-black" style="text-decoration: none">Publications</a></li>
-		<li class="level-1 mb-4 md:mr-8 md:mb-0"><a href="/students/" class="link hover:text-primary active:text-primary text-black" style="text-decoration: none">Students</a></li>
-       </div>
-      </ul>
-     </nav>
-    </header>
-   </div>
-
-
-   <main id="main" class="main inner flex flex-1 flex-col py-5 lg:py-10 focus:outline-none" tabindex="-1">
-   <div class="w-full md:px-8 leading-relaxed md-content text-justify">
-     <h1 class="font-small mt-0 hidden md:block" style="margin-top:-15px; font-size: 18px !important;">Research Interns</h1>
-<p>
-This table lists publications by students who interned with me. They are not my formal advisees.
-</p>
-	   
-<table class="tg">
-  <thead>
-    <tr>
-      <th class="no-wrap"><b>Student</b></th>
-      <th><b>Publications</b></th>
-      <th><b>Institution</b></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="no-wrap">Ming Yin</td>
-      <td class="no-wrap-publications">
-        <ul>
-          <li>The Web Conference 2024 <span class="role">co-primary author</span></li>
-          <li>The Web Conference 2024 <span class="role">co-primary author</span></li>
-        </ul>
-      </td>
-      <td class="center-left">University of Science and Technology of China → Duke University</td>
-    </tr>
-    <tr>
-      <td class="no-wrap">Yichang Xu</td>
-      <td class="no-wrap-publications">
-        <ul>
-          <li>The Web Conference 2024 <span class="role">co-primary author</span></li>
-          <li>The Web Conference 2024 <span class="role">co-primary author</span></li>
-        </ul>
-      </td>
-      <td class="center-left">University of Science and Technology of China → Georgia Institute of Technology</td>
-    </tr>
-    <tr>
-      <td class="no-wrap">Zhihao Dou</td>
-      <td class="no-wrap-publications">
-        <ul>
-          <li>ACM LAMPS 2024 <span class="role">co-primary author</span></li>
-	     <li>ACM AsiaCCS 2025 <span class="role">co-primary author</span></li>
-		<li>The Web Conference 2026 <span class="role">co-primary author</span></li>
-        </ul>
-      </td>
-      <td class="center-left">Duke University → Case Western Reserve University</td>
-    </tr>
-    <tr>
-      <td class="no-wrap">Xin Hu</td>
-      <td class="no-wrap-publications">
-        <ul>
-          <li>ACM LAMPS 2024 <span class="role">co-primary author</span></li>
-        </ul>
-      </td>
-      <td class="center-left">The University of Tokyo</td>
-    </tr>
-    <tr>
-      <td class="no-wrap">Xilong Wang</td>
-      <td class="no-wrap-publications">
-        <ul>
-          <li>The Web Conference 2025 <span class="role">co-primary author</span></li>
-        </ul>
-      </td>
-      <td class="center-left">University of Science and Technology of China → Duke University</td>
-    </tr>
-	<tr>
-      <td class="no-wrap">Baolei Zhang</td>
-      <td class="no-wrap-publications">
-        <ul>
-          <li>The Web Conference 2025 <span class="role">co-primary author</span></li>
-		  <li>IEEE Symposium on Security and Privacy 2026 <span class="role">co-primary author</span></li>
-		  <li>ACM SACMAT 2026 <span class="role">first author</span></li>
-        </ul>
-      </td>
-      <td class="center-left">Nankai University</td>
-    </tr>
-	<tr>
-      <td class="no-wrap">Haoran Xin</td>
-      <td class="no-wrap-publications">
-        <ul>
-          <li>The Web Conference 2025 <span class="role">co-primary author</span></li>
-		  <li>IEEE Symposium on Security and Privacy 2026 <span class="role">co-primary author</span></li>
-        </ul>
-      </td>
-      <td class="center-left">Nankai University</td>
-    </tr>
-    <tr>
-      <td class="no-wrap">Wenbin Wang</td>
-      <td class="no-wrap-publications">
-        <ul>
-          <li>The Web Conference 2025 <span class="role">co-primary author</span></li>
-        </ul>
-      </td>
-      <td class="center-left">ShanghaiTech University → The Ohio State University</td>
-    </tr>
-    <tr>
-      <td class="no-wrap">Qiwen Ma</td>
-      <td class="no-wrap-publications">
-        <ul>
-          <li>The Web Conference 2025 <span class="role">co-primary author</span></li>
-        </ul>
-      </td>
-      <td class="center-left">Xidian University</td>
-    </tr>
-    <tr>
-      <td class="no-wrap">Xuecen Zhao</td>
-      <td class="no-wrap-publications">
-        <ul>
-          <li>The Web Conference 2025 <span class="role">third author</span></li>
-        </ul>
-      </td>
-      <td class="center-left">University of Washington → University of Iowa</td>
-    </tr>
-  <tr>
-      <td class="no-wrap">Jiaqi Wang</td>
-      <td class="no-wrap-publications">
-        <ul>
-          <li>ACM AsiaCCS 2025 <span class="role">co-primary author</span></li>
-        </ul>
-      </td>
-      <td class="center-left">Hainan Normal University</td>
-    </tr>
-
-<tr>
-  <td class="no-wrap">Wenjin Mo</td>
-  <td class="no-wrap-publications">
-	<ul>
-	  <li>ICCV 2025 <span class="role">co-primary author</span></li>
-	</ul>
-  </td>
-  <td class="center-left">Sun Yat-sen University → Yale University</td>
-</tr>
-
-<tr>
-  <td class="no-wrap">Zhiyuan Li</td>
-  <td class="no-wrap-publications">
-	<ul>
-	  <li>ICCV 2025 <span class="role">co-primary author</span></li>
-	</ul>
-  </td>
-  <td class="center-left">Independent Researcher</td>
-</tr>
-
-<tr>
-  <td class="no-wrap">Yueyang Quan</td>
-  <td class="no-wrap-publications">
-	<ul>
-	  <li>MobiHoc 2025 <span class="role">first author</span></li>
-	</ul>
-  </td>
-  <td class="center-left">Northeastern University → University of North Texas</td>
-</tr>
-	  
-<tr>
-  <td class="no-wrap">Chang Wang</td>
-  <td class="no-wrap-publications">
-	<ul>
-	  <li>MobiHoc 2025 <span class="role">second author</span></li>
-	</ul>
-  </td>
-  <td class="center-left">Nanjing University of Posts and Telecommunications → University of Nevada, Las Vegas</td>
-</tr>
-
- <tr>
-  <td class="no-wrap">Zirui Cheng</td>
-  <td class="no-wrap-publications">
-	<ul>
-	  <li>IEEE BigData 2025 <span class="role">co-primary author</span></li>
-	</ul>
-  </td>
-  <td class="center-left">Huazhong University of Science and Technology → National University of Singapore</td>
-</tr>
-
-<tr>
-  <td class="no-wrap">Jikai Sun</td>
-  <td class="no-wrap-publications">
-	<ul>
-	  <li>IEEE BigData 2025 <span class="role">co-primary author</span></li>
-	</ul>
-  </td>
-  <td class="center-left">National University of Singapore</td>
-</tr>
-
-<tr>
-  <td class="no-wrap">Yuxi Chen</td>
-  <td class="no-wrap-publications">
-	<ul>
-	  <li>IEEE Symposium on Security and Privacy 2026 <span class="role">second author</span></li>
-	  <li>ACM SACMAT 2026 <span class="role">second author</span></li>
-	</ul>
-  </td>
-  <td class="center-left">Independent Researcher</td>
-</tr>
-
-<tr>
-  <td class="no-wrap">Tianrun Yu</td>
-  <td class="no-wrap-publications">
-	<ul>
-	  <li>WiOpt 2026 <span class="role">co-primary author</span></li>
-	</ul>
-  </td>
-  <td class="center-left">The Pennsylvania State University</td>
-</tr>
-
-<tr>
-  <td class="no-wrap">Kaixiang Zhao</td>
-  <td class="no-wrap-publications">
-	<ul>
-	  <li>WiOpt 2026 <span class="role">co-primary author</span></li>
-	</ul>
-  </td>
-  <td class="center-left">University of Notre Dame</td>
-</tr>
-
-<tr>
-  <td class="no-wrap">Cheng Zhang</td>
-  <td class="no-wrap-publications">
-	<ul>
-	  <li>WiOpt 2026 <span class="role">second author</span></li>
-	</ul>
-  </td>
-  <td class="center-left">North Carolina State University</td>
-</tr>
-	  
-
- <tr>
-  <td class="no-wrap">Feng Wang</td>
-  <td class="no-wrap-publications">
-	<ul>
-	  <li>ACM AsiaCCS 2026 <span class="role">co-primary author</span></li>
-	</ul>
-  </td>
-  <td class="center-left">Northeastern University</td>
-</tr>
-
-	  
-  </tbody>
-</table>
-
-
-	</div>
-   </main>
-
-
-  <nav id="mobile-nav" class="mobile-nav fixed left-0 top-0 h-screen w-full overflow-y-auto pt-12 bg-gray-200 z-50 md:hidden">
-   <ul>
-    <li class="item relative opacity-0"><a href="/" class="link block py-2 px-5 text-dark text-3xl hover:text-primary" style="text-decoration: none">Home</a></li>
-    <li class="item relative opacity-0"><a href="/publications/" class="link block py-2 px-5 text-dark text-3xl hover:text-primary" style="text-decoration: none">Publications</a></li>
-	
-    <li class="item relative opacity-0"><a href="/students/" class="link block py-2 px-5 text-dark text-3xl hover:text-primary" style="text-decoration: none">Students</a></li>	
-   
-   </ul>
+</head>
+<body>
+<header class="topbar">
+  <nav class="top-nav">
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/publications/">Publications</a>
+      <a class="active" href="/students/">Students</a>
+    </div>
   </nav>
-  <button id="mobile-nav-toggle" class="mobile-nav-toggle block fixed h-16 w-full bottom-0 flex items-center justify-center font-bold border-none bg-gray-200 text-dark z-50 focus:outline-none md:hidden" aria-label="Mobile menu toggle" aria-expanded="false" aria-controls="mobile-nav"><span class="mobile-nav-label mr-2 font-medium">Menu</span> <span class="mobile-nav-icon" aria-hidden="true"><span class="mobile-nav-icon-line bg-black w-6 block transition-all duration-200 ease-out mb-1"></span> <span class="mobile-nav-icon-line bg-black w-6 block transition-all duration-200 ease-out mb-1"></span> <span class="mobile-nav-icon-line bg-black w-6 block transition-all duration-200 ease-out"></span></span></button>
-   <script>
-    // Mark the current page's nav link as active by adding .nav-active class
-    (function() {
-      var path = window.location.pathname.replace(/\/index\.html?$/, '/');
-      var isHome = (path === '/' || path === '');
-      document.querySelectorAll('.menu a').forEach(function(a) {
-        var href = a.getAttribute('href');
-        if (!href) return;
-        var hrefNorm = href.replace(/\/index\.html?$/, '/');
-        if (hrefNorm === '/' ? isHome : (path === hrefNorm || path.indexOf(hrefNorm) === 0)) {
-          a.classList.add('nav-active');
-        }
-      });
-    })();
-  </script>
-  </body>
-</html> 
-  
- 
+</header>
+<main class="page">
+  <p class="page-note">This table lists publications by students who interned with me. They are not my formal advisees.</p>
+  <div class="table-wrap">
+    <table class="students">
+      <thead>
+        <tr>
+          <th class="col-name">Student</th>
+          <th class="col-pubs">Publications</th>
+          <th class="col-inst">Institution</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><span class="student-name">Ming Yin</span></td>
+        <td>
+          <div class="pub-line">The Web Conference 2024<span class="authorship">co-primary author</span></div>
+          <div class="pub-line">The Web Conference 2024<span class="authorship">co-primary author</span></div>
+        </td>
+        <td>University of Science and Technology of China<span class="arrow">→</span>Duke University</td>
+      </tr>
+      <tr>
+        <td><span class="student-name">Yichang Xu</span></td>
+        <td>
+          <div class="pub-line">The Web Conference 2024<span class="authorship">co-primary author</span></div>
+          <div class="pub-line">The Web Conference 2024<span class="authorship">co-primary author</span></div>
+        </td>
+        <td>University of Science and Technology of China<span class="arrow">→</span>Georgia Institute of Technology</td>
+      </tr>
+      <tr>
+        <td><span class="student-name">Zhihao Dou</span></td>
+        <td>
+          <div class="pub-line">ACM LAMPS 2024<span class="authorship">co-primary author</span></div>
+          <div class="pub-line">ACM AsiaCCS 2025<span class="authorship">co-primary author</span></div>
+          <div class="pub-line">The Web Conference 2026<span class="authorship">co-primary author</span></div>
+        </td>
+        <td>Duke University<span class="arrow">→</span>Case Western Reserve University</td>
+      </tr>
+      <tr>
+        <td><span class="student-name">Xin Hu</span></td>
+        <td>
+          <div class="pub-line">ACM LAMPS 2024<span class="authorship">co-primary author</span></div>
+        </td>
+        <td>The University of Tokyo</td>
+      </tr>
+      <tr>
+        <td><span class="student-name">Xilong Wang</span></td>
+        <td>
+          <div class="pub-line">The Web Conference 2025<span class="authorship">co-primary author</span></div>
+        </td>
+        <td>University of Science and Technology of China<span class="arrow">→</span>Duke University</td>
+      </tr>
+      <tr>
+        <td><span class="student-name">Baolei Zhang</span></td>
+        <td>
+          <div class="pub-line">The Web Conference 2025<span class="authorship">co-primary author</span></div>
+          <div class="pub-line">IEEE Symposium on Security and Privacy 2026<span class="authorship">co-primary author</span></div>
+          <div class="pub-line">ACM SACMAT 2026<span class="authorship">first author</span></div>
+        </td>
+        <td>Nankai University</td>
+      </tr>
+      <tr>
+        <td><span class="student-name">Haoran Xin</span></td>
+        <td>
+          <div class="pub-line">The Web Conference 2025<span class="authorship">co-primary author</span></div>
+          <div class="pub-line">IEEE Symposium on Security and Privacy 2026<span class="authorship">co-primary author</span></div>
+        </td>
+        <td>Nankai University</td>
+      </tr>
+      <tr>
+        <td><span class="student-name">Wenbin Wang</span></td>
+        <td>
+          <div class="pub-line">The Web Conference 2025<span class="authorship">co-primary author</span></div>
+        </td>
+        <td>ShanghaiTech University<span class="arrow">→</span>The Ohio State University</td>
+      </tr>
+      <tr>
+        <td><span class="student-name">Qiwen Ma</span></td>
+        <td>
+          <div class="pub-line">The Web Conference 2025<span class="authorship">co-primary author</span></div>
+        </td>
+        <td>Xidian University</td>
+      </tr>
+      <tr>
+        <td><span class="student-name">Xuecen Zhao</span></td>
+        <td>
+          <div class="pub-line">The Web Conference 2025<span class="authorship">third author</span></div>
+        </td>
+        <td>University of Washington<span class="arrow">→</span>University of Iowa</td>
+      </tr>
+      <tr>
+        <td><span class="student-name">Jiaqi Wang</span></td>
+        <td>
+          <div class="pub-line">ACM AsiaCCS 2025<span class="authorship">co-primary author</span></div>
+        </td>
+        <td>Hainan Normal University</td>
+      </tr>
+      <tr>
+        <td><span class="student-name">Wenjin Mo</span></td>
+        <td>
+          <div class="pub-line">ICCV 2025<span class="authorship">co-primary author</span></div>
+        </td>
+        <td>Sun Yat-sen University<span class="arrow">→</span>Yale University</td>
+      </tr>
+      <tr>
+        <td><span class="student-name">Zhiyuan Li</span></td>
+        <td>
+          <div class="pub-line">ICCV 2025<span class="authorship">co-primary author</span></div>
+        </td>
+        <td>Independent Researcher</td>
+      </tr>
+      <tr>
+        <td><span class="student-name">Yueyang Quan</span></td>
+        <td>
+          <div class="pub-line">MobiHoc 2025<span class="authorship">first author</span></div>
+        </td>
+        <td>Northeastern University<span class="arrow">→</span>University of North Texas</td>
+      </tr>
+      <tr>
+        <td><span class="student-name">Chang Wang</span></td>
+        <td>
+          <div class="pub-line">MobiHoc 2025<span class="authorship">second author</span></div>
+        </td>
+        <td>Nanjing University of Posts and Telecommunications<span class="arrow">→</span>University of Nevada, Las Vegas</td>
+      </tr>
+      <tr>
+        <td><span class="student-name">Zirui Cheng</span></td>
+        <td>
+          <div class="pub-line">IEEE BigData 2025<span class="authorship">co-primary author</span></div>
+        </td>
+        <td>Huazhong University of Science and Technology<span class="arrow">→</span>National University of Singapore</td>
+      </tr>
+      <tr>
+        <td><span class="student-name">Jikai Sun</span></td>
+        <td>
+          <div class="pub-line">IEEE BigData 2025<span class="authorship">co-primary author</span></div>
+        </td>
+        <td>National University of Singapore</td>
+      </tr>
+      <tr>
+        <td><span class="student-name">Yuxi Chen</span></td>
+        <td>
+          <div class="pub-line">IEEE Symposium on Security and Privacy 2026<span class="authorship">second author</span></div>
+          <div class="pub-line">ACM SACMAT 2026<span class="authorship">second author</span></div>
+        </td>
+        <td>Independent Researcher</td>
+      </tr>
+      <tr>
+        <td><span class="student-name">Tianrun Yu</span></td>
+        <td>
+          <div class="pub-line">WiOpt 2026<span class="authorship">co-primary author</span></div>
+        </td>
+        <td>The Pennsylvania State University</td>
+      </tr>
+      <tr>
+        <td><span class="student-name">Kaixiang Zhao</span></td>
+        <td>
+          <div class="pub-line">WiOpt 2026<span class="authorship">co-primary author</span></div>
+        </td>
+        <td>University of Notre Dame</td>
+      </tr>
+      <tr>
+        <td><span class="student-name">Cheng Zhang</span></td>
+        <td>
+          <div class="pub-line">WiOpt 2026<span class="authorship">second author</span></div>
+        </td>
+        <td>North Carolina State University</td>
+      </tr>
+      <tr>
+        <td><span class="student-name">Feng Wang</span></td>
+        <td>
+          <div class="pub-line">ACM AsiaCCS 2026<span class="authorship">co-primary author</span></div>
+        </td>
+        <td>Northeastern University</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+</body>
+</html>
