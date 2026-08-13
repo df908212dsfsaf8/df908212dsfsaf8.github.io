@@ -58,6 +58,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--card-red);outline-o
   object-fit:cover;
   display:block;
   box-shadow:0 2px 12px rgba(28,28,34,.10);
+  -webkit-user-drag:none;
+  user-select:none;
+  -webkit-user-select:none;
+  -webkit-touch-callout:none;
 }
 .name{
   font-size:1.5rem;
@@ -319,7 +323,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--card-red);outline-o
 
   <aside class="sidebar">
     <div class="sidebar-inner">
-      <img class="avatar" src="/images/people/956.png" alt="Portrait of Minghong Fang">
+      <img class="avatar" src="/images/people/956.png" alt="Portrait of Minghong Fang" oncontextmenu="return false" draggable="false">
       <h1 class="name">Minghong Fang</h1>
       <p class="role">Assistant Professor<br>
         Computer Science &amp; Engineering<br>
